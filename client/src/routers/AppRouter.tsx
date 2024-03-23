@@ -1,0 +1,29 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+
+// Importing Pages
+import HomePage from "../ui/pages/HomePage";
+import LoginPage from "../ui/pages/LoginPage";
+import LivePage from "../ui/pages/LivePage";
+import FriendsPage from "../ui/pages/FriendsPage";
+import SyncPage from "../ui/pages/SyncPage";
+import SettingsPage from "../ui/pages/SettingsPage";
+import ProfilePage from "../ui/pages/ProfilePage";
+
+function AppRouter() {
+  // Setting the default title
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/home" element={<HomePage />} />
+        <Route path="/sync" element={<SyncPage />} />
+        <Route path="/friends" element={<FriendsPage />} />
+        <Route path="/live" element={<LivePage />} />
+        <Route path="/settings" element={<SettingsPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+export default AppRouter;

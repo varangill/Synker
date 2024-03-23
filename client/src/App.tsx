@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import HomePage from "./ui/pages/HomePage";
-import "./index.css";
+import AppRouter from "./routers/AppRouter";
+import "./App.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <HomePage />
+    <AppRouter />
   </React.StrictMode>
 );
