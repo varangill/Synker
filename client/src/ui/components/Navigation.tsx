@@ -48,15 +48,18 @@ const Navigation = () => {
             SYNKER
           </p>
         </div>
-        <div className="nav-bar-middle flex flex-col">
-          <button className="btn-default" onClick={handleSyncClick}>
-            Sync
+        <div className="nav-bar-middle flex flex-col items-center">
+          <button className="btn-default flex rounded-xl bg-purple-100 hover:bg-purple-200 w-3/4 items-left" onClick={handleSyncClick}>
+            <img></img>
+            <div className="btn-text text-white font-bold">SYNC</div>
           </button>
           <button className="btn-default" onClick={handleFriendsClick}>
-            Friends
+          <img></img>
+            <div>Friends</div>
           </button>
           <button className="btn-default" onClick={handleLiveClick}>
-            Live Game
+            <img></img>
+            <div>Live Game</div>
           </button>
         </div>
       </div>
