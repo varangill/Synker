@@ -4,6 +4,10 @@ import logo from "../assets/images/logo.png";
 
 const Navigation = () => {
   const navigate = useNavigate();
+  // Finds the current path, make button component, render depending on page 
+  // Do this in btn component, pass in "Home" as props, if home == pathname /home, render 
+  // Otherwise render default unclicked button 
+  const currentPath = window.location.pathname; 
 
   function handleHomeClick() {
     navigate("/home");
