@@ -3,7 +3,7 @@ import Navigation from "../components/Navigation.tsx";
 
 export default function ProfilePage() {
   return (
-    <div className="App">
+    <div className="App flex flex-row bg-gray-100">
       <Navigation />
       <h1 className="text-3xl font-bold underline text-red-600">Profile</h1>
     </div>
