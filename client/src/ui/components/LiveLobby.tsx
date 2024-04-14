@@ -1,5 +1,5 @@
 import logo from "../assets/images/logo.png";
-import LobbyTags from "./LobbyTags";
+import LobbyTag from "../components/LobbyTag";
 
 const LiveLobby = () => {
   return (
@@ -17,10 +17,10 @@ const LiveLobby = () => {
       </div>
       <div className="bigDiv flex flex-row h-full ">
         <div className="grid grid-cols-4 w-2/3 h-full">
-          <LobbyTags tagName="PARKORE MANIAK"></LobbyTags>
-          <LobbyTags tagName="RIVAILLE"></LobbyTags>
-          <LobbyTags tagName="3ZPZ"></LobbyTags>
-          <LobbyTags tagName="NOVATIC"></LobbyTags>
+          <LobbyTag tagName="PARKORE MANIAK"></LobbyTag>
+          <LobbyTag tagName="RIVAILLE"></LobbyTag>
+          <LobbyTag tagName="3ZPZ"></LobbyTag>
+          <LobbyTag tagName="NOVATIC"></LobbyTag>
         </div>
         <div className="player-count-join h-full flex flex-col items-center w-1/3 p-5">
           <div className="player-count text-white font-bold text-2xl text-center mb-2">
