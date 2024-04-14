@@ -1,6 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import "../assets/styles/Navigation.css";
 import logo from "../assets/images/logo.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { faUserGroup } from "@fortawesome/free-solid-svg-icons";
+import { faCirclePlay } from "@fortawesome/free-solid-svg-icons";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+import { faGear } from "@fortawesome/free-solid-svg-icons";
 
 const Navigation = () => {
   const navigate = useNavigate();
@@ -32,7 +39,7 @@ const Navigation = () => {
     navigate("/settings");
   }
 
-  function handleLoginClick() {
+  function handleLogoutClick() {
     navigate("/");
   }
 
@@ -62,8 +69,11 @@ const Navigation = () => {
             }`}
             onClick={handleSyncClick}
           >
-            <div className="flex flex-row justify-center items-center">
-              <img className="object-contain h-8 w-3/4" src={logo}></img>
+            <div className="flex flex-row justify-center items-center h-full">
+              <FontAwesomeIcon
+                icon={faMagnifyingGlass}
+                className="object-contain h-2/4 w-5 text-white p-4"
+              />
               <div className="flex btn-text text-white h-8 font-bold items-center text-xl">
                 SYNC
               </div>
@@ -78,8 +88,11 @@ const Navigation = () => {
             }`}
             onClick={handleFriendsClick}
           >
-            <div className="flex flex-row justify-center items-center">
-              <img className="object-contain h-8 w-3/4" src={logo}></img>
+            <div className="flex flex-row justify-center items-center h-full">
+              <FontAwesomeIcon
+                icon={faUserGroup}
+                className="object-contain h-2/4 w-5 text-white p-4"
+              />
               <div className="flex btn-text text-white h-8 font-bold items-center text-xl">
                 FRIENDS
               </div>
@@ -94,8 +107,11 @@ const Navigation = () => {
             }`}
             onClick={handleLiveClick}
           >
-            <div className="flex flex-row justify-center items-center">
-              <img className="object-contain h-8 w-3/4" src={logo}></img>
+            <div className="flex flex-row justify-center items-center h-full">
+              <FontAwesomeIcon
+                icon={faCirclePlay}
+                className="object-contain h-2/4 w-5 text-white p-4"
+              />
               <div className="flex btn-text text-white h-8 font-bold items-center text-xl">
                 LIVE
               </div>
@@ -114,8 +130,11 @@ const Navigation = () => {
           }`}
           onClick={handleProfileClick}
         >
-          <div className="flex flex-row justify-center items-center">
-            <img className="object-contain h-8 w-3/4" src={logo}></img>
+          <div className="flex flex-row justify-center items-center h-full">
+            <FontAwesomeIcon
+              icon={faUser}
+              className="object-contain h-2/4 w-5 text-white p-4"
+            />
             <div className="flex btn-text text-white h-8 font-bold items-center text-xl">
               PROFILE
             </div>
@@ -123,23 +142,31 @@ const Navigation = () => {
         </button>
         <div className="logout-container flex flex-row h-9 flex rounded-xl w-4/5 items-left mb-12">
           <button
-            className={`btn-default h-9 flex rounded-xl w-4/5 items-left mb-5 ${
+            className={`btn-default h-9 flex rounded-xl w-2/3 items-left ${
               currentPath == "/profile" ? "" : ""
             }`}
-            onClick={handleLoginClick}
+            onClick={handleLogoutClick}
           >
-            <div className="flex flex-row justify-center items-center">
-              <img className="object-contain h-8 w-3/4" src={logo}></img>
+            <div className="flex flex-row justify-center items-center h-full">
+              <FontAwesomeIcon
+                icon={faRightFromBracket}
+                className="object-contain h-2/4 w-5 text-white p-4"
+              />
               <div className="flex btn-text text-white h-8 font-bold items-center text-xl">
                 LOGOUT
               </div>
             </div>
           </button>
+          <div className="space w-1/3"></div>
           <button
-            className="btn-settings justify-center items-right"
+            className="btn-settings items-right"
             onClick={handleSettingsClick}
           >
-            <img className="h-9" src={logo}></img>
+            <FontAwesomeIcon
+              icon={faGear}
+              className="object-contain w-5 h-9 text-white"
+              onClick={handleSettingsClick}
+            />
           </button>
         </div>
       </div>
