@@ -46,7 +46,7 @@ const Navigation = () => {
   return (
     <div className="nav-bar-container bg-gray-900 h-screen w-96 md:w-80 sm:w-56 flex flex-col">
       <div className="nav-bar-top">
-        <div className="logo-title flex flex-row object-contain mb-8">
+        <div className="logo-title flex flex-row object-contain mb-8 hover:cursor-pointer">
           <img
             className="logo object-scale-down w-1/3"
             src={logo}
