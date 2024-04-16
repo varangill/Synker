@@ -5,7 +5,7 @@ export default {
     screens: {
       sm: "480px",
       md: "768px",
-      lg: "900px",
+      lg: "1080px",
       xl: "1440px",
     },
     colors: {
@@ -16,12 +16,12 @@ export default {
       green: "#13ce66",
       gray: {
         100: "#302D37",
-        900: "#211A1D",
+        200: "#211A1D",
       },
       purple: {
         100: "#6320EE",
-        200: "#7236EF"
-    }
+        200: "#7236EF",
+      },
     },
 
     extend: {},
