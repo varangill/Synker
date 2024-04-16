@@ -6,7 +6,7 @@ export default function LivePage() {
   return (
     <div className="App flex flex-row bg-gray-100 h-screen">
       <Navigation />
-      <div className="live-game-screen-container w-full h-full">
+      <div className="live-game-screen-container w-fill h-fill">
         <GameSelection></GameSelection>
       </div>
     </div>

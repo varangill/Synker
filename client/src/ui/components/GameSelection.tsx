@@ -9,7 +9,9 @@ const GameSelection = () => {
           "btn-default h-9 flex rounded-xl bg-purple-100 hover:bg-purple-200 w-full items-center justify-center max-w-52"
         }
       >
-        <div className="btn-txt text-white font-bold text-2xl">FIND</div>
+        <div className="flex btn-text text-white h-8 font-bold items-center text-xl sm:text-base">
+          FIND
+        </div>
       </button>
     </div>
   );
