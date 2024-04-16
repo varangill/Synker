@@ -8,12 +8,11 @@ const LiveLobby = () => {
         LOOKING FOR COMPETITIVE 5 STACK
       </div>
       <div className="pfp-images flex flex-row mt-2 object-contain grid grid-cols-6 ml-8 gap-1 w-4/5">
-        <img className="pfp-1 max-h-32 max-w-32 p-1" src={logo}></img>
-        <img className="pfp-1 max-h-32 max-w-32 p-1" src={logo}></img>
-        <img className="pfp-1 max-h-32 max-w-32 p-1" src={logo}></img>
-        <img className="pfp-1 max-h-32 max-w-32 p-1" src={logo}></img>
-        <img className="pfp-1 max-h-32 max-w-32 p-1" src={logo}></img>
-        <img className="pfp-1 max-h-32 max-w-32 p-1" src={logo}></img>
+        <img className="pfp-1 max-h-24 max-w-24 p-1" src={logo}></img>
+        <img className="pfp-1 max-h-24 max-w-24 p-1" src={logo}></img>
+        <img className="pfp-1 max-h-24 max-w-24 p-1" src={logo}></img>
+        <img className="pfp-1 max-h-24 max-w-24 p-1" src={logo}></img>
+        <img className="pfp-1 max-h-24 max-w-24 p-1" src={logo}></img>
       </div>
       <div className="bigDiv flex flex-row h-full ">
         <div className="grid grid-cols-4 w-2/3 h-full">
