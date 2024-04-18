@@ -1,8 +1,11 @@
 import Dropdown from "./Dropdown";
 const GameSelection = () => {
   return (
-    <div className="game-selection-container rounded-2xl flex flex-col justify-center items-center bg-gray-200 w-4/5 md:w-4/5 lg:w-1/5 xl:w-1/5 min-w-72 h-1/4 h-52">
-      <div>Game Selection</div>
+    <div className="game-selection-container rounded-2xl flex flex-col items-center bg-gray-200 w-4/5 md:w-4/5 lg:w-1/5 xl:w-1/5 min-w-72 h-52">
+      <div className="game-selection-title flex text-white h-1/4 font-bold items-center text-2xl">
+        <div>GAME SELECTION</div>
+      </div>
+      <div className="title-line w-full bg-gray-100 h-1"></div>
       <Dropdown></Dropdown>
       <button
         className={
