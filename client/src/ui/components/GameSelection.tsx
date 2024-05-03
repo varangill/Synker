@@ -3,7 +3,17 @@ const GameSelection = () => {
   // dropdownList will return the required list for the dropdown
   // SQL?
   const list = () => {
-    return ["Valorant", "League of Legends"];
+    return [
+      "Valorant",
+      "League of Legends",
+      "Clash of Clans",
+      "Lethal Company",
+      "Apex",
+    ];
+  };
+
+  const handleFindClick = () => {
+    console.log("Find button has been clicked");
   };
 
   return (
@@ -21,7 +31,10 @@ const GameSelection = () => {
             "btn-default h-9 flex rounded-xl bg-purple-100 hover:bg-purple-200 w-full items-center justify-center"
           }
         >
-          <div className="find-button z-0 flex btn-text text-white h-8 font-bold items-center text-xl sm:text-base">
+          <div
+            className="find-button z-0 flex btn-text text-white h-8 font-bold items-center text-xl sm:text-base"
+            onClick={handleFindClick}
+          >
             FIND
           </div>
         </button>
