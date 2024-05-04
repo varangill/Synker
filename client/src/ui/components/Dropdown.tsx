@@ -4,16 +4,23 @@ import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 
 interface DropdownProps {
   dropdownList: string[];
+  onSelectionChange: (value: string) => void;
+  placeholder: string;
 }
 
-const Dropdown: React.FC<DropdownProps> = ({ dropdownList }) => {
+const Dropdown: React.FC<DropdownProps> = ({
+  dropdownList,
+  onSelectionChange,
+  placeholder,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selected, setSelected] = useState("SELECT ONE ...");
+  const [selected, setSelected] = useState(placeholder);
 
   const toggleDropdown = () => setIsOpen(!isOpen);
 
   const handleSelect = (value: string) => {
     setSelected(value);
+    onSelectionChange(value); // Changes the value in the parent component
     toggleDropdown(); // Close dropdown after selection
   };
 

@@ -1,7 +1,14 @@
+import { SetStateAction, useState } from "react";
 import Dropdown from "./Dropdown";
 const GameSelection = () => {
-  // dropdownList will return the required list for the dropdown
-  // SQL?
+  const [selectedOption, setSelectedOption] = useState("");
+
+  const handleSelectionChange = (selectedValue: SetStateAction<string>) => {
+    console.log("New dropdown selection: ", selectedValue);
+    setSelectedOption(selectedValue);
+  };
+
+  // DropdownList will return the required list for the dropdown with SQL
   const list = () => {
     return [
       "Valorant",
@@ -12,8 +19,9 @@ const GameSelection = () => {
     ];
   };
 
+  // Back-end after a game has been chosen from the dropdown
   const handleFindClick = () => {
-    console.log("Find button has been clicked");
+    console.log("Finding", selectedOption, "lobbies.");
   };
 
   return (
@@ -24,7 +32,11 @@ const GameSelection = () => {
       <div className="title-line w-full bg-gray-100 h-1"></div>
       <div className="flex flex-col w-full justify-evenly max-w-52 h-full">
         <div className="dropdown-container h-8 z-10">
-          <Dropdown dropdownList={list()}></Dropdown>
+          <Dropdown
+            dropdownList={list()}
+            onSelectionChange={handleSelectionChange}
+            placeholder="SELECT ONE ..."
+          ></Dropdown>
         </div>
         <button
           className={
