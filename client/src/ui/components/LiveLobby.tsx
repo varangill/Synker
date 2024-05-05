@@ -3,7 +3,7 @@ import LobbyTag from "../components/LobbyTag";
 
 const LiveLobby = () => {
   return (
-    <div className="lf-stack-container bg-gray-900 xl:w-5/12 lg:w-5/12 md:w-full sm:w-full h-fit flex flex-col rounded-2xl">
+    <div className="lf-stack-container bg-gray-900 xl:w-5/12 lg:w-5/12 md:w-full sm:w-full h-fit flex flex-col">
       <div className="lf-5stack-text text-white font-bold text-base ml-8 mt-3">
         LOOKING FOR COMPETITIVE 5 STACK
       </div>

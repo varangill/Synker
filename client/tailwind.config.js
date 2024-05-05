@@ -26,8 +26,8 @@ export default {
 
     extend: {
       gridTemplateColumns: {
-        "auto-fill-100": "repeat(auto-fill, minmax(120px, 1fr))",
-        "auto-fit-100": "repeat(auto-fit, minmax(120px, 1fr))",
+        "auto-fill-100": "repeat(auto-fill, minmax(150px, 1fr))",
+        "auto-fit-100": "repeat(auto-fit, minmax(150px, 1fr))",
       },
     },
   },
