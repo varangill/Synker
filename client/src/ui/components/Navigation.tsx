@@ -53,7 +53,7 @@ const Navigation = () => {
             onClick={handleHomeClick}
           ></img>
           <p
-            className="text-base sm:text-3xl md:text-5xl lg:text-5xl xl:text-5xl text-white w-2/3 font-bold text-left flex items-center"
+            className="text-base sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl text-white w-2/3 font-bold text-left flex items-center"
             onClick={handleHomeClick}
           >
             SYNKER
@@ -74,7 +74,7 @@ const Navigation = () => {
                 icon={faMagnifyingGlass}
                 className="object-contain h-2/4 w-5 text-white p-4"
               />
-              <div className="flex btn-text text-white h-8 font-bold items-center text-xl">
+              <div className="flex btn-text text-white h-8 font-bold items-center text-base lg:text-xl sm:text-sm">
                 SYNC
               </div>
             </div>
@@ -93,7 +93,7 @@ const Navigation = () => {
                 icon={faUserGroup}
                 className="object-contain h-2/4 w-5 text-white p-4"
               />
-              <div className="flex btn-text text-white h-8 font-bold items-center text-xl">
+              <div className="flex btn-text text-white h-8 font-bold items-center text-base lg:text-xl sm:text-sm">
                 FRIENDS
               </div>
             </div>
@@ -112,7 +112,7 @@ const Navigation = () => {
                 icon={faCirclePlay}
                 className="object-contain h-2/4 w-5 text-white p-4"
               />
-              <div className="flex btn-text text-white h-8 font-bold items-center text-xl">
+              <div className="flex btn-text text-white h-8 font-bold items-center text-base lg:text-xl sm:text-sm">
                 LIVE
               </div>
             </div>
@@ -135,7 +135,7 @@ const Navigation = () => {
               icon={faUser}
               className="object-contain h-2/4 w-5 text-white p-4"
             />
-            <div className="flex btn-text text-white h-8 font-bold items-center text-xl">
+            <div className="flex btn-text text-white h-8 font-bold items-center text-base lg:text-xl sm:text-sm">
               PROFILE
             </div>
           </div>
@@ -152,7 +152,7 @@ const Navigation = () => {
                 icon={faRightFromBracket}
                 className="object-contain h-2/4 w-5 text-white p-4"
               />
-              <div className="flex btn-text text-white h-8 font-bold items-center text-xl">
+              <div className="flex btn-text text-white h-8 font-bold items-center text-base sm:text-sm lg:text-xl">
                 LOGOUT
               </div>
             </div>
@@ -164,7 +164,7 @@ const Navigation = () => {
           >
             <FontAwesomeIcon
               icon={faGear}
-              className="object-contain w-5 h-9 text-white"
+              className="object-contain w-5 h-9 text-white lg:w-5 sm:w-4"
               onClick={handleSettingsClick}
             />
           </button>

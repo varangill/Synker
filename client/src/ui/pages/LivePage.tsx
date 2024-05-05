@@ -7,7 +7,7 @@ export default function LivePage() {
     <div className="App flex flex-row bg-gray-100">
       <Navigation />
       <LiveLobby />
-      <h1 className="text-3xl font-bold underline text-red-600">Live</h1>
+      <h1 className="text-3xl font-bold underline text-red-600"></h1>
     </div>
   );
 }

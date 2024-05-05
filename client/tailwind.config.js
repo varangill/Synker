@@ -20,11 +20,16 @@ export default {
       },
       purple: {
         100: "#6320EE",
-        200: "#7236EF"
-    }
+        200: "#7236EF",
+      },
     },
 
-    extend: {},
+    extend: {
+      gridTemplateColumns: {
+        "auto-fill-100": "repeat(auto-fill, minmax(120px, 1fr))",
+        "auto-fit-100": "repeat(auto-fit, minmax(120px, 1fr))",
+      },
+    },
   },
   plugins: [],
 };
