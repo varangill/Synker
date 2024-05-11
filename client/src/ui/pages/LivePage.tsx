@@ -8,7 +8,7 @@ export default function LivePage() {
     <div className="App flex flex-row bg-gray-100 h-screen">
       <Navigation />
 
-      <div className="live-game-screen-container flex flex-row w-full h-full flex-wrap">
+      <div className="live-game-screen-container flex flex-row w-full h-full flex-wrap overflow-y-scroll overflow-x-hidden">
         <GameSelection></GameSelection>
         <LiveLobby></LiveLobby>
       </div>
