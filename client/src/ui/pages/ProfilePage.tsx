@@ -27,7 +27,12 @@ export default function ProfilePage() {
 
   function gameTags() {
     // SQL grabs game tags
-    const gameTagList = ["Valorant", "League of Legends", "Apex", "Apex"];
+    const gameTagList = [
+      "Valorant",
+      "League of Legends",
+      "Apex",
+      "Lethal Company",
+    ];
     return gameTagList;
   }
 
