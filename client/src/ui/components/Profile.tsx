@@ -1,4 +1,6 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEdit } from "@fortawesome/free-solid-svg-icons";
 // import ThemeContext from "./ThemeContext";
 
 interface ProfileProps {
@@ -28,19 +30,26 @@ const Profile: React.FC<ProfileProps> = ({
         className="profile-pic w-full aspect-w-1 aspect-h-1 object-scale-down"
         src={profilePicture}
       ></img>
-      <div>{username}</div>
+      <div className="username w-full text-center text-white text-2xl pb-2 pt-2">
+        {username}
+      </div>
       <div className="line bg-gray-100 w-full h-1"></div>
-      {auth && <button>Edit</button>}
-      <div>{description}</div>
-      <div className="tag-container">
-        {" "}
+      <div className="desc text-white text-lg pl-5 pr-5 pt-2 w-full">
+        {description}
+      </div>{" "}
+      <div className="btn-container w-full justify-end flex pr-5">
+        {auth && (
+          <button className="btn-edit">
+            <FontAwesomeIcon icon={faEdit} className="text-white" />
+          </button>
+        )}
+      </div>
+      <div className="tag-container grid grid-cols-auto-fit-100">
         {gameTags.map((option, index) => (
-          <div
-            key={index}
-            className="dropdownOption text-white hover:bg-purple-200 p-2 cursor-pointer"
-            // onClick={() => handleSelect(option)}
-          >
-            {option}
+          <div className="gameTag-bg bg-gray-100 w-fit rounded-xl pt-1 pb-1 pr-2 pl-2">
+            <div key={index} className="gameTags text-white">
+              {option}
+            </div>
           </div>
         ))}
       </div>

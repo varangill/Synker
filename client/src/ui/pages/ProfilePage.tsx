@@ -27,7 +27,7 @@ export default function ProfilePage() {
 
   function gameTags() {
     // SQL grabs game tags
-    const gameTagList = ["Valorant", "League of Legends", "Apex"];
+    const gameTagList = ["Valorant", "League of Legends", "Apex", "Apex"];
     return gameTagList;
   }
 
@@ -35,7 +35,7 @@ export default function ProfilePage() {
     <div className="App flex flex-row bg-gray-100 h-screen">
       <Navigation />
 
-      <div className="profile-screen-container p-10 w-full h-full content-center">
+      <div className="profile-screen-container p-10 w-full h-full">
         <Profile
           profilePicture={profilePicture()}
           username={username()}
