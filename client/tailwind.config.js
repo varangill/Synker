@@ -24,12 +24,18 @@ export default {
         100: "#6320EE",
         200: "#7236EF",
       },
+      200: "#7236EF",
+    },
+  },
+
+  extend: {
+    spacing: {
+      128: "80rem",
     },
 
-    extend: {
-      spacing: {
-        128: "80rem",
-      },
+    gridTemplateColumns: {
+      "auto-fill-100": "repeat(auto-fill, minmax(150px, 1fr))",
+      "auto-fit-100": "repeat(auto-fit, minmax(150px, 1fr))",
     },
   },
   plugins: [],
