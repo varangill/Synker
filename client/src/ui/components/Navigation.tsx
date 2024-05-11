@@ -53,7 +53,7 @@ const Navigation = () => {
             onClick={handleHomeClick}
           ></img>
           <p
-            className="text-base sm:text-2xl md:text-4xl lg:text-4xl xl:text-5xl text-white w-2/3 font-bold text-left flex items-center"
+            className="text-base sm:text-2xl md:text-4xl lg:text-4xl xl:text-4xl text-white w-2/3 font-bold text-left flex items-center"
             onClick={handleHomeClick}
           >
             SYNKER

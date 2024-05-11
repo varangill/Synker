@@ -26,7 +26,11 @@ export default {
       },
     },
 
-    extend: {},
+    extend: {
+      spacing: {
+        128: "80rem",
+      },
+    },
   },
   plugins: [],
 };
