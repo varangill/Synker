@@ -1,6 +1,8 @@
-import React from "react";
+import React, { SetStateAction, useState } from "react";
+import Dropdown from "./Dropdown";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 // import ThemeContext from "./ThemeContext";
 
 interface ProfileProps {
@@ -8,7 +10,7 @@ interface ProfileProps {
   username: string;
   description: string;
   profilePicture: string;
-  membership: string;
+  membership: boolean;
   auth: boolean;
 }
 
@@ -23,6 +25,21 @@ const Profile: React.FC<ProfileProps> = ({
   // const authenticated = useContext(Authenticated)
   // Needs to pass a profile through
   // let authenticated = true;
+
+  const [editDescription, setEditDescription] = useState(description);
+  const [tempDescription, setTempDescription] = useState(description);
+  const [editProfilePic, setEditProfilePic] = useState(profilePicture);
+  const [tempProfilePic, setTempProfilePic] = useState(profilePicture);
+  const [editGameTags, setEditGameTags] = useState(gameTags);
+  const [tempGameTags, setTempGameTags] = useState(gameTags);
+  const [isEditing, setIsEditing] = useState(false);
+
+  const [selectedOption, setSelectedOption] = useState("");
+
+  const handleSelectionChange = (selectedValue: SetStateAction<string>) => {
+    console.log("New dropdown selection: ", selectedValue);
+    setSelectedOption(selectedValue);
+  };
   const colorClasses = [
     "text-red",
     "text-blue",
@@ -31,6 +48,32 @@ const Profile: React.FC<ProfileProps> = ({
     "text-pink",
     "text-orange",
   ];
+
+  function handleEditClick() {
+    setIsEditing(!isEditing);
+    setTempDescription(editDescription);
+    setTempProfilePic(editProfilePic);
+    setTempGameTags(editGameTags);
+  }
+
+  function handleSaveClick() {
+    // Sends updates to backend
+    setEditDescription(tempDescription);
+    setEditGameTags(tempGameTags);
+    setEditProfilePic(tempProfilePic);
+    setIsEditing(!isEditing);
+  }
+
+  // Back-end after a game has been chosen from the dropdown
+  const handleAddClick = () => {
+    console.log("Adding/Removing", selectedOption, "to/from player's games.");
+    tempGameTags.push(selectedOption);
+  };
+
+  function list() {
+    // Returns master game list - player's games list
+    return ["Clash of Clans", "Maple Story"];
+  }
 
   function getRandomColor() {
     const randomIndex = Math.floor(Math.random() * colorClasses.length);
@@ -45,22 +88,46 @@ const Profile: React.FC<ProfileProps> = ({
         className="profile-pic w-full aspect-w-1 aspect-h-1 object-scale-down"
         src={profilePicture}
       ></img>
-      <div className="username w-full text-center text-white text-2xl pb-2 pt-2">
+      <div className="username w-full text-center text-white text-2xl pt-2">
         {username}
       </div>
+      {membership && (
+        <div className="membership-level text-white justify-center flex items-center pb-2 gap-1">
+          <FontAwesomeIcon icon={faStar} />
+          Platinum Member
+        </div>
+      )}
       <div className="line bg-gray-100 w-full h-1"></div>
-      <div className="desc text-white text-lg pl-3 pr-5 pt-2 w-full">
-        {description}
-      </div>
-      <div className="btn-container w-full justify-end flex pr-3">
-        {auth && (
-          <button className="btn-edit">
-            <FontAwesomeIcon icon={faEdit} className="text-white" />
-          </button>
-        )}
-      </div>
+      {isEditing ? (
+        <div>
+          <textarea
+            className="desc text-white text-lg pl-3 pr-5 pt-2 w-full bg-gray-200 w-auto overflow-hidden text-ellipsis break-words"
+            value={tempDescription}
+            onChange={(e) => setTempDescription(e.target.value)}
+            style={{ height: "auto", overflowY: "hidden" }}
+            rows={5}
+            maxLength={150}
+            autoFocus={true}
+            autoCorrect="on"
+          />
+          <div className="flex flex-col w-full justify-evenly h-full items-center pb-3 pt-2 gap-3">
+            <div className="dropdown-container h-8 z-10 w-4/5 w-max-60">
+              <Dropdown
+                dropdownList={list()}
+                onSelectionChange={handleSelectionChange}
+                placeholder="SELECT GAMES ..."
+              ></Dropdown>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div className="desc text-white text-lg pl-3 pr-5 pt-2 w-full overflow-hidden text-ellipsis break-words">
+          {editDescription}
+        </div>
+      )}
+
       <div className="tag-container p-3 flex flex-wrap gap-2">
-        {gameTags.map((option, index) => (
+        {(isEditing ? tempGameTags : editGameTags).map((option, index) => (
           <div
             key={index}
             className="w-fit rounded-xl p-1 pl-2 pr-2 h-8 bg-gray-100"
@@ -75,8 +142,30 @@ const Profile: React.FC<ProfileProps> = ({
           </div>
         ))}
       </div>
-      {auth && <button>Add Games</button>}
-      <div>{membership}</div>
+      <div className="btn-container w-full justify-end flex pr-3">
+        {auth && !isEditing && (
+          <button className="btn-edit" onClick={handleEditClick}>
+            <FontAwesomeIcon icon={faEdit} className="text-white" />
+          </button>
+        )}
+        {auth && isEditing && (
+          <div className="btn-container flex flex-row gap-1 pt-2">
+            <button
+              className="btn-cancel btn-save h-9 flex rounded-xl hover:bg-gray-100 w-full items-center justify-center text-white font-bold w-24"
+              onClick={handleEditClick}
+            >
+              CANCEL
+            </button>
+            <button
+              className="btn-save h-9 flex rounded-xl bg-purple-100 hover:bg-purple-200 w-full items-center justify-center text-white font-bold w-24"
+              onClick={handleSaveClick}
+            >
+              SAVE
+            </button>
+          </div>
+        )}
+      </div>
+      <div className="space pb-5"></div>
     </div>
   );
 };

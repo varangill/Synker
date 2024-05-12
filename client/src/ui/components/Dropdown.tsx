@@ -31,7 +31,7 @@ const Dropdown: React.FC<DropdownProps> = ({
     <div>
       <button
         onClick={toggleDropdown}
-        className="dropdownSearchButton justify-between btn-default h-9 flex rounded-xl bg-gray-100 hover:bg-gray-300 w-full items-center justify-center max-w-52"
+        className="dropdownSearchButton justify-between btn-default h-9 flex rounded-xl bg-gray-100 hover:bg-gray-300 w-full items-center justify-center w-full"
       >
         <div className="btn-text flex whitespace-nowrap overflow-hidden text-ellipsis w-11/12 px-4 text-white h-8 font-bold items-center text-xl sm:text-base">
           {selected}

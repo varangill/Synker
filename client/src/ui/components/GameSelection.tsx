@@ -25,7 +25,7 @@ const GameSelection = () => {
   };
 
   return (
-    <div className="game-selection-container rounded-2xl flex flex-col items-center bg-gray-200 w-4/5 md:w-4/5 lg:w-1/5 xl:w-1/5 min-w-72 h-52">
+    <div className="game-selection-container rounded-2xl flex flex-col items-center bg-gray-200 w-4/5 md:w-4/5 lg:w-1/5 xl:w-1/5 min-w-72 max-w-96 h-52">
       <div className="game-selection-title flex text-white h-1/3 font-bold items-center text-2xl">
         <div>GAME SELECTION</div>
       </div>

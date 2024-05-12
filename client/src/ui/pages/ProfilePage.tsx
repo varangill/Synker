@@ -1,7 +1,7 @@
 import("../../App.css");
 import Navigation from "../components/Navigation.tsx";
 import Profile from "../components/Profile.tsx";
-import logo from "../assets/images/logo.png";
+import background from "../assets/images/background.png";
 
 export default function ProfilePage() {
   // SQL functions
@@ -10,7 +10,7 @@ export default function ProfilePage() {
   }
 
   function profilePicture() {
-    return logo;
+    return background;
   }
 
   function username() {
@@ -22,7 +22,7 @@ export default function ProfilePage() {
   }
 
   function membership() {
-    return "Platinum";
+    return true;
   }
 
   function gameTags() {
@@ -40,7 +40,7 @@ export default function ProfilePage() {
     <div className="App flex flex-row bg-gray-100 h-screen">
       <Navigation />
 
-      <div className="profile-screen-container p-10 w-full h-full">
+      <div className="profile-screen-container p-10 w-full h-full overscroll-none">
         <Profile
           profilePicture={profilePicture()}
           username={username()}
