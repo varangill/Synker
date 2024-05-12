@@ -1,27 +1,27 @@
-import { SetStateAction, useState } from "react";
+import { useState } from "react";
 import Dropdown from "./Dropdown";
+
 const GameSelection = () => {
-  const [selectedOption, setSelectedOption] = useState("");
+  const [selectedOption, setSelectedOption] = useState<string[]>([]);
 
-  const handleSelectionChange = (selectedValue: SetStateAction<string>) => {
-    console.log("New dropdown selection: ", selectedValue);
-    setSelectedOption(selectedValue);
+  const handleSelectionChange = (selectedValues: string[]) => {
+    console.log("New dropdown selection: ", selectedValues);
+    setSelectedOption(selectedValues);
   };
 
-  // DropdownList will return the required list for the dropdown with SQL
-  const list = () => {
-    return [
-      "Valorant",
-      "League of Legends",
-      "Clash of Clans",
-      "Lethal Company",
-      "Apex",
-    ];
-  };
+  const list = [
+    "Valorant",
+    "League of Legends",
+    "Clash of Clans",
+    "Lethal Company",
+    "Apex",
+    "Fortnite",
+  ];
 
-  // Back-end after a game has been chosen from the dropdown
+  const selectedList: string[] = [];
+
   const handleFindClick = () => {
-    console.log("Finding", selectedOption, "lobbies.");
+    console.log("Finding lobbies for:", selectedOption.join(", "));
   };
 
   return (
@@ -33,15 +33,15 @@ const GameSelection = () => {
       <div className="flex flex-col w-full justify-evenly max-w-52 h-full">
         <div className="dropdown-container h-8 z-10">
           <Dropdown
-            dropdownList={list()}
+            dropdownList={list}
+            selectedList={selectedList}
+            type="single"
             onSelectionChange={handleSelectionChange}
             placeholder="SELECT ONE ..."
-          ></Dropdown>
+          />
         </div>
         <button
-          className={
-            "btn-default h-9 flex rounded-xl bg-purple-100 hover:bg-purple-200 w-full items-center justify-center"
-          }
+          className="btn-default h-9 flex rounded-xl bg-purple-100 hover:bg-purple-200 w-full items-center justify-center"
           onClick={handleFindClick}
         >
           <div className="find-button z-0 flex btn-text text-white h-8 font-bold items-center text-xl sm:text-base">
@@ -52,4 +52,5 @@ const GameSelection = () => {
     </div>
   );
 };
+
 export default GameSelection;

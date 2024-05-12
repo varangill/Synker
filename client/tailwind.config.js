@@ -32,7 +32,7 @@ export default {
 
   extend: {
     spacing: {
-      128: "80rem",
+      128: "60rem",
     },
 
     gridTemplateColumns: {

@@ -1,4 +1,4 @@
-import React, { SetStateAction, useState } from "react";
+import React, { useState } from "react";
 import Dropdown from "./Dropdown";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
@@ -34,12 +34,13 @@ const Profile: React.FC<ProfileProps> = ({
   const [tempGameTags, setTempGameTags] = useState(gameTags);
   const [isEditing, setIsEditing] = useState(false);
 
-  const [selectedOption, setSelectedOption] = useState("");
+  const [selectedOption, setSelectedOption] = useState<string[]>(gameTags);
 
-  const handleSelectionChange = (selectedValue: SetStateAction<string>) => {
-    console.log("New dropdown selection: ", selectedValue);
-    setSelectedOption(selectedValue);
+  const handleSelectionChange = (selectedValues: string[]) => {
+    console.log("New dropdown selection: ", [...new Set(selectedValues)]);
+    setSelectedOption([...new Set(selectedValues)]);
   };
+
   const colorClasses = [
     "text-red",
     "text-blue",
@@ -59,20 +60,22 @@ const Profile: React.FC<ProfileProps> = ({
   function handleSaveClick() {
     // Sends updates to backend
     setEditDescription(tempDescription);
-    setEditGameTags(tempGameTags);
+    setEditGameTags(selectedOption);
     setEditProfilePic(tempProfilePic);
     setIsEditing(!isEditing);
   }
 
-  // Back-end after a game has been chosen from the dropdown
-  const handleAddClick = () => {
-    console.log("Adding/Removing", selectedOption, "to/from player's games.");
-    tempGameTags.push(selectedOption);
-  };
-
   function list() {
-    // Returns master game list - player's games list
-    return ["Clash of Clans", "Maple Story"];
+    // Returns master game list
+    return [
+      "Valorant",
+      "League of Legends",
+      "Clash of Clans",
+      "Lethal Company",
+      "Apex",
+      "Fortnite",
+      "Genshin Impact",
+    ];
   }
 
   function getRandomColor() {
@@ -80,10 +83,10 @@ const Profile: React.FC<ProfileProps> = ({
     return colorClasses[randomIndex];
   }
 
-  gameTags.sort();
+  editGameTags.sort();
 
   return (
-    <div className="profile-container xl:w-1/4 lg:w-1/4 md:w-1/4 sm:w-full min-w-64 bg-gray-200 rounded-2xl flex flex-col h-fit max-h-128">
+    <div className="profile-container xl:w-1/4 lg:w-1/4 md:w-1/4 sm:w-full min-w-64 bg-gray-200 rounded-2xl flex flex-col h-fit max-h-128 ">
       <img
         className="profile-pic w-full aspect-w-1 aspect-h-1 object-scale-down"
         src={profilePicture}
@@ -105,7 +108,7 @@ const Profile: React.FC<ProfileProps> = ({
             value={tempDescription}
             onChange={(e) => setTempDescription(e.target.value)}
             style={{ height: "auto", overflowY: "hidden" }}
-            rows={5}
+            rows={3}
             maxLength={150}
             autoFocus={true}
             autoCorrect="on"
@@ -114,6 +117,8 @@ const Profile: React.FC<ProfileProps> = ({
             <div className="dropdown-container h-8 z-10 w-4/5 w-max-60">
               <Dropdown
                 dropdownList={list()}
+                type="multiple"
+                selectedList={selectedOption}
                 onSelectionChange={handleSelectionChange}
                 placeholder="SELECT GAMES ..."
               ></Dropdown>
@@ -151,13 +156,13 @@ const Profile: React.FC<ProfileProps> = ({
         {auth && isEditing && (
           <div className="btn-container flex flex-row gap-1 pt-2">
             <button
-              className="btn-cancel btn-save h-9 flex rounded-xl hover:bg-gray-100 w-full items-center justify-center text-white font-bold w-24"
+              className="btn-cancel btn-save h-9 flex rounded-xl hover:bg-gray-100 items-center justify-center text-white font-bold w-24"
               onClick={handleEditClick}
             >
               CANCEL
             </button>
             <button
-              className="btn-save h-9 flex rounded-xl bg-purple-100 hover:bg-purple-200 w-full items-center justify-center text-white font-bold w-24"
+              className="btn-save h-9 flex rounded-xl bg-purple-100 hover:bg-purple-200 items-center justify-center text-white font-bold w-24"
               onClick={handleSaveClick}
             >
               SAVE

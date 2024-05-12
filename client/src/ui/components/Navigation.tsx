@@ -65,7 +65,7 @@ const Navigation = () => {
             className={`btn-default h-9 flex rounded-xl w-4/5 items-left mb-5 ${
               currentPath == "/sync"
                 ? "bg-purple-100 hover:bg-purple-200"
-                : "bg-gray-100"
+                : "bg-gray-100 hover:bg-gray-300"
             }`}
             onClick={handleSyncClick}
           >
@@ -84,7 +84,7 @@ const Navigation = () => {
             className={`btn-default h-9 flex rounded-xl w-4/5 items-left mb-5 ${
               currentPath == "/friends"
                 ? "bg-purple-100 hover:bg-purple-200"
-                : "bg-gray-100"
+                : "bg-gray-100 hover:bg-gray-300"
             }`}
             onClick={handleFriendsClick}
           >
@@ -103,7 +103,7 @@ const Navigation = () => {
             className={`btn-default h-9 flex rounded-xl w-4/5 items-left mb-5 ${
               currentPath == "/live"
                 ? "bg-purple-100 hover:bg-purple-200"
-                : "bg-gray-100"
+                : "bg-gray-100 hover:bg-gray-300"
             }`}
             onClick={handleLiveClick}
           >
@@ -126,7 +126,7 @@ const Navigation = () => {
           className={`btn-default h-9 flex rounded-xl w-4/5 items-left mb-5 ${
             currentPath == "/profile"
               ? "bg-purple-100 hover:bg-purple-200"
-              : "bg-gray-100"
+              : "bg-gray-100 hover:bg-gray-300"
           }`}
           onClick={handleProfileClick}
         >
