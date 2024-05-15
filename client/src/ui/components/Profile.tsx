@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Dropdown from "./Dropdown";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
@@ -36,6 +36,14 @@ const Profile: React.FC<ProfileProps> = ({
 
   const [selectedOption, setSelectedOption] = useState<string[]>(gameTags);
 
+  const imgInput = useRef<HTMLInputElement>(null);
+
+  React.useEffect(() => {
+    return () => {
+      editProfilePic;
+    };
+  }, []);
+
   const handleSelectionChange = (selectedValues: string[]) => {
     console.log("New dropdown selection: ", [...new Set(selectedValues)]);
     setSelectedOption([...new Set(selectedValues)]);
@@ -65,6 +73,37 @@ const Profile: React.FC<ProfileProps> = ({
     setIsEditing(!isEditing);
   }
 
+  function handlePFPClick() {
+    // Updates the profile picture only when editing mode is on
+    if (isEditing) {
+      console.log("PFP is being edited");
+      imgInput.current?.click();
+    }
+  }
+
+  const handleProfilePicChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    // Assert event.target as HTMLInputElement
+    const input = event.target as HTMLInputElement;
+
+    // Check if files exist and if the first file is defined
+    if (input.files && input.files[0]) {
+      const file = input.files[0];
+
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        // Make sure to check if reader.result is a string before setting state
+        if (typeof reader.result === "string") {
+          setTempProfilePic(reader.result);
+        }
+      };
+      reader.readAsDataURL(file);
+    } else {
+      console.log("No file chosen or file access error.");
+    }
+  };
+
   function list() {
     // Returns master game list
     return [
@@ -78,7 +117,7 @@ const Profile: React.FC<ProfileProps> = ({
     ];
   }
 
-  function getRandomColor() {
+  function getColor() {
     const randomIndex = Math.floor(Math.random() * colorClasses.length);
     return colorClasses[randomIndex];
   }
@@ -86,10 +125,20 @@ const Profile: React.FC<ProfileProps> = ({
   editGameTags.sort();
 
   return (
-    <div className="profile-container xl:w-1/4 lg:w-1/4 md:w-1/4 sm:w-full min-w-64 bg-gray-200 rounded-2xl flex flex-col h-fit max-h-128 ">
+    <div className="profile-container w-64 bg-gray-200 rounded-2xl flex flex-col h-fit max-h-128">
+      <input
+        className="PFP-input hidden"
+        type="file"
+        accept="image/*"
+        ref={imgInput}
+        onChange={handleProfilePicChange}
+      ></input>
       <img
-        className="profile-pic w-full aspect-w-1 aspect-h-1 object-scale-down"
-        src={profilePicture}
+        className={`profile-pic w-64 h-64 object-fit ${
+          isEditing == true ? "hover:opacity-30 cursor-pointer" : ""
+        }`}
+        src={isEditing ? tempProfilePic : editProfilePic}
+        onClick={handlePFPClick}
       ></img>
       <div className="username w-full text-center text-white text-2xl pt-2">
         {username}
@@ -138,9 +187,7 @@ const Profile: React.FC<ProfileProps> = ({
             className="w-fit rounded-xl p-1 pl-2 pr-2 h-8 bg-gray-100"
           >
             <div
-              className={`${
-                getRandomColor() || "text-gray-800"
-              } whitespace-nowrap`}
+              className={`${getColor() || "text-gray-800"} whitespace-nowrap`}
             >
               {option}
             </div>
