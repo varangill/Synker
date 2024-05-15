@@ -38,12 +38,6 @@ const Profile: React.FC<ProfileProps> = ({
 
   const imgInput = useRef<HTMLInputElement>(null);
 
-  React.useEffect(() => {
-    return () => {
-      editProfilePic;
-    };
-  }, []);
-
   const handleSelectionChange = (selectedValues: string[]) => {
     console.log("New dropdown selection: ", [...new Set(selectedValues)]);
     setSelectedOption([...new Set(selectedValues)]);
