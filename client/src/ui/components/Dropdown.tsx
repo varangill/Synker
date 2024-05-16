@@ -18,7 +18,7 @@ const Dropdown: React.FC<DropdownProps> = ({
   placeholder,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selected, setSelected] = useState<string[]>(selectedList); // Change to array
+  const [selected, setSelected] = useState<string[]>(selectedList);
 
   const toggleDropdown = () => setIsOpen(!isOpen);
 

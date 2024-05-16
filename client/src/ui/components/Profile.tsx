@@ -3,7 +3,6 @@ import Dropdown from "./Dropdown";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
-// import ThemeContext from "./ThemeContext";
 
 interface ProfileProps {
   gameTags: string[];
@@ -38,8 +37,18 @@ const Profile: React.FC<ProfileProps> = ({
 
   const imgInput = useRef<HTMLInputElement>(null);
 
+  // TODO: get actual values from the database
+  const list = [
+    "Valorant",
+    "League of Legends",
+    "Clash of Clans",
+    "Lethal Company",
+    "Apex",
+    "Fortnite",
+    "Genshin Impact",
+  ];
+
   const handleSelectionChange = (selectedValues: string[]) => {
-    console.log("New dropdown selection: ", [...new Set(selectedValues)]);
     setSelectedOption([...new Set(selectedValues)]);
   };
 
@@ -70,7 +79,6 @@ const Profile: React.FC<ProfileProps> = ({
   function handlePFPClick() {
     // Updates the profile picture only when editing mode is on
     if (isEditing) {
-      console.log("PFP is being edited");
       imgInput.current?.click();
     }
   }
@@ -98,19 +106,7 @@ const Profile: React.FC<ProfileProps> = ({
     }
   };
 
-  function list() {
-    // Returns master game list
-    return [
-      "Valorant",
-      "League of Legends",
-      "Clash of Clans",
-      "Lethal Company",
-      "Apex",
-      "Fortnite",
-      "Genshin Impact",
-    ];
-  }
-
+  // TODO: assign colors to specific games from the database
   function getColor() {
     const randomIndex = Math.floor(Math.random() * colorClasses.length);
     return colorClasses[randomIndex];
@@ -159,7 +155,7 @@ const Profile: React.FC<ProfileProps> = ({
           <div className="flex flex-col w-full justify-evenly h-full items-center pb-3 pt-2 gap-3">
             <div className="dropdown-container h-8 z-10 w-4/5 w-max-60">
               <Dropdown
-                dropdownList={list()}
+                dropdownList={list}
                 type="multiple"
                 selectedList={selectedOption}
                 onSelectionChange={handleSelectionChange}

@@ -2,13 +2,13 @@ import { useState } from "react";
 import Dropdown from "./Dropdown";
 
 const GameSelection = () => {
-  const [selectedOption, setSelectedOption] = useState<string[]>([]);
+  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
 
   const handleSelectionChange = (selectedValues: string[]) => {
-    console.log("New dropdown selection: ", selectedValues);
-    setSelectedOption(selectedValues);
+    setSelectedOptions(selectedValues);
   };
 
+  // TODO: remove default options, replace with complete game list
   const list = [
     "Valorant",
     "League of Legends",
@@ -21,7 +21,8 @@ const GameSelection = () => {
   const selectedList: string[] = [];
 
   const handleFindClick = () => {
-    console.log("Finding lobbies for:", selectedOption.join(", "));
+    // TODO: query back-end for results of live lobby to display on LivePage
+    console.log("Finding lobbies for:", selectedOptions.join(", "));
   };
 
   return (

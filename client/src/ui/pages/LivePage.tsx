@@ -9,8 +9,8 @@ export default function LivePage() {
       <Navigation />
 
       <div className="live-game-screen-container flex flex-row w-full h-full flex-wrap overflow-y-scroll overflow-x-hidden p-10">
-        <GameSelection></GameSelection>
-        <LiveLobby></LiveLobby>
+        <GameSelection />
+        <LiveLobby />
       </div>
     </div>
   );

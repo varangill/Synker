@@ -2,7 +2,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircle } from "@fortawesome/free-solid-svg-icons";
 
 const LobbyTag = (props: { tagName: string }) => {
-  // Tag name
   const tagName = props.tagName;
   return (
     <div className="tag-container flex flex-row items-center">
