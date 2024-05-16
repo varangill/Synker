@@ -33,7 +33,7 @@ const Profile: React.FC<ProfileProps> = ({
   const [tempGameTags, setTempGameTags] = useState(gameTags);
   const [isEditing, setIsEditing] = useState(false);
 
-  const [selectedOption, setSelectedOption] = useState<string[]>(gameTags);
+  const [selectedOptions, setSelectedOptions] = useState<string[]>(gameTags);
 
   const imgInput = useRef<HTMLInputElement>(null);
 
@@ -49,7 +49,7 @@ const Profile: React.FC<ProfileProps> = ({
   ];
 
   const handleSelectionChange = (selectedValues: string[]) => {
-    setSelectedOption([...new Set(selectedValues)]);
+    setSelectedOptions([...new Set(selectedValues)]);
   };
 
   const colorClasses = [
@@ -71,7 +71,7 @@ const Profile: React.FC<ProfileProps> = ({
   function handleSaveClick() {
     // Sends updates to backend
     setEditDescription(tempDescription);
-    setEditGameTags(selectedOption);
+    setEditGameTags(selectedOptions);
     setEditProfilePic(tempProfilePic);
     setIsEditing(!isEditing);
   }
@@ -157,7 +157,7 @@ const Profile: React.FC<ProfileProps> = ({
               <Dropdown
                 dropdownList={list}
                 type="multiple"
-                selectedList={selectedOption}
+                selectedList={selectedOptions}
                 onSelectionChange={handleSelectionChange}
                 placeholder="SELECT GAMES ..."
               ></Dropdown>
