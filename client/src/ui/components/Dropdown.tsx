@@ -3,38 +3,57 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 
 interface DropdownProps {
-  dropdownList: string[];
-  onSelectionChange: (value: string) => void;
+  dropdownList: string[]; // All possible options
+  selectedList: string[]; // Previously selected options
+  type: "single" | "multiple"; // Mode of dropdown
+  onSelectionChange: (values: string[]) => void; // Update to handle multiple selections
   placeholder: string;
 }
 
 const Dropdown: React.FC<DropdownProps> = ({
   dropdownList,
+  selectedList,
+  type,
   onSelectionChange,
   placeholder,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selected, setSelected] = useState(placeholder);
+  const [selected, setSelected] = useState<string[]>(selectedList);
 
   const toggleDropdown = () => setIsOpen(!isOpen);
 
   const handleSelect = (value: string) => {
-    setSelected(value);
-    onSelectionChange(value); // Changes the value in the parent component
-    toggleDropdown(); // Close dropdown after selection
+    if (type === "multiple") {
+      const currentIndex = selected.indexOf(value);
+      const newSelected = [...selected];
+
+      // Toggle selection
+      if (currentIndex === -1) {
+        newSelected.push(value); // Add selection
+      } else {
+        newSelected.splice(currentIndex, 1); // Remove selection
+      }
+
+      setSelected(newSelected);
+      onSelectionChange(newSelected);
+    } else {
+      setSelected([value]); // For single select, always replace
+      onSelectionChange([value]);
+      toggleDropdown();
+    }
   };
 
-  // Sorting the dropdown
+  // Keep dropdown list sorted
   dropdownList.sort();
 
   return (
     <div>
       <button
         onClick={toggleDropdown}
-        className="dropdownSearchButton justify-between btn-default h-9 flex rounded-xl bg-gray-100 hover:bg-gray-300 w-full items-center justify-center max-w-52"
+        className="dropdownSearchButton justify-between btn-default h-9 flex rounded-xl bg-gray-100 hover:bg-gray-300 w-full items-center justify-center w-full"
       >
         <div className="btn-text flex whitespace-nowrap overflow-hidden text-ellipsis w-11/12 px-4 text-white h-8 font-bold items-center text-xl sm:text-base">
-          {selected}
+          {selected.join(", ") || placeholder} {/* Show all selected items */}
         </div>
         <FontAwesomeIcon
           icon={faAngleDown}
@@ -43,16 +62,30 @@ const Dropdown: React.FC<DropdownProps> = ({
       </button>
 
       {isOpen && (
-        <div className="dropdownContainer bg-gray-200 border-solid border-gray-100 border-2 rounded-xl h-fill max-h-64 overflow-auto">
-          {dropdownList.map((option, index) => (
-            <div
-              key={index}
-              className="dropdownOption text-white hover:bg-purple-200 p-2 cursor-pointer"
-              onClick={() => handleSelect(option)}
+        <div className="dropdownContainer bg-gray-200 border-solid border-gray-100 border-2 rounded-xl h-fill max-h-64">
+          <div className="max-h-64 overflow-auto">
+            {dropdownList.map((option, index) => (
+              <div
+                key={index}
+                className={`dropdownOption text-white hover:bg-purple-200 p-2 cursor-pointer ${
+                  selected.includes(option) ? "bg-purple-200" : ""
+                }`}
+                onClick={() => handleSelect(option)}
+              >
+                {option}
+              </div>
+            ))}
+          </div>
+          {type == "multiple" && (
+            <button
+              className="btn-default h-9 flex bg-purple-100 hover:bg-purple-200 w-full items-center justify-center"
+              onClick={toggleDropdown}
             >
-              {option}
-            </div>
-          ))}
+              <div className="find-button z-0 flex btn-text text-white h-8 font-bold items-center text-xl sm:text-base">
+                DONE
+              </div>
+            </button>
+          )}
         </div>
       )}
     </div>

@@ -3,7 +3,7 @@ export default {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     screens: {
-      sm: "480px",
+      sm: "550px",
       md: "768px",
       lg: "1080px",
       xl: "1440px",
@@ -14,6 +14,8 @@ export default {
       pink: "#ff49db",
       orange: "#ff7849",
       green: "#13ce66",
+      red: "#d1001f",
+      yellow: "#e5de00",
       gray: {
         100: "#302D37",
         200: "#211A1D",
@@ -24,9 +26,19 @@ export default {
         100: "#6320EE",
         200: "#7236EF",
       },
+      200: "#7236EF",
+    },
+  },
+
+  extend: {
+    spacing: {
+      128: "60rem",
     },
 
-    extend: {},
+    gridTemplateColumns: {
+      "auto-fill-100": "repeat(auto-fill, minmax(150px, 1fr))",
+      "auto-fit-100": "repeat(auto-fit, minmax(150px, 1fr))",
+    },
   },
   plugins: [],
 };
