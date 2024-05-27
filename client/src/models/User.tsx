@@ -1,38 +1,48 @@
 import background from "../ui/assets/images/background.png";
 
 export class User {
-  id: string;
-  gameTags: string[];
-  username: string;
-  description: string;
-  profilePicture: string;
-  membership: string;
-  auth: boolean;
-  friends: string[];
-  status: boolean;
+  private id: string;
+  private gameTags: string[];
+  private username: string;
+  private description: string;
+  private profilePicture: string;
+  private membership: string;
+  private auth: boolean;
+  private friends: string[];
+  private status: boolean;
 
   constructor(
     id: string,
     gameTags: string[],
     username: string,
     description: string,
-    profilePicture: string,
-    membership: string,
-    auth: boolean,
-    friends: string[], // String of user id
-    status: boolean
+    profilePicture: string = background,
+    membership: string = "default",
+    auth: boolean = false,
+    friends: string[] = ["Novatic", "Rensuo"],
+    status: boolean = false
   ) {
     this.id = id || "000";
     this.gameTags = gameTags || ["Valorant", "League of Legends"];
     this.username = username || "3zPz";
     this.description = description || "User has no description.";
-    this.profilePicture = profilePicture || background;
-    this.membership = membership || "default";
-    this.auth = auth === undefined ? false : auth;
-    this.friends = friends || ["Novatic", "Rensuo"];
-    this.status = status || false;
+    this.profilePicture = profilePicture;
+    this.membership = membership;
+    this.auth = auth;
+    this.friends = friends;
+    this.status = status;
   }
 
+  // ID
+  getId(): string {
+    return this.id;
+  }
+
+  setId(newId: string): void {
+    this.id = newId;
+  }
+
+  // Username
   getUsername(): string {
     return this.username;
   }
@@ -41,6 +51,7 @@ export class User {
     this.username = newUsername;
   }
 
+  // Profile Picture
   getProfilePicture(): string {
     return this.profilePicture;
   }
@@ -49,6 +60,7 @@ export class User {
     this.profilePicture = newPicture;
   }
 
+  // Description
   getDescription(): string {
     return this.description;
   }
@@ -57,6 +69,7 @@ export class User {
     this.description = newDescription;
   }
 
+  // Game Tags
   getGameTags(): string[] {
     return this.gameTags;
   }
@@ -65,14 +78,7 @@ export class User {
     this.gameTags = newGameTags;
   }
 
-  getFriends(): string[] {
-    return this.friends;
-  }
-
-  setFriends(newFriends: string[]): void {
-    this.friends = newFriends;
-  }
-
+  // Membership
   getMembership(): string {
     return this.membership;
   }
@@ -81,6 +87,25 @@ export class User {
     this.membership = newMembership;
   }
 
+  // Authentication
+  isAuthenticated(): boolean {
+    return this.auth;
+  }
+
+  setAuthentication(newState: boolean): void {
+    this.auth = newState;
+  }
+
+  // Friends
+  getFriends(): string[] {
+    return this.friends;
+  }
+
+  setFriends(newFriends: string[]): void {
+    this.friends = newFriends;
+  }
+
+  // Status
   getStatus(): boolean {
     return this.status;
   }
@@ -88,6 +113,4 @@ export class User {
   setStatus(newStatus: boolean): void {
     this.status = newStatus;
   }
-
-  // Add more methods to manipulate user profiles as needed
 }
