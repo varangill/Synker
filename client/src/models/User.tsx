@@ -10,6 +10,10 @@ export class User {
   private auth: boolean;
   private friends: string[];
   private status: boolean;
+  private introvert: number;
+  private observant: number;
+  private thinking: number;
+  private judging: number;
 
   constructor(
     id: string,
@@ -20,7 +24,11 @@ export class User {
     membership: string = "default",
     auth: boolean = false,
     friends: string[] = ["Novatic", "Rensuo"],
-    status: boolean = false
+    status: boolean = false,
+    introvert: number = 5,
+    observant: number = 5,
+    thinking: number = 5,
+    judging: number = 5
   ) {
     this.id = id || "000";
     this.gameTags = gameTags || ["Valorant", "League of Legends"];
@@ -31,6 +39,10 @@ export class User {
     this.auth = auth;
     this.friends = friends;
     this.status = status;
+    this.introvert = introvert;
+    this.observant = observant;
+    this.thinking = thinking;
+    this.judging = judging;
   }
 
   // ID
@@ -112,5 +124,41 @@ export class User {
 
   setStatus(newStatus: boolean): void {
     this.status = newStatus;
+  }
+
+  // Introvert
+  getIntrovert(): number {
+    return this.introvert;
+  }
+
+  setIntrovert(newIntrovert: number): void {
+    this.introvert = newIntrovert;
+  }
+
+  // Observant
+  getObservant(): number {
+    return this.observant;
+  }
+
+  setObservant(newObservant: number): void {
+    this.observant = newObservant;
+  }
+
+  // Thinking
+  getThinking(): number {
+    return this.thinking;
+  }
+
+  setThinking(newThinking: number): void {
+    this.thinking = newThinking;
+  }
+
+  // Judging
+  getJudging(): number {
+    return this.judging;
+  }
+
+  setJudging(newJudging: number): void {
+    this.judging = newJudging;
   }
 }

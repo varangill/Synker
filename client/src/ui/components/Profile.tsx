@@ -9,7 +9,7 @@ interface ProfileProps {
   username: string;
   description: string;
   profilePicture: string;
-  membership: boolean;
+  membership: string;
   auth: boolean;
 }
 
@@ -133,7 +133,7 @@ const Profile: React.FC<ProfileProps> = ({
       <div className="username w-full text-center text-white text-2xl pt-2">
         {username}
       </div>
-      {membership && (
+      {membership == "Platinum" && (
         <div className="membership-level text-white justify-center flex items-center pb-2 gap-1">
           <FontAwesomeIcon icon={faStar} />
           Platinum Member
