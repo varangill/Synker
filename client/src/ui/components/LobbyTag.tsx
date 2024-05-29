@@ -4,12 +4,12 @@ import { faCircle } from "@fortawesome/free-solid-svg-icons";
 const LobbyTag = (props: { tagName: string }) => {
   const tagName = props.tagName;
   return (
-    <div className="tag-container flex flex-row items-center">
+    <div className="tag-container flex flex-row items-center justify-start h-4 w-fill">
       <FontAwesomeIcon
         icon={faCircle}
-        className="object-contain h-1/4 w-5 text-green p-4"
+        className="object-contain h-full w-5 text-green"
       />
-      <div className="tag-name text-white content-center h-2/4 w-auto whitespace-nowrap overflow-hidden text-ellipsis text-sm">
+      <div className="tag-name text-white content-center h-fill ml-2 w-auto whitespace-nowrap overflow-hidden text-ellipsis text-sm">
         {tagName}
       </div>
     </div>

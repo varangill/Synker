@@ -5,25 +5,10 @@ import background from "../assets/images/background.png";
 import { getData } from "../../api/index.ts";
 import { useEffect } from "react";
 import { User } from "../../models/User.tsx";
+import testUser from "../../test/testUser.tsx";
 
 export default function ProfilePage() {
   // Correctly initialized states with default values
-  const testUser = new User(
-    "1",
-    ["Valorant", "League of Legends", "Apex", "Lethal Company"],
-    "Rensuo",
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis non dapibus lacus.",
-    background,
-    "Platinum",
-    true,
-    ["3zPz", "Novatic"],
-    true,
-    1,
-    7,
-    3,
-    2
-  );
-
   const auth = true; // Default to true if needed immediately
 
   useEffect(() => {

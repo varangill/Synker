@@ -63,7 +63,7 @@ const Dropdown: React.FC<DropdownProps> = ({
 
       {isOpen && (
         <div className="dropdownContainer bg-gray-200 border-solid border-gray-100 border-2 rounded-xl h-fill max-h-64">
-          <div className="max-h-64 overflow-auto">
+          <div className="max-h-48 overflow-auto no-scrollbar">
             {dropdownList.map((option, index) => (
               <div
                 key={index}
