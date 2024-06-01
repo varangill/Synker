@@ -26,26 +26,26 @@ const GameSelection = () => {
   };
 
   return (
-    <div className="game-selection-container rounded-2xl flex flex-col items-center bg-gray-200 w-full h-52">
-      <div className="game-selection-title flex text-white font-bold items-center text-2xl p-2">
+    <div className="game-selection-container rounded-2xl flex flex-col items-center bg-gray-200 w-full h-fit">
+      <div className="game-selection-title flex text-white font-bold items-center p-2 xl:text-2xl lg:text-2xl md:text-base sm:text-xl">
         GAME SELECTION
       </div>
       <div className="title-line w-full bg-gray-100 h-1"></div>
-      <div className="flex flex-col w-full justify-evenly max-w-52 h-full">
-        <div className="dropdown-container h-8 z-10">
+      <div className="flex flex-col justify-evenly w-3/4 max-w-52 h-full">
+        <div className="dropdown-container h-8 z-10 mt-6 mb-3">
           <Dropdown
             dropdownList={list}
             selectedList={selectedList}
             type="single"
             onSelectionChange={handleSelectionChange}
-            placeholder="SELECT ONE ..."
+            placeholder="SELECT GAME ..."
           />
         </div>
         <button
-          className="btn-default h-9 flex rounded-xl bg-purple-100 hover:bg-purple-200 w-full items-center justify-center"
+          className="btn-default h-9 flex rounded-xl bg-purple-100 hover:bg-purple-200 w-full items-center justify-center mt-3 mb-6"
           onClick={handleFindClick}
         >
-          <div className="find-button z-0 flex btn-text text-white h-8 font-bold items-center text-xl sm:text-base">
+          <div className="find-button z-0 flex btn-text text-white h-8 font-bold items-center xl:text-xl lg:text-xl md:text-base sm:text-base">
             FIND
           </div>
         </button>

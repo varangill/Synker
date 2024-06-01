@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 
@@ -19,6 +19,7 @@ const Dropdown: React.FC<DropdownProps> = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selected, setSelected] = useState<string[]>(selectedList);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const toggleDropdown = () => setIsOpen(!isOpen);
 
@@ -43,16 +44,33 @@ const Dropdown: React.FC<DropdownProps> = ({
     }
   };
 
+  const handleClickOutside = (event: MouseEvent) => {
+    if (
+      dropdownRef.current &&
+      !dropdownRef.current.contains(event.target as Node)
+    ) {
+      setIsOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   // Keep dropdown list sorted
   dropdownList.sort();
 
   return (
-    <div>
+    <div ref={dropdownRef} className="relative z-9">
       <button
         onClick={toggleDropdown}
         className="dropdownSearchButton justify-between btn-default h-9 flex rounded-xl bg-gray-100 hover:bg-gray-300 w-full items-center justify-center w-full"
       >
-        <div className="btn-text flex whitespace-nowrap overflow-hidden text-ellipsis w-11/12 px-4 text-white h-8 font-bold items-center text-xl sm:text-base">
+        <div className="btn-text flex whitespace-nowrap overflow-hidden text-ellipsis w-11/12 px-4 text-white h-8 font-bold items-center xl:text-md lg:text-md md:text-base sm:text-base">
           {selected.join(", ") || placeholder} {/* Show all selected items */}
         </div>
         <FontAwesomeIcon
@@ -62,7 +80,7 @@ const Dropdown: React.FC<DropdownProps> = ({
       </button>
 
       {isOpen && (
-        <div className="dropdownContainer bg-gray-200 border-solid border-gray-100 border-2 rounded-xl h-fill max-h-64">
+        <div className="dropdownContainer bg-gray-200 border-solid border-gray-100 border-2 rounded-xl absolute w-full z-30">
           <div className="max-h-48 overflow-auto no-scrollbar">
             {dropdownList.map((option, index) => (
               <div
@@ -76,7 +94,7 @@ const Dropdown: React.FC<DropdownProps> = ({
               </div>
             ))}
           </div>
-          {type == "multiple" && (
+          {type === "multiple" && (
             <button
               className="btn-default h-9 flex bg-purple-100 hover:bg-purple-200 w-full items-center justify-center"
               onClick={toggleDropdown}

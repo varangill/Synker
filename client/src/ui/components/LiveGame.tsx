@@ -12,7 +12,7 @@ interface LiveGameProps {
 const LiveGame: React.FC<LiveGameProps> = ({ lobbyList }) => {
   return (
     <div className="live-game-container w-full bg-gray-200 text-white rounded-2xl h-full flex flex-col">
-      <div className="text-2xl font-bold w-full text-center items-center p-2">
+      <div className="font-bold w-full text-center items-center p-2 xl:text-2xl lg:text-2xl md:text-base sm:text-xl">
         LIVE GAME
       </div>
       <div className="h-1 bg-gray-100 w-full"></div>
