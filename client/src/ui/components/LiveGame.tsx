@@ -9,6 +9,8 @@ interface LiveGameProps {
   lobbyList: Lobby[];
 }
 
+// TODO: functionality for filter and refresh buttons
+
 const LiveGame: React.FC<LiveGameProps> = ({ lobbyList }) => {
   return (
     <div className="live-game-container w-full bg-gray-200 text-white rounded-2xl h-full flex flex-col">
