@@ -48,8 +48,8 @@ const Profile: React.FC<ProfileProps> = ({
     "Genshin Impact",
   ];
 
-  const handleSelectionChange = (selectedValues: string[]) => {
-    setSelectedOptions([...new Set(selectedValues)]);
+  const handleSelectionChange = (selectedValues: (string | number)[]) => {
+    setSelectedOptions([...new Set(selectedValues as string[])]);
   };
 
   const colorClasses = [
