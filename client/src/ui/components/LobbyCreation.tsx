@@ -50,7 +50,7 @@ const CreateLobby = () => {
 
   const handleFindClick = () => {
     if (!isFormComplete()) {
-      setMessage("Form is invalid. Please fill out all fields.");
+      setMessage("Invalid Form. Please fill out all fields.");
       return;
     }
 
@@ -158,7 +158,7 @@ const CreateLobby = () => {
           />
         </div>
         {message ? (
-          <div className="text-white font-bold text-sm flex items-end h-12 justify-center">
+          <div className="text-white font-bold text-sm flex items-end h-12 justify-center align-end">
             {message}
           </div>
         ) : (
