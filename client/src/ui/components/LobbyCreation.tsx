@@ -8,7 +8,7 @@ import testGame from "../../test/testGame";
 const CreateLobby = () => {
   const [selectedGame, setSelectedGame] = useState<string[]>([]);
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
-  const [selectedPlayers, setSelectedPlayers] = useState<string[]>([]);
+  const [selectedMaxPlayers, setSelectedMaxPlayers] = useState<number[]>([]);
   const [selectedTitle, setSelectedTitle] = useState("");
   const [selectedDescription, setSelectedDescription] = useState("");
   const [message, setMessage] = useState("");
@@ -18,7 +18,7 @@ const CreateLobby = () => {
   };
 
   const handlePlayerChange = (selectedValues: (string | number)[]) => {
-    setSelectedPlayers(selectedValues as string[]);
+    setSelectedMaxPlayers(selectedValues as number[]);
   };
 
   const handleTagSelectionChange = (selectedValues: (string | number)[]) => {
@@ -28,7 +28,7 @@ const CreateLobby = () => {
   const isFormComplete = () => {
     return (
       selectedGame.length > 0 &&
-      selectedPlayers.length > 0 &&
+      selectedMaxPlayers[0] > 0 &&
       selectedTitle.trim() !== "" &&
       selectedDescription.trim() !== "" &&
       selectedTags.length > 0
@@ -44,7 +44,7 @@ const CreateLobby = () => {
     "Fortnite",
   ];
 
-  const players = ["1", "2", "3", "4", "5", "6", "7", "8"];
+  const players = [1, 2, 3, 4, 5, 6, 7, 8];
 
   const tagsList = ["Tag1", "Tag2", "Tag3", "Tag4", "Tag5"];
 
@@ -61,7 +61,7 @@ const CreateLobby = () => {
     const startDate = new Date(); // Replace with actual start date if needed
     const title = selectedTitle || "Default Title"; // Assuming the first option is the game title
     const description = selectedDescription;
-    const maxPlayers = 5; // Replace with actual max players if needed
+    const maxPlayers = selectedMaxPlayers[0]; // Replace with actual max players if needed
     const game = testGame; // Use testGame as the selected game
 
     const newLobby = new Lobby(
@@ -83,7 +83,7 @@ const CreateLobby = () => {
     // Reset the form values to their defaults
     setSelectedGame([]);
     setSelectedTags([]);
-    setSelectedPlayers([]);
+    setSelectedMaxPlayers([]);
     setSelectedTitle("");
     setSelectedDescription("");
 
@@ -114,7 +114,7 @@ const CreateLobby = () => {
           <div className="text-white text-sm font-bold mb-1">PLAYERS</div>
           <Dropdown
             dropdownList={players}
-            selectedList={selectedPlayers}
+            selectedList={selectedMaxPlayers}
             type="single"
             onSelectionChange={handlePlayerChange}
             placeholder="0"
