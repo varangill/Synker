@@ -2,10 +2,10 @@ import { useState } from "react";
 import Dropdown from "./Dropdown";
 
 const GameSelection = () => {
-  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
+  const [selectedOption, setselectedOption] = useState<(string | number)[]>([]);
 
-  const handleSelectionChange = (selectedValues: string[]) => {
-    setSelectedOptions(selectedValues);
+  const handleSelectionChange = (selectedValues: (string | number)[]) => {
+    setselectedOption(selectedValues);
   };
 
   // TODO: remove default options, replace with complete game list
@@ -18,11 +18,9 @@ const GameSelection = () => {
     "Fortnite",
   ];
 
-  const selectedList: string[] = [];
-
   const handleFindClick = () => {
     // TODO: query back-end for results of live lobby to display on LivePage
-    console.log("Finding lobbies for:", selectedOptions.join(", "));
+    console.log("Finding lobbies for:", selectedOption.join(", "));
   };
 
   return (
@@ -31,11 +29,11 @@ const GameSelection = () => {
         GAME SELECTION
       </div>
       <div className="title-line w-full bg-gray-100 h-1"></div>
-      <div className="flex flex-col justify-evenly w-3/4 max-w-52 h-full">
+      <div className="flex flex-col justify-evenly w-4/5 h-full">
         <div className="dropdown-container h-8 z-10 mt-6 mb-3">
           <Dropdown
             dropdownList={list}
-            selectedList={selectedList}
+            selectedList={selectedOption}
             type="single"
             onSelectionChange={handleSelectionChange}
             placeholder="SELECT GAME ..."

@@ -14,7 +14,7 @@ export default function LivePage() {
       <Navigation />
 
       <div className="live-game-screen-container flex w-full flex-wrap overflow-x-hidden p-10 gap-10 h-full justify-center">
-        <div className="xl:w-1/5 lg:w-1/3 md:w-1/3 sm:w-full flex flex-col">
+        <div className="xl:w-1/5 lg:w-1/3 md:w-full sm:w-full flex flex-col">
           <div className="game-selection-container w-full h-1/4 max-h-52 mb-5">
             <GameSelection />
           </div>

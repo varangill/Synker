@@ -11,18 +11,18 @@ const CreateLobby = () => {
   const [selectedPlayers, setSelectedPlayers] = useState<string[]>([]);
   const [selectedTitle, setSelectedTitle] = useState("");
   const [selectedDescription, setSelectedDescription] = useState("");
-  const [showError, setShowError] = useState(false);
+  const [message, setMessage] = useState("");
 
-  const handleGameChange = (selectedValues: string[]) => {
-    setSelectedGame(selectedValues);
+  const handleGameChange = (selectedValues: (string | number)[]) => {
+    setSelectedGame(selectedValues as string[]);
   };
 
-  const handlePlayerChange = (selectedValues: string[]) => {
-    setSelectedPlayers(selectedValues);
+  const handlePlayerChange = (selectedValues: (string | number)[]) => {
+    setSelectedPlayers(selectedValues as string[]);
   };
 
-  const handleTagSelectionChange = (selectedValues: string[]) => {
-    setSelectedTags(selectedValues);
+  const handleTagSelectionChange = (selectedValues: (string | number)[]) => {
+    setSelectedTags(selectedValues as string[]);
   };
 
   const isFormComplete = () => {
@@ -50,11 +50,9 @@ const CreateLobby = () => {
 
   const handleFindClick = () => {
     if (!isFormComplete()) {
-      setShowError(true);
+      setMessage("Form is invalid. Please fill out all fields.");
       return;
     }
-
-    setShowError(false);
 
     const id = "unique-lobby-id"; // Generate a unique ID for the lobby
     const owner = testUser; // Use testUser as the owner
@@ -82,6 +80,16 @@ const CreateLobby = () => {
     // Log the new Lobby object
     console.log(newLobby);
 
+    // Reset the form values to their defaults
+    setSelectedGame([]);
+    setSelectedTags([]);
+    setSelectedPlayers([]);
+    setSelectedTitle("");
+    setSelectedDescription("");
+
+    // Display success message
+    setMessage("Lobby creation successful!");
+
     // TODO: Perform any additional actions, such as sending the lobby to the backend
   };
 
@@ -91,7 +99,7 @@ const CreateLobby = () => {
         LOBBY CREATION
       </div>
       <div className="title-line w-full bg-gray-100 h-1 mb-4"></div>
-      <div className="flex flex-col justify-around w-full h-full overflow-y-auto no-scrollbar pl-4 pr-4 pb-8">
+      <div className="flex flex-col justify-around w-4/5 h-full overflow-y-auto no-scrollbar pb-8">
         <div className="dropdown-container mb-4">
           <div className="text-white font-bold mb-1 text-sm">GAME</div>
           <Dropdown
@@ -149,9 +157,9 @@ const CreateLobby = () => {
             onChange={(e) => setSelectedDescription(e.target.value)}
           />
         </div>
-        {showError ? (
+        {message ? (
           <div className="text-white font-bold text-sm flex items-end h-12 justify-center">
-            Form is invalid. Please fill out all fields.
+            {message}
           </div>
         ) : (
           <div className="h-12" />

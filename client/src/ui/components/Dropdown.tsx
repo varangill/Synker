@@ -2,11 +2,13 @@ import React, { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 
+type DropdownOption = string | number;
+
 interface DropdownProps {
-  dropdownList: string[]; // All possible options
-  selectedList: string[]; // Previously selected options
+  dropdownList: DropdownOption[]; // All possible options
+  selectedList: DropdownOption[]; // Previously selected options
   type: "single" | "multiple"; // Mode of dropdown
-  onSelectionChange: (values: string[]) => void; // Update to handle multiple selections
+  onSelectionChange: (values: DropdownOption[]) => void; // Update to handle multiple selections
   placeholder: string;
 }
 
@@ -18,12 +20,16 @@ const Dropdown: React.FC<DropdownProps> = ({
   placeholder,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selected, setSelected] = useState<string[]>(selectedList);
+  const [selected, setSelected] = useState<DropdownOption[]>(selectedList);
   const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setSelected(selectedList);
+  }, [selectedList]);
 
   const toggleDropdown = () => setIsOpen(!isOpen);
 
-  const handleSelect = (value: string) => {
+  const handleSelect = (value: DropdownOption) => {
     if (type === "multiple") {
       const currentIndex = selected.indexOf(value);
       const newSelected = [...selected];
@@ -90,7 +96,7 @@ const Dropdown: React.FC<DropdownProps> = ({
                 }`}
                 onClick={() => handleSelect(option)}
               >
-                {option}
+                {option.toString()}
               </div>
             ))}
           </div>
