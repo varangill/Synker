@@ -54,7 +54,7 @@ const ProfileCard: React.FC<ProfileProps> = ({
           <div className="username text-white text-2xl ml-32">{username}</div>
           <div className="h-8">
             {membership == "Platinum" && (
-              <div className="membership-level text-white flex justify-center items-center pb-2 gap-1 ml-32">
+              <div className="membership-level text-white flex justify-center items-center gap-1 ml-32 pl-1">
                 <FontAwesomeIcon icon={faStar} />
                 Platinum Member
               </div>

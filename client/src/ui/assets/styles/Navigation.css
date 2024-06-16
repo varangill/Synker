@@ -1,0 +1,39 @@
+.nav-bar-container {
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-bar-top {
+  position: relative;
+  z-index: 10;
+}
+
+.nav-bar-menu {
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-default {
+  transition: background 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.btn-nav-default:hover {
+  transform: scale(1.05);
+}
+
+.btn-default .fa-magnifying-glass,
+.btn-default .fa-user-group,
+.btn-default .fa-circle-play,
+.btn-default .fa-user,
+.btn-default .fa-right-from-bracket,
+.btn-default .fa-gear {
+  transition: transform 0.3s ease-in-out;
+}
+
+.btn-default:hover .fa-magnifying-glass,
+.btn-default:hover .fa-user-group,
+.btn-default:hover .fa-circle-play,
+.btn-default:hover .fa-user,
+.btn-default:hover .fa-right-from-bracket,
+.btn-default:hover .fa-gear {
+  transform: rotate(20deg);
+}

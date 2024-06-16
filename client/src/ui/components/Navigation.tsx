@@ -71,7 +71,7 @@ const Navigation = () => {
           : "relative w-96 xl:w-1/6 md:w-80 sm:w-64 h-full"
       } top-0 left-0 bg-gray-200 flex flex-col z-50`}
     >
-      <div className="nav-bar-top flex justify-between items-center p-4 bg-gray-900">
+      <div className="nav-bar-top flex justify-between items-center p-4 bg-gray-200">
         <div className="logo-title flex items-center object-contain hover:cursor-pointer">
           <img
             className={`logo object-scale-down ${isMobile ? "w-14" : "w-20"}`}
@@ -102,7 +102,7 @@ const Navigation = () => {
             isMobile ? "bg-gray-800" : "bg-gray-800 h-full justify-between"
           } w-full`}
         >
-          <div className="w-full items-center flex flex-col justify-center items-end">
+          <div className="w-full items-center flex flex-col justify-center items-end mt-6">
             <button
               className={`btn-default h-9 flex rounded-xl w-4/5 items-center mb-5 ${
                 currentPath === "/sync"
