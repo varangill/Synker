@@ -21,6 +21,10 @@ const ProfileCard: React.FC<ProfileProps> = ({
   // Needs to pass a profile through
   // let authenticated = true;
 
+  const handleMatchClick = (username: string) => {
+    console.log("Match button clicked for: ", username);
+  };
+
   const colorClasses = [
     "text-red border-red",
     "text-blue border-blue",
@@ -46,12 +50,14 @@ const ProfileCard: React.FC<ProfileProps> = ({
         />
         <div className="flex-grow text-center">
           <div className="username text-white text-2xl ml-32">{username}</div>
-          {membership === "Platinum" && (
-            <div className="membership-level text-white flex justify-center items-center pb-2 gap-1 ml-32">
-              <FontAwesomeIcon icon={faStar} />
-              Platinum Member
-            </div>
-          )}
+          <div className="h-8">
+            {membership == "Platinum" && (
+              <div className="membership-level text-white flex justify-center items-center pb-2 gap-1 ml-32">
+                <FontAwesomeIcon icon={faStar} />
+                Platinum Member
+              </div>
+            )}
+          </div>
         </div>
       </div>
       <div className="desc text-white mt-16 text-lg p-3 w-full overflow-hidden text-ellipsis break-words">
@@ -71,8 +77,17 @@ const ProfileCard: React.FC<ProfileProps> = ({
           </div>
         ))}
       </div>
-      <div className="btn-container w-full justify-end flex pr-3"></div>
-      <div className="space pb-5"></div>
+      <div className="btn-container w-full justify-end flex p-5">
+        <button
+          className="btn-default h-9 flex rounded-xl bg-purple-100 hover:bg-purple-200 w-full items-center justify-center mt-3"
+          onClick={() => handleMatchClick(username)}
+        >
+          <div className="find-button z-0 flex btn-text text-white h-8 font-bold items-center xl:text-xl lg:text-xl md:text-base sm:text-base">
+            MATCH
+          </div>
+        </button>
+      </div>
+      <div className="space"></div>
     </div>
   );
 };
