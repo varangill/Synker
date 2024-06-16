@@ -41,7 +41,7 @@ const ProfileCard: React.FC<ProfileProps> = ({
 
   return (
     <div
-      className="profile-container relative w-80 bg-gray-100 rounded-2xl flex flex-col h-[500px] p-4 cursor-pointer"
+      className="profile-container relative w-80 bg-gray-100 rounded-2xl flex flex-col h-[500px] p-4 cursor-pointer border-2 hover:border-purple-100"
       onClick={() => handleProfileClick(username)}
     >
       <div className="flex items-center">
