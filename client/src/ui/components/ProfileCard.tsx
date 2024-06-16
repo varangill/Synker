@@ -17,12 +17,12 @@ const ProfileCard: React.FC<ProfileProps> = ({
   gameTags,
   membership,
 }) => {
-  // const authenticated = useContext(Authenticated)
-  // Needs to pass a profile through
-  // let authenticated = true;
-
   const handleMatchClick = (username: string) => {
     console.log("Match button clicked for: ", username);
+  };
+
+  const handleProfileClick = (username: string) => {
+    console.log("Profile button clicked for: ", username);
   };
 
   const colorClasses = [
@@ -34,14 +34,16 @@ const ProfileCard: React.FC<ProfileProps> = ({
     "text-orange border-orange",
   ];
 
-  // TODO: assign colors to specific games from the database
   function getColor() {
     const randomIndex = Math.floor(Math.random() * colorClasses.length);
     return colorClasses[randomIndex];
   }
 
   return (
-    <div className="profile-container relative w-80 bg-gray-100 rounded-2xl flex flex-col h-[500px] p-4">
+    <div
+      className="profile-container relative w-80 bg-gray-100 rounded-2xl flex flex-col h-[500px] p-4 cursor-pointer"
+      onClick={() => handleProfileClick(username)}
+    >
       <div className="flex items-center">
         <img
           className="profile-pic w-40 h-40 object-cover absolute -top-8 -left-4"
@@ -80,7 +82,10 @@ const ProfileCard: React.FC<ProfileProps> = ({
       <div className="btn-container w-full justify-end flex p-5">
         <button
           className="btn-default h-9 flex rounded-xl bg-purple-100 hover:bg-purple-200 w-full items-center justify-center mt-3"
-          onClick={() => handleMatchClick(username)}
+          onClick={(e) => {
+            e.stopPropagation();
+            handleMatchClick(username);
+          }}
         >
           <div className="find-button z-0 flex btn-text text-white h-8 font-bold items-center xl:text-xl lg:text-xl md:text-base sm:text-base">
             MATCH

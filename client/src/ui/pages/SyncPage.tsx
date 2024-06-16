@@ -38,7 +38,7 @@ export default function SyncPage() {
           <div className="text-white text-4xl font-bold mt-10">
             FIND PLAYERS
           </div>
-          <div className="flex flex-wrap gap-16 overflow-y-scroll no-scrollbar p-20">
+          <div className="flex flex-wrap gap-16 overflow-y-scroll no-scrollbar p-20 items-center justify-center">
             {displayedUsers.map((user, index) => (
               <div key={index}>
                 <ProfileCard
@@ -52,7 +52,7 @@ export default function SyncPage() {
             ))}
           </div>
           <button
-            className="btn-default h-9 flex rounded-xl bg-purple-100 hover:bg-purple-200 w-full items-center justify-center mt-3 max-w-96 mb-8"
+            className="btn-default h-9 flex rounded-xl bg-purple-100 hover:bg-purple-200 w-full items-center justify-center mt-3 max-w-64 mb-8 mr-2 ml-2"
             onClick={handleNextClick}
           >
             <div className="find-button z-0 flex btn-text text-white h-8 font-bold items-center xl:text-xl lg:text-xl md:text-base sm:text-base">
