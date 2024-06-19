@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "../assets/styles/Navigation.css";
 import logo from "../assets/images/logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import windowResize from "../utils/WindowResize";
 import {
   faMagnifyingGlass,
   faUserGroup,
@@ -19,17 +20,8 @@ const Navigation = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 650);
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 650);
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+    windowResize(setIsMobile);
   }, []);
-
   const currentPath = window.location.pathname;
 
   function handleHomeClick() {
