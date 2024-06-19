@@ -4,21 +4,14 @@ import Navigation from "../components/Navigation.tsx";
 import ProfileCard from "../components/ProfileCard.tsx";
 import testUserList from "../../test/testUserList.tsx";
 import sync from "../assets/images/sync-background.png";
+import windowResize from "../utils/WindowResize.tsx";
 
 export default function SyncPage() {
   const [startIndex, setStartIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 650);
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 650);
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+    windowResize(setIsMobile);
   }, []);
 
   const handleNextClick = () => {

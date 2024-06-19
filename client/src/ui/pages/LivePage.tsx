@@ -5,6 +5,7 @@ import LiveGame from "../components/LiveGame.tsx";
 import CreateLobby from "../components/LobbyCreation.tsx";
 import testLobbies from "../../test/testLobbies.tsx";
 import { useEffect, useState } from "react";
+import windowResize from "../utils/WindowResize.tsx";
 
 export default function LivePage() {
   // TODO: Get a list of lobbies from the database
@@ -12,15 +13,7 @@ export default function LivePage() {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 650);
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 650);
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+    windowResize(setIsMobile);
   }, []);
 
   return (
