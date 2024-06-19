@@ -22,11 +22,13 @@ const LiveGame: React.FC<LiveGameProps> = ({ lobbyList }) => {
         <div className="flex items-center gap-3 ml-4">
           <button className="filter-button flex items-center mr-4">
             <FontAwesomeIcon icon={faFilter} />
-            <i className="fas fa-filter mr-2"></i>FILTER
+            <i className="fas fa-filter mr-2" />
+            FILTER
           </button>
           <button className="refresh-button flex items-center">
             <FontAwesomeIcon icon={faArrowsRotate} />
-            <i className="fas fa-sync-alt mr-2"></i>REFRESH
+            <i className="fas fa-sync-alt mr-2" />
+            REFRESH
           </button>
         </div>
       </div>
