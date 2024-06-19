@@ -41,7 +41,7 @@ const ProfileCard: React.FC<ProfileProps> = ({
 
   return (
     <div
-      className="profile-container relative w-80 bg-gray-100 rounded-2xl flex flex-col h-[500px] p-4 cursor-pointer border-2 hover:border-purple-100"
+      className="profile-container relative w-80 bg-gray-100 rounded-2xl flex flex-col h-[550px] p-4 cursor-pointer border-2 hover:border-purple-100"
       onClick={() => handleProfileClick(username)}
     >
       <div className="flex items-center">
@@ -62,17 +62,17 @@ const ProfileCard: React.FC<ProfileProps> = ({
           </div>
         </div>
       </div>
-      <div className="desc text-white mt-16 text-lg p-3 w-full overflow-hidden text-ellipsis break-words">
+      <div className="desc text-white text-base mt-12 p-3 w-full overflow-hidden text-ellipsis break-words overflow-y-hidden">
         {description}
       </div>
       <div className="invis-box flex-grow"></div>
-      <div className="tag-container p-1 flex flex-wrap gap-2">
+      <div className="tag-container p-1 flex flex-wrap gap-2 mt-2">
         {gameTags.map((option, index) => (
           <div key={index} className="w-fit rounded-xl m-1 h-8 bg-gray-10">
             <div
               className={`${
                 getColor() || "text-gray-800"
-              } whitespace-nowrap rounded-xl border-2 p-1`}
+              } whitespace-nowrap text-sm rounded-xl border-2 p-1`}
             >
               {option}
             </div>

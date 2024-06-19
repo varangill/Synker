@@ -81,5 +81,28 @@ const testUser5 = new User(
   8
 );
 
-const testUserList = [testUser1, testUser2, testUser3, testUser4, testUser5];
+const testUser6 = new User(
+  "6",
+  ["Minecraft", "Valorant", "Roblox", "Lethal Company"],
+  "Kelly",
+  "Phasellus vitae pulvinar ex, vel efficitur lacus. Sed maximus, justo quis lobortis suscipit, risus nisi molestie erat, nec dapibus dui sem in elit. Donec non neque ullamcorper, blandit magna at, tristique erat. Vivamus ac aliquet justo. Quisque non nulla nisl. Praesent pharetra efficitur nisi id consectetur.",
+  background,
+  "Platinum",
+  false,
+  ["Group1", "Group2"],
+  true,
+  1,
+  2,
+  8,
+  3
+);
+
+const testUserList = [
+  testUser1,
+  testUser2,
+  testUser3,
+  testUser4,
+  testUser5,
+  testUser6,
+];
 export default testUserList;

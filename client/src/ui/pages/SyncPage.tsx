@@ -45,10 +45,10 @@ export default function SyncPage() {
                 "linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 100%)",
             }}
           ></div>
-          <div className="relative z-10 text-white text-4xl font-bold mt-10">
+          <div className="relative z-10 text-white text-4xl font-bold mt-8 mb-2">
             FIND PLAYERS
           </div>
-          <div className="relative z-10 flex flex-wrap gap-16 overflow-y-scroll no-scrollbar p-20 items-center justify-center">
+          <div className="relative z-10 flex flex-wrap gap-16 overflow-y-scroll no-scrollbar p-16 items-center justify-center">
             {displayedUsers.map((user, index) => (
               <div key={index}>
                 <ProfileCard
@@ -62,7 +62,7 @@ export default function SyncPage() {
             ))}
           </div>
           <button
-            className="relative z-10 btn-default h-9 flex rounded-xl bg-purple-100 hover:bg-purple-200 w-full items-center justify-center mt-3 max-w-64 mb-8 mr-2 ml-2"
+            className="relative z-10 btn-default h-9 flex rounded-xl bg-purple-100 hover:bg-purple-200 w-full items-center justify-center mt-2 max-w-64 mb-8 mr-2 ml-2"
             onClick={handleNextClick}
           >
             <div className="find-button z-0 flex btn-text text-white h-8 font-bold items-center xl:text-xl lg:text-xl md:text-base sm:text-base">
