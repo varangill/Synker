@@ -1,19 +1,19 @@
 import background from "../ui/assets/images/background.png";
 
 export class User {
-  private id: string;
-  private gameTags: string[];
-  private username: string;
-  private description: string;
-  private profilePicture: string;
-  private membership: string;
-  private auth: boolean;
-  private friends: string[];
-  private status: boolean;
-  private introvert: number;
-  private observant: number;
-  private thinking: number;
-  private judging: number;
+  private _id: string;
+  private _gameTags: string[];
+  private _username: string;
+  private _description: string;
+  private _profilePicture: string;
+  private _membership: string;
+  private _auth: boolean;
+  private _friends: string[];
+  private _status: boolean;
+  private _introvert: number;
+  private _observant: number;
+  private _thinking: number;
+  private _judging: number;
 
   constructor(
     id: string,
@@ -21,144 +21,144 @@ export class User {
     username: string,
     description: string,
     profilePicture: string = background,
-    membership: string = "default",
+    membership: string = "None",
     auth: boolean = false,
-    friends: string[] = ["Novatic", "Rensuo"],
+    friends: string[] = [],
     status: boolean = false,
     introvert: number = 5,
     observant: number = 5,
     thinking: number = 5,
     judging: number = 5
   ) {
-    this.id = id || "000";
-    this.gameTags = gameTags || ["Valorant", "League of Legends"];
-    this.username = username || "3zPz";
-    this.description = description || "User has no description.";
-    this.profilePicture = profilePicture;
-    this.membership = membership;
-    this.auth = auth;
-    this.friends = friends;
-    this.status = status;
-    this.introvert = introvert;
-    this.observant = observant;
-    this.thinking = thinking;
-    this.judging = judging;
+    this._id = id || "000";
+    this._gameTags = gameTags || [];
+    this._username = username;
+    this._description = description || "User has no description.";
+    this._profilePicture = profilePicture;
+    this._membership = membership;
+    this._auth = auth;
+    this._friends = friends;
+    this._status = status;
+    this._introvert = introvert;
+    this._observant = observant;
+    this._thinking = thinking;
+    this._judging = judging;
   }
 
   // ID
   getId(): string {
-    return this.id;
+    return this._id;
   }
 
   setId(newId: string): void {
-    this.id = newId;
+    this._id = newId;
   }
 
   // Username
   getUsername(): string {
-    return this.username;
+    return this._username;
   }
 
   setUsername(newUsername: string): void {
-    this.username = newUsername;
+    this._username = newUsername;
   }
 
   // Profile Picture
   getProfilePicture(): string {
-    return this.profilePicture;
+    return this._profilePicture;
   }
 
   setProfilePicture(newPicture: string): void {
-    this.profilePicture = newPicture;
+    this._profilePicture = newPicture;
   }
 
   // Description
   getDescription(): string {
-    return this.description;
+    return this._description;
   }
 
   setDescription(newDescription: string): void {
-    this.description = newDescription;
+    this._description = newDescription;
   }
 
   // Game Tags
   getGameTags(): string[] {
-    return this.gameTags;
+    return this._gameTags;
   }
 
   setGameTags(newGameTags: string[]): void {
-    this.gameTags = newGameTags;
+    this._gameTags = newGameTags;
   }
 
   // Membership
   getMembership(): string {
-    return this.membership;
+    return this._membership;
   }
 
   setMembership(newMembership: string): void {
-    this.membership = newMembership;
+    this._membership = newMembership;
   }
 
   // Authentication
   isAuthenticated(): boolean {
-    return this.auth;
+    return this._auth;
   }
 
   setAuthentication(newState: boolean): void {
-    this.auth = newState;
+    this._auth = newState;
   }
 
   // Friends
   getFriends(): string[] {
-    return this.friends;
+    return this._friends;
   }
 
   setFriends(newFriends: string[]): void {
-    this.friends = newFriends;
+    this._friends = newFriends;
   }
 
   // Status
   getStatus(): boolean {
-    return this.status;
+    return this._status;
   }
 
   setStatus(newStatus: boolean): void {
-    this.status = newStatus;
+    this._status = newStatus;
   }
 
   // Introvert
   getIntrovert(): number {
-    return this.introvert;
+    return this._introvert;
   }
 
   setIntrovert(newIntrovert: number): void {
-    this.introvert = newIntrovert;
+    this._introvert = newIntrovert;
   }
 
   // Observant
   getObservant(): number {
-    return this.observant;
+    return this._observant;
   }
 
   setObservant(newObservant: number): void {
-    this.observant = newObservant;
+    this._observant = newObservant;
   }
 
   // Thinking
   getThinking(): number {
-    return this.thinking;
+    return this._thinking;
   }
 
   setThinking(newThinking: number): void {
-    this.thinking = newThinking;
+    this._thinking = newThinking;
   }
 
   // Judging
   getJudging(): number {
-    return this.judging;
+    return this._judging;
   }
 
   setJudging(newJudging: number): void {
-    this.judging = newJudging;
+    this._judging = newJudging;
   }
 }

@@ -51,10 +51,11 @@ const Dropdown: React.FC<DropdownProps> = ({
   };
 
   const handleClickOutside = (event: MouseEvent) => {
-    if (
+    const isUserClickOutside =
       dropdownRef.current &&
-      !dropdownRef.current.contains(event.target as Node)
-    ) {
+      !dropdownRef.current.contains(event.target as Node);
+
+    if (isUserClickOutside) {
       setIsOpen(false);
     }
   };
@@ -77,7 +78,8 @@ const Dropdown: React.FC<DropdownProps> = ({
         className="dropdownSearchButton justify-between btn-default h-9 flex rounded-xl bg-gray-100 hover:bg-gray-300 w-full items-center justify-center w-full"
       >
         <div className="btn-text flex whitespace-nowrap overflow-hidden text-ellipsis w-11/12 px-4 text-white h-8 font-bold items-center xl:text-md lg:text-md md:text-base sm:text-base">
-          {selected.join(", ") || placeholder} {/* Show all selected items */}
+          {selected.length > 0 ? selected.join(", ") : placeholder}
+          {/* Show all selected items */}
         </div>
         <FontAwesomeIcon
           icon={faAngleDown}

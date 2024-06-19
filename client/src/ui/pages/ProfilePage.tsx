@@ -1,10 +1,8 @@
 import "../../App.css";
 import Navigation from "../components/Navigation.tsx";
 import Profile from "../components/Profile.tsx";
-import background from "../assets/images/background.png";
 import { getData } from "../../api/index.ts";
 import { useEffect } from "react";
-import { User } from "../../models/User.tsx";
 import testUser from "../../test/testUser.tsx";
 
 export default function ProfilePage() {

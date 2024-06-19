@@ -1,19 +1,27 @@
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../assets/styles/Navigation.css";
 import logo from "../assets/images/logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-import { faUserGroup } from "@fortawesome/free-solid-svg-icons";
-import { faCirclePlay } from "@fortawesome/free-solid-svg-icons";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
-import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
-import { faGear } from "@fortawesome/free-solid-svg-icons";
+import windowResize from "../utils/WindowResize";
+import {
+  faMagnifyingGlass,
+  faUserGroup,
+  faCirclePlay,
+  faUser,
+  faRightFromBracket,
+  faGear,
+  faBars,
+} from "@fortawesome/free-solid-svg-icons";
 
 const Navigation = () => {
   const navigate = useNavigate();
-  // Finds the current path, make button component, render depending on page
-  // Do this in btn component, pass in "Home" as props, if home == pathname /home, render
-  // Otherwise render default unclicked button
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 650);
+
+  useEffect(() => {
+    windowResize(setIsMobile);
+  }, []);
   const currentPath = window.location.pathname;
 
   function handleHomeClick() {
@@ -43,133 +51,144 @@ const Navigation = () => {
     navigate("/");
   }
 
+  function toggleMenu() {
+    setIsMenuOpen(!isMenuOpen);
+  }
+
   return (
-    <div className="nav-bar-container bg-gray-200 h-screen w-96 xl:w-1/6 md:w-80 sm:w-64 flex flex-col">
-      <div className="nav-bar-top">
-        <div className="logo-title flex flex-row object-contain mb-8 hover:cursor-pointer">
+    <div
+      className={`nav-bar-container ${
+        isMobile
+          ? "fixed w-full h-fit"
+          : "relative w-96 xl:w-1/6 md:w-80 sm:w-64 h-full"
+      } top-0 left-0 bg-gray-200 flex flex-col z-50`}
+    >
+      <div className="nav-bar-top flex justify-between items-center p-4 bg-gray-200">
+        <div className="logo-title flex items-center object-contain hover:cursor-pointer">
           <img
-            className="logo object-scale-down w-1/3"
+            className={`logo object-scale-down ${isMobile ? "w-14" : "w-20"}`}
             src={logo}
             onClick={handleHomeClick}
-          ></img>
+            alt="Logo"
+          />
           <p
-            className="text-base sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl text-white w-2/3 font-bold text-left flex items-center"
+            className={`logo object-scale-down text-white font-bold ${
+              isMobile ? "text-xl" : "lg:text-3xl md:text-2xl"
+            }`}
             onClick={handleHomeClick}
           >
             SYNKER
           </p>
         </div>
-        <div className="nav-bar-middle flex flex-col items-center">
-          {/* Button */}
-          <button
-            className={`btn-default h-9 flex rounded-xl w-4/5 items-left mb-5 ${
-              currentPath == "/sync"
-                ? "bg-purple-100 hover:bg-purple-200"
-                : "bg-gray-100 hover:bg-gray-300"
-            }`}
-            onClick={handleSyncClick}
-          >
-            <div className="flex flex-row justify-center items-center h-full">
+        {isMobile && (
+          <FontAwesomeIcon
+            icon={faBars}
+            className="text-white text-2xl"
+            onClick={toggleMenu}
+          />
+        )}
+      </div>
+      {(isMenuOpen || !isMobile) && (
+        <div
+          className={`nav-bar-menu flex flex-col items-center ${
+            isMobile ? "bg-gray-800" : "bg-gray-800 h-full justify-between"
+          } w-full`}
+        >
+          <div className="w-full items-center flex flex-col justify-center items-end mt-6">
+            <button
+              className={`btn-default h-9 flex rounded-xl w-4/5 items-center mb-5 ${
+                currentPath === "/sync"
+                  ? "bg-purple-100 hover:bg-purple-200"
+                  : "bg-gray-100 hover:bg-gray-300"
+              }`}
+              onClick={handleSyncClick}
+            >
               <FontAwesomeIcon
                 icon={faMagnifyingGlass}
                 className="object-contain h-2/4 w-5 text-white p-4"
               />
-              <div className="flex btn-text text-white h-8 font-bold items-center text-base lg:text-xl sm:text-sm">
+              <div className="flex btn-text text-white h-8 font-bold items-center text-base lg:text-xl sm:text-sm ml-2">
                 SYNC
               </div>
-            </div>
-          </button>
-          {/* Button End */}
-          <button
-            className={`btn-default h-9 flex rounded-xl w-4/5 items-left mb-5 ${
-              currentPath == "/friends"
-                ? "bg-purple-100 hover:bg-purple-200"
-                : "bg-gray-100 hover:bg-gray-300"
-            }`}
-            onClick={handleFriendsClick}
-          >
-            <div className="flex flex-row justify-center items-center h-full">
+            </button>
+            <button
+              className={`btn-default h-9 flex rounded-xl w-4/5 items-center mb-5 ${
+                currentPath === "/friends"
+                  ? "bg-purple-100 hover:bg-purple-200"
+                  : "bg-gray-100 hover:bg-gray-300"
+              }`}
+              onClick={handleFriendsClick}
+            >
               <FontAwesomeIcon
                 icon={faUserGroup}
                 className="object-contain h-2/4 w-5 text-white p-4"
               />
-              <div className="flex btn-text text-white h-8 font-bold items-center text-base lg:text-xl sm:text-sm">
+              <div className="flex btn-text text-white h-8 font-bold items-center text-base lg:text-xl sm:text-sm ml-2">
                 FRIENDS
               </div>
-            </div>
-          </button>
-
-          <button
-            className={`btn-default h-9 flex rounded-xl w-4/5 items-left mb-5 ${
-              currentPath == "/live"
-                ? "bg-purple-100 hover:bg-purple-200"
-                : "bg-gray-100 hover:bg-gray-300"
-            }`}
-            onClick={handleLiveClick}
-          >
-            <div className="flex flex-row justify-center items-center h-full">
+            </button>
+            <button
+              className={`btn-default h-9 flex rounded-xl w-4/5 items-center mb-5 ${
+                currentPath === "/live"
+                  ? "bg-purple-100 hover:bg-purple-200"
+                  : "bg-gray-100 hover:bg-gray-300"
+              }`}
+              onClick={handleLiveClick}
+            >
               <FontAwesomeIcon
                 icon={faCirclePlay}
                 className="object-contain h-2/4 w-5 text-white p-4"
               />
-              <div className="flex btn-text text-white h-8 font-bold items-center text-base lg:text-xl sm:text-sm">
+              <div className="flex btn-text text-white h-8 font-bold items-center text-base lg:text-xl sm:text-sm ml-2">
                 LIVE
               </div>
-            </div>
-          </button>
-        </div>
-      </div>
-      <div className="nav-bar-middle-space grow"></div>
-      <div className="bg-gray-100 h-1 w-fill mb-5"></div>
-      <div className="nav-bar-bottom flex flex-col items-center">
-        <button
-          className={`btn-default h-9 flex rounded-xl w-4/5 items-left mb-5 ${
-            currentPath == "/profile"
-              ? "bg-purple-100 hover:bg-purple-200"
-              : "bg-gray-100 hover:bg-gray-300"
-          }`}
-          onClick={handleProfileClick}
-        >
-          <div className="flex flex-row justify-center items-center h-full">
-            <FontAwesomeIcon
-              icon={faUser}
-              className="object-contain h-2/4 w-5 text-white p-4"
-            />
-            <div className="flex btn-text text-white h-8 font-bold items-center text-base lg:text-xl sm:text-sm">
-              PROFILE
-            </div>
+            </button>
           </div>
-        </button>
-        <div className="logout-container flex flex-row h-9 flex rounded-xl w-4/5 items-left mb-12">
-          <button
-            className={`btn-default h-9 flex rounded-xl w-2/3 items-left ${
-              currentPath == "/profile" ? "" : ""
-            }`}
-            onClick={handleLogoutClick}
-          >
-            <div className="flex flex-row justify-center items-center h-full">
+
+          <div className="w-full items-center flex flex-col">
+            <div className="line h-1 w-full bg-gray-100 mb-5"></div>
+            <button
+              className={`btn-default h-9 flex rounded-xl w-4/5 items-center mb-5 ${
+                currentPath === "/profile"
+                  ? "bg-purple-100 hover:bg-purple-200"
+                  : "bg-gray-100 hover:bg-gray-300"
+              }`}
+              onClick={handleProfileClick}
+            >
               <FontAwesomeIcon
-                icon={faRightFromBracket}
+                icon={faUser}
                 className="object-contain h-2/4 w-5 text-white p-4"
               />
-              <div className="flex btn-text text-white h-8 font-bold items-center text-base sm:text-sm lg:text-xl">
-                LOGOUT
+              <div className="flex btn-text text-white h-8 font-bold items-center text-base lg:text-xl sm:text-sm ml-2">
+                PROFILE
               </div>
+            </button>
+            <div className="flex flex-row w-4/5 justify-between">
+              <button
+                className="btn-default h-9 flex rounded-xl w-fit items-center mb-5 pr-4 hover:bg-gray-300"
+                onClick={handleLogoutClick}
+              >
+                <FontAwesomeIcon
+                  icon={faRightFromBracket}
+                  className="object-contain h-2/4 w-5 text-white p-4"
+                />
+                <div className="flex btn-text text-white h-8 font-bold items-center text-base lg:text-xl sm:text-sm ml-2">
+                  LOGOUT
+                </div>
+              </button>
+              <button
+                className="btn-default h-9 flex rounded-xl items-center mb-5 hover:bg-gray-300"
+                onClick={handleSettingsClick}
+              >
+                <FontAwesomeIcon
+                  icon={faGear}
+                  className="object-contain h-2/4 w-5 text-white p-4"
+                />
+              </button>
             </div>
-          </button>
-          <div className="space w-1/3"></div>
-          <button
-            className="btn-settings items-right"
-            onClick={handleSettingsClick}
-          >
-            <FontAwesomeIcon
-              icon={faGear}
-              className="object-contain w-5 h-9 text-white lg:w-5 sm:w-4"
-              onClick={handleSettingsClick}
-            />
-          </button>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
