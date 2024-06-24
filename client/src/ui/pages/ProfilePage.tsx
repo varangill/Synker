@@ -4,6 +4,8 @@ import Profile from "../components/Profile.tsx";
 import { getData } from "../../api/index.ts";
 import { useEffect } from "react";
 import testUser from "../../test/testUser.tsx";
+import ReviewCard from "../components/ReviewCard.tsx";
+import testReviewList from "../../test/testReviewList";
 
 export default function ProfilePage() {
   // Correctly initialized states with default values
@@ -27,6 +29,7 @@ export default function ProfilePage() {
           membership={testUser.getMembership()}
           auth={auth}
         />
+        <ReviewCard reviewsList={testReviewList} />
       </div>
     </div>
   );
