@@ -7,9 +7,9 @@ interface ReviewCardProps {
 
 const ReviewCard: React.FC<ReviewCardProps> = ({ reviewsList }) => {
   return (
-    <div className="w-full h-full bg-gray-200 flex flex-col">
-      <div className="title">Review</div>
-      <div>
+    <div className="rounded-2xl flex flex-col items-center bg-gray-200 w-full h-full max-h-96">
+      <div className="title text-xl text-white font-bold">REVIEW</div>
+      <div className="h-72 w-72 overflow-y-scroll no-scrollbar">
         {reviewsList.map((review, index) => (
           <div key={index}>
             <ReviewBox

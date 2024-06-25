@@ -21,15 +21,19 @@ export default function ProfilePage() {
     <div className="App flex flex-row bg-gray-100 h-screen">
       <Navigation />
       <div className="profile-screen-container flex flex-row w-full h-full flex-wrap overflow-y-scroll overflow-x-hidden p-10">
-        <Profile
-          profilePicture={testUser.getProfilePicture()}
-          username={testUser.getUsername()}
-          description={testUser.getDescription()}
-          gameTags={testUser.getGameTags()}
-          membership={testUser.getMembership()}
-          auth={auth}
-        />
-        <ReviewCard reviewsList={testReviewList} />
+        <div>
+          <Profile
+            profilePicture={testUser.getProfilePicture()}
+            username={testUser.getUsername()}
+            description={testUser.getDescription()}
+            gameTags={testUser.getGameTags()}
+            membership={testUser.getMembership()}
+            auth={auth}
+          />
+        </div>
+        <div className="">
+          <ReviewCard reviewsList={testReviewList} />
+        </div>
       </div>
     </div>
   );

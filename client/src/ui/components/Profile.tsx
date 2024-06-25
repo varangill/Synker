@@ -115,7 +115,7 @@ const Profile: React.FC<ProfileProps> = ({
   editGameTags.sort();
 
   return (
-    <div className="profile-container w-64 bg-gray-200 rounded-2xl flex flex-col h-fit max-h-128">
+    <div className="profile-container w-72 bg-gray-200 rounded-2xl flex flex-col h-fit">
       <input
         className="PFP-input hidden"
         type="file"
@@ -124,7 +124,7 @@ const Profile: React.FC<ProfileProps> = ({
         onChange={handleProfilePicChange}
       ></input>
       <img
-        className={`profile-pic w-64 h-64 object-fit ${
+        className={`profile-pic w-72 h-72 object-fit ${
           isEditing == true ? "hover:opacity-30 cursor-pointer" : ""
         }`}
         src={isEditing ? tempProfilePic : editProfilePic}
@@ -143,7 +143,7 @@ const Profile: React.FC<ProfileProps> = ({
       {isEditing ? (
         <div>
           <textarea
-            className="desc text-white text-lg pl-3 pr-5 pt-2 w-full bg-gray-200 w-auto overflow-hidden text-ellipsis break-words"
+            className="desc text-white text-base pl-3 pr-5 pt-2 w-full bg-gray-200 w-auto overflow-hidden text-ellipsis break-words"
             value={tempDescription}
             onChange={(e) => setTempDescription(e.target.value)}
             style={{ height: "auto", overflowY: "hidden" }}
@@ -165,7 +165,7 @@ const Profile: React.FC<ProfileProps> = ({
           </div>
         </div>
       ) : (
-        <div className="desc text-white text-lg pl-3 pr-5 pt-2 w-full overflow-hidden text-ellipsis break-words">
+        <div className="desc text-white text-base pl-3 pr-5 pt-2 w-full overflow-hidden text-ellipsis break-words">
           {editDescription}
         </div>
       )}
