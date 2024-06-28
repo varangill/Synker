@@ -41,7 +41,7 @@ const reviews = [
     reviewer1,
     recipient1,
     5,
-    "Great service!",
+    "Great service! I loved playing with him, we had a lot of fun!",
     new Date("2024-06-24T10:30:00Z")
   ),
   new Review(
@@ -49,15 +49,15 @@ const reviews = [
     reviewer1,
     recipient1,
     4,
-    "Good experience",
+    "Good experience, we did lose our competitive games but he was very friendly the whole time.",
     new Date("2024-06-23T14:15:00Z")
   ),
   new Review(
     "3",
     reviewer1,
     recipient1,
-    3,
-    "Average performance",
+    6,
+    "Average performance, I was kind of bored though.",
     new Date("2024-06-22T09:00:00Z")
   ),
 ];

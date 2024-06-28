@@ -20,7 +20,7 @@ export default function ProfilePage() {
   return (
     <div className="App flex flex-row bg-gray-100 h-screen">
       <Navigation />
-      <div className="profile-screen-container flex flex-row w-full h-full flex-wrap overflow-y-scroll overflow-x-hidden p-10">
+      <div className="profile-screen-container flex flex-row w-full h-full flex-wrap overflow-y-scroll overflow-x-hidden p-10 gap-10">
         <div>
           <Profile
             profilePicture={testUser.getProfilePicture()}
@@ -31,7 +31,7 @@ export default function ProfilePage() {
             auth={auth}
           />
         </div>
-        <div className="">
+        <div className="w-96">
           <ReviewCard reviewsList={testReviewList} />
         </div>
       </div>
