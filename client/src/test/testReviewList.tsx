@@ -56,7 +56,7 @@ const reviews = [
     "3",
     reviewer1,
     recipient1,
-    6,
+    2,
     "Average performance, I was kind of bored though.",
     new Date("2024-06-22T09:00:00Z")
   ),
