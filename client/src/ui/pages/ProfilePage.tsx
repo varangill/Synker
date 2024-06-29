@@ -5,6 +5,7 @@ import { getData } from "../../api/index.ts";
 import { useEffect } from "react";
 import testUser from "../../test/testUser.tsx";
 import ReviewCard from "../components/ReviewCard.tsx";
+import Personality from "../components/Personality.tsx";
 import testReviewList from "../../test/testReviewList";
 
 export default function ProfilePage() {
@@ -33,6 +34,14 @@ export default function ProfilePage() {
         </div>
         <div className="w-96">
           <ReviewCard reviewsList={testReviewList} />
+        </div>
+        <div className="w-96">
+          <Personality
+            introvert={testUser.getIntrovert()}
+            observant={testUser.getObservant()}
+            thinking={testUser.getThinking()}
+            judging={testUser.getJudging()}
+          />
         </div>
       </div>
     </div>
