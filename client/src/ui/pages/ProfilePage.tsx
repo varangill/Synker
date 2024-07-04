@@ -1,6 +1,7 @@
 import "../../App.css";
 import Navigation from "../components/Navigation.tsx";
 import Profile from "../components/Profile.tsx";
+import ProfileCarousel from "../components/ProfileCarousel.tsx";
 import { getData } from "../../api/index.ts";
 import { useEffect } from "react";
 import testUser from "../../test/testUser.tsx";
@@ -42,6 +43,9 @@ export default function ProfilePage() {
             thinking={testUser.getThinking()}
             judging={testUser.getJudging()}
           />
+        </div>
+        <div className="w-96">
+          <ProfileCarousel images={[]} />
         </div>
       </div>
     </div>

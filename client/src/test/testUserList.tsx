@@ -1,5 +1,54 @@
 import background from "../ui/assets/images/background.png";
 import { User } from "../models/User";
+import { CarouselBundle } from "../models/Carousel";
+
+const user1CarouselImages: CarouselBundle[] = [
+  { image: "../ui/assets/images/background.png", caption: "User 1 - Image 1" },
+  { image: "../ui/assets/images/logo.png", caption: "User 1 - Image 2" },
+];
+
+const user2CarouselImages: CarouselBundle[] = [
+  {
+    image: "../ui/assets/images/nav-bar-background.png",
+    caption: "User 2 - Image 1",
+  },
+  {
+    image: "../ui/assets/images/sync-background.png",
+    caption: "User 2 - Image 2",
+  },
+];
+
+const user3CarouselImages: CarouselBundle[] = [
+  { image: "../ui/assets/images/background.png", caption: "User 3 - Image 1" },
+  { image: "../ui/assets/images/logo.png", caption: "User 3 - Image 2" },
+];
+
+const user4CarouselImages: CarouselBundle[] = [
+  {
+    image: "../ui/assets/images/nav-bar-background.png",
+    caption: "User 4 - Image 1",
+  },
+  {
+    image: "../ui/assets/images/sync-background.png",
+    caption: "User 4 - Image 2",
+  },
+];
+
+const user5CarouselImages: CarouselBundle[] = [
+  { image: "../ui/assets/images/background.png", caption: "User 5 - Image 1" },
+  { image: "../ui/assets/images/logo.png", caption: "User 5 - Image 2" },
+];
+
+const user6CarouselImages: CarouselBundle[] = [
+  {
+    image: "../ui/assets/images/nav-bar-background.png",
+    caption: "User 6 - Image 1",
+  },
+  {
+    image: "../ui/assets/images/sync-background.png",
+    caption: "User 6 - Image 2",
+  },
+];
 
 const testUser1 = new User(
   "1",
@@ -9,12 +58,13 @@ const testUser1 = new User(
   background,
   "Platinum",
   true,
-  ["3zPz", "Novatic"],
+  [],
   true,
   1,
   7,
   3,
-  2
+  2,
+  user1CarouselImages
 );
 
 const testUser2 = new User(
@@ -25,12 +75,13 @@ const testUser2 = new User(
   background,
   "Gold",
   false,
-  ["Clan1", "Clan2"],
+  [],
   true,
   2,
   5,
   4,
-  3
+  3,
+  user2CarouselImages
 );
 
 const testUser3 = new User(
@@ -41,12 +92,13 @@ const testUser3 = new User(
   background,
   "Silver",
   true,
-  ["TeamA", "TeamB"],
+  [],
   false,
   3,
   4,
   5,
-  6
+  6,
+  user3CarouselImages
 );
 
 const testUser4 = new User(
@@ -57,12 +109,13 @@ const testUser4 = new User(
   background,
   "Diamond",
   true,
-  ["GuildX", "GuildY"],
+  [],
   true,
   4,
   3,
   2,
-  1
+  1,
+  user4CarouselImages
 );
 
 const testUser5 = new User(
@@ -73,12 +126,13 @@ const testUser5 = new User(
   background,
   "Bronze",
   false,
-  ["Group1", "Group2"],
+  [],
   true,
   5,
   6,
   7,
-  8
+  8,
+  user5CarouselImages
 );
 
 const testUser6 = new User(
@@ -89,12 +143,13 @@ const testUser6 = new User(
   background,
   "Platinum",
   false,
-  ["Group1", "Group2"],
+  [],
   true,
   1,
   2,
   8,
-  3
+  3,
+  user6CarouselImages
 );
 
 const testUserList = [
@@ -105,4 +160,5 @@ const testUserList = [
   testUser5,
   testUser6,
 ];
+
 export default testUserList;

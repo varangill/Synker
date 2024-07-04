@@ -1,19 +1,44 @@
 import background from "../ui/assets/images/background.png";
 import { User } from "../models/User";
+import { CarouselBundle } from "../models/Carousel";
+
+const userCarouselImages: CarouselBundle[] = [
+  { image: "../ui/assets/images/background.png", caption: "User Image 1" },
+  { image: "../ui/assets/images/logo.png", caption: "User Image 2" },
+];
+
+const friend = new User(
+  "3",
+  ["Genshin Impact"],
+  "Rensuo",
+  "Vivamus lacinia odio vitae vestibulum vestibulum. Cras venenatis euismod malesuada.",
+  background,
+  "Gold",
+  false,
+  [],
+  true,
+  2,
+  5,
+  4,
+  3,
+  userCarouselImages
+);
 
 const testUser = new User(
-  "1",
-  ["Valorant", "League of Legends", "Apex", "Lethal Company"],
-  "Rensuo",
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis non dapibus lacus.",
+  "2",
+  ["Fortnite", "Minecraft", "Overwatch", "Call of Duty"],
+  "3zPz",
+  "Vivamus lacinia odio vitae vestibulum vestibulum. Cras venenatis euismod malesuada.",
   background,
-  "Platinum",
+  "Gold",
+  false,
+  [friend],
   true,
-  ["3zPz", "Novatic"],
-  true,
-  1,
-  7,
+  2,
+  5,
+  4,
   3,
-  2
+  userCarouselImages
 );
+
 export default testUser;

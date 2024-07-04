@@ -1,4 +1,5 @@
 import background from "../ui/assets/images/background.png";
+import { Carousel, CarouselBundle } from "./Carousel";
 
 export class User {
   private _id: string;
@@ -8,12 +9,13 @@ export class User {
   private _profilePicture: string;
   private _membership: string;
   private _auth: boolean;
-  private _friends: string[];
+  private _friends: User[];
   private _status: boolean;
   private _introvert: number;
   private _observant: number;
   private _thinking: number;
   private _judging: number;
+  private _carousel: Carousel;
 
   constructor(
     id: string,
@@ -23,12 +25,13 @@ export class User {
     profilePicture: string = background,
     membership: string = "None",
     auth: boolean = false,
-    friends: string[] = [],
+    friends: User[] = [],
     status: boolean = false,
     introvert: number = 5,
     observant: number = 5,
     thinking: number = 5,
-    judging: number = 5
+    judging: number = 5,
+    carouselImages: CarouselBundle[] = []
   ) {
     this._id = id || "000";
     this._gameTags = gameTags || [];
@@ -43,6 +46,7 @@ export class User {
     this._observant = observant;
     this._thinking = thinking;
     this._judging = judging;
+    this._carousel = new Carousel(carouselImages);
   }
 
   // ID
@@ -109,11 +113,11 @@ export class User {
   }
 
   // Friends
-  getFriends(): string[] {
+  getFriends(): User[] {
     return this._friends;
   }
 
-  setFriends(newFriends: string[]): void {
+  setFriends(newFriends: User[]): void {
     this._friends = newFriends;
   }
 
@@ -160,5 +164,14 @@ export class User {
 
   setJudging(newJudging: number): void {
     this._judging = newJudging;
+  }
+
+  // Carousel
+  getCarousel(): Carousel {
+    return this._carousel;
+  }
+
+  setCarousel(newCarousel: Carousel): void {
+    this._carousel = newCarousel;
   }
 }
