@@ -4,7 +4,7 @@ import { User } from "../models/User";
 import { CarouselBundle } from "../models/Carousel";
 
 const userCarouselImages: CarouselBundle[] = [
-  { image: img1, caption: "User Image 1" },
+  { image: img1, caption: "The time when I got 7 fortune in TFT!" },
   { image: background, caption: "User Image 2" },
 ];
 

@@ -10,7 +10,6 @@ import Personality from "../components/Personality.tsx";
 import testReviewList from "../../test/testReviewList";
 
 export default function ProfilePage() {
-  // Correctly initialized states with default values
   const auth = true; // Default to true if needed immediately
 
   useEffect(() => {
@@ -22,7 +21,7 @@ export default function ProfilePage() {
   return (
     <div className="App flex flex-row bg-gray-100 h-screen">
       <Navigation />
-      <div className="profile-screen-container flex flex-row w-full h-full flex-wrap overflow-y-scroll overflow-x-hidden p-10 gap-10 justify-center">
+      <div className="profile-screen-container flex flex-row w-full h-full flex-wrap overflow-y-scroll overflow-x-hidden p-10 gap-10 justify-center no-scrollbar">
         <div>
           <Profile
             profilePicture={testUser.getProfilePicture()}
@@ -33,8 +32,8 @@ export default function ProfilePage() {
             auth={auth}
           />
         </div>
-        <div className="flex flex-col gap-10">
-          <div className="flex flex-grow">
+        <div className="flex flex-col gap-10 items-center">
+          <div className="sm:w-96 md:w-96 lg:w-[800px]">
             <ProfileCarousel images={testUser.getCarousel().getImages()} />
           </div>
           <div className="flex flex-wrap gap-10 justify-center">
