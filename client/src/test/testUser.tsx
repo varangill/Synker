@@ -1,10 +1,11 @@
 import background from "../ui/assets/images/background.png";
+import img1 from "../ui/assets/images/nav-bar-background.png";
 import { User } from "../models/User";
 import { CarouselBundle } from "../models/Carousel";
 
 const userCarouselImages: CarouselBundle[] = [
-  { image: "../ui/assets/images/background.png", caption: "User Image 1" },
-  { image: "../ui/assets/images/logo.png", caption: "User Image 2" },
+  { image: img1, caption: "User Image 1" },
+  { image: background, caption: "User Image 2" },
 ];
 
 const friend = new User(
@@ -30,7 +31,7 @@ const testUser = new User(
   "3zPz",
   "Vivamus lacinia odio vitae vestibulum vestibulum. Cras venenatis euismod malesuada.",
   background,
-  "Gold",
+  "Platinum",
   false,
   [friend],
   true,

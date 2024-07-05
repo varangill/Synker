@@ -9,7 +9,8 @@ interface ReviewProps {
   text: string;
   created_time: Date;
 }
-const Review: React.FC<ReviewProps> = ({
+
+const ReviewBox: React.FC<ReviewProps> = ({
   reviewer,
   rating,
   text,
@@ -25,23 +26,23 @@ const Review: React.FC<ReviewProps> = ({
         <img
           className="rounded-full h-16"
           src={reviewer.getProfilePicture()}
-        ></img>
+          alt="Reviewer profile"
+        />
         <div className="ml-4">
           <div className="font-bold">{reviewer.getUsername()}</div>
           <div className="text-sm italic">{formattedDate} days ago</div>
         </div>
       </div>
       <div className="flex flex-row items-center">
-        {[...Array(rating)].map(() => (
-          <FontAwesomeIcon icon={faStar} className="text-gold" />
+        {[...Array(rating)].map((_, index) => (
+          <FontAwesomeIcon icon={faStar} className="text-gold" key={index} />
         ))}
         <div className="ml-2">({rating.toFixed(1)})</div>
       </div>
-
       <div className="pb-3 mt-1">{text}</div>
       <div className="title-line w-full bg-gray-100 h-0.5"></div>
     </div>
   );
 };
 
-export default Review;
+export default ReviewBox;

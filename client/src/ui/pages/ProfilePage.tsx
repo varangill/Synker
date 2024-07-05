@@ -22,7 +22,7 @@ export default function ProfilePage() {
   return (
     <div className="App flex flex-row bg-gray-100 h-screen">
       <Navigation />
-      <div className="profile-screen-container flex flex-row w-full h-full flex-wrap overflow-y-scroll overflow-x-hidden p-10 gap-10">
+      <div className="profile-screen-container flex flex-row w-full h-full flex-wrap overflow-y-scroll overflow-x-hidden p-10 gap-10 justify-center">
         <div>
           <Profile
             profilePicture={testUser.getProfilePicture()}
@@ -33,19 +33,23 @@ export default function ProfilePage() {
             auth={auth}
           />
         </div>
-        <div className="w-96">
-          <ReviewCard reviewsList={testReviewList} />
-        </div>
-        <div className="w-96">
-          <Personality
-            introvert={testUser.getIntrovert()}
-            observant={testUser.getObservant()}
-            thinking={testUser.getThinking()}
-            judging={testUser.getJudging()}
-          />
-        </div>
-        <div className="w-96">
-          <ProfileCarousel images={[]} />
+        <div className="flex flex-col gap-10">
+          <div className="flex flex-grow">
+            <ProfileCarousel images={testUser.getCarousel().getImages()} />
+          </div>
+          <div className="flex flex-wrap gap-10 justify-center">
+            <div className="w-96">
+              <ReviewCard reviewsList={testReviewList} />
+            </div>
+            <div className="w-96">
+              <Personality
+                introvert={testUser.getIntrovert()}
+                observant={testUser.getObservant()}
+                thinking={testUser.getThinking()}
+                judging={testUser.getJudging()}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -1,3 +1,4 @@
+import React from "react";
 import ReviewBox from "./ReviewBox";
 import { Review } from "../../models/Review";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -34,8 +35,8 @@ const ReviewCard: React.FC<ReviewCardProps> = ({ reviewsList }) => {
       <div className="title-line w-full bg-gray-100 h-1"></div>
       <div className="max-h-[500px] overflow-y-scroll no-scrollbar rounded-b-2xl">
         <div className="pb-3"></div>
-        {reviewsList.map((review, index) => (
-          <div key={index}>
+        {reviewsList.map((review) => (
+          <div key={review.getId()}>
             <ReviewBox
               reviewer={review.getReviewer()}
               recipient={review.getRecipient()}
