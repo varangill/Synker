@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import Dropdown from "./Dropdown";
+import CancelSaveButton from "./CancelSaveButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
@@ -191,20 +192,10 @@ const Profile: React.FC<ProfileProps> = ({
           </button>
         )}
         {auth && isEditing && (
-          <div className="btn-container flex flex-row gap-1 pt-2">
-            <button
-              className="btn-cancel btn-save h-9 flex rounded-xl hover:bg-gray-100 items-center justify-center text-white font-bold w-24"
-              onClick={handleEditClick}
-            >
-              CANCEL
-            </button>
-            <button
-              className="btn-save h-9 flex rounded-xl bg-purple-100 hover:bg-purple-200 items-center justify-center text-white font-bold w-24"
-              onClick={handleSaveClick}
-            >
-              SAVE
-            </button>
-          </div>
+          <CancelSaveButton
+            onCancelClick={handleEditClick}
+            onSaveClick={handleSaveClick}
+          />
         )}
       </div>
       <div className="space pb-5"></div>

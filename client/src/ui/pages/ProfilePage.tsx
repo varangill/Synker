@@ -9,7 +9,9 @@ import ReviewCard from "../components/ReviewCard.tsx";
 import Personality from "../components/Personality.tsx";
 import testReviewList from "../../test/testReviewList";
 
+// TODO: Get user from the back-end
 export default function ProfilePage() {
+  // TODO: Authentication
   const auth = true; // Default to true if needed immediately
 
   useEffect(() => {
@@ -46,6 +48,7 @@ export default function ProfilePage() {
                 observant={testUser.getObservant()}
                 thinking={testUser.getThinking()}
                 judging={testUser.getJudging()}
+                auth={auth}
               />
             </div>
           </div>
