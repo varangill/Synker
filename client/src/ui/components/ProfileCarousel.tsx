@@ -210,13 +210,20 @@ const ProfileCarousel: React.FC<ProfileCarouselProps> = ({ images, auth }) => {
                   </div>
                 )}
                 {auth && isEditing && (
-                  <>
+                  <div>
                     <button
-                      className="absolute top-2 right-2 text-green-500"
+                      className="absolute top-2 right-2"
                       onClick={handleNewImageClick}
                     >
                       <FontAwesomeIcon icon={faPlus} />
                     </button>
+                    <button
+                      className="absolute top-12 right-2"
+                      onClick={() => handleDeleteClick(index)}
+                    >
+                      <FontAwesomeIcon icon={faTrash} />
+                    </button>
+
                     <input
                       className="PFP-input hidden"
                       type="file"
@@ -224,13 +231,7 @@ const ProfileCarousel: React.FC<ProfileCarouselProps> = ({ images, auth }) => {
                       ref={newImageInput}
                       onChange={handleNewImageChange}
                     />
-                    <button
-                      className="absolute top-2 right-10 text-red-500"
-                      onClick={() => handleDeleteClick(index)}
-                    >
-                      <FontAwesomeIcon icon={faTrash} />
-                    </button>
-                  </>
+                  </div>
                 )}
               </div>
             )
