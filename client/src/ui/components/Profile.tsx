@@ -116,16 +116,16 @@ const Profile: React.FC<ProfileProps> = ({
   editGameTags.sort();
 
   return (
-    <div className="profile-container w-72 bg-gray-200 rounded-2xl flex flex-col h-fit">
+    <div className="profile-container w-96 bg-gray-200 rounded-2xl flex flex-col h-fit">
       <input
         className="PFP-input hidden"
         type="file"
         accept="image/*"
         ref={imgInput}
         onChange={handleProfilePicChange}
-      ></input>
+      />
       <img
-        className={`profile-pic w-72 h-72 object-fit ${
+        className={`profile-pic w-96 h-96 object-fit ${
           isEditing == true ? "hover:opacity-30 cursor-pointer" : ""
         }`}
         src={isEditing ? tempProfilePic : editProfilePic}
@@ -166,12 +166,12 @@ const Profile: React.FC<ProfileProps> = ({
           </div>
         </div>
       ) : (
-        <div className="desc text-white text-base pl-3 pr-5 pt-2 w-full overflow-hidden text-ellipsis break-words">
+        <div className="desc text-white text-base pl-5 pr-5 pt-2 w-full overflow-hidden text-ellipsis break-words">
           {editDescription}
         </div>
       )}
 
-      <div className="tag-container p-3 flex flex-wrap gap-2">
+      <div className="tag-container p-5 flex flex-wrap gap-2">
         {(isEditing ? tempGameTags : editGameTags).map((option, index) => (
           <div
             key={index}
@@ -185,7 +185,7 @@ const Profile: React.FC<ProfileProps> = ({
           </div>
         ))}
       </div>
-      <div className="btn-container w-full justify-end flex pr-3">
+      <div className="btn-container w-full justify-end flex pr-5">
         {auth && !isEditing && (
           <button className="btn-edit" onClick={handleEditClick}>
             <FontAwesomeIcon icon={faEdit} className="text-white" />

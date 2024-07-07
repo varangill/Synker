@@ -36,7 +36,10 @@ export default function ProfilePage() {
         </div>
         <div className="flex flex-col gap-10 items-center">
           <div className="sm:w-96 md:w-96 lg:w-[800px]">
-            <ProfileCarousel images={testUser.getCarousel().getImages()} />
+            <ProfileCarousel
+              images={testUser.getCarousel().getImages()}
+              auth={auth}
+            />
           </div>
           <div className="flex flex-wrap gap-10 justify-center">
             <div className="w-96">
