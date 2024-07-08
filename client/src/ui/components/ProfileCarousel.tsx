@@ -4,7 +4,12 @@ import "react-multi-carousel/lib/styles.css";
 import { CarouselBundle } from "../../models/Carousel";
 import CancelSaveButton from "./CancelSaveButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEdit, faTrash, faPlus } from "@fortawesome/free-solid-svg-icons";
+import {
+  faEdit,
+  faTrash,
+  faPlus,
+  faPencilAlt,
+} from "@fortawesome/free-solid-svg-icons";
 
 interface ProfileCarouselProps {
   images: CarouselBundle[];
@@ -38,7 +43,6 @@ const ProfileCarousel: React.FC<ProfileCarouselProps> = ({ images, auth }) => {
   const [currentIndex, setCurrentIndex] = useState<number | null>(null);
   const [currentImage, setCurrentImage] = useState<string>("");
   const [currentCaption, setCurrentCaption] = useState<string>("");
-  const [newImage, setNewImage] = useState<string>("");
   const [newCaption, setNewCaption] = useState<string>("");
   const [isEditing, setIsEditing] = useState<boolean>(false);
 
@@ -60,6 +64,14 @@ const ProfileCarousel: React.FC<ProfileCarouselProps> = ({ images, auth }) => {
     }
   };
 
+  const handleEditIconClick = (index: number) => {
+    if (isEditing) {
+      setCurrentIndex(index);
+      setCurrentImage(tempCarouselItems[index].image);
+      setCurrentCaption(tempCarouselItems[index].caption);
+    }
+  };
+
   const handleEditClick = () => {
     setIsEditing(!isEditing);
     if (!isEditing) {
@@ -78,15 +90,12 @@ const ProfileCarousel: React.FC<ProfileCarouselProps> = ({ images, auth }) => {
       });
     }
 
-    if (newImage) {
-      updatedItems.push({ image: newImage, caption: newCaption });
-    }
-
     setAllCarouselItems(updatedItems);
     setTempCarouselItems(updatedItems);
     setIsEditing(false);
     setCurrentIndex(null);
-    setNewImage("");
+    setCurrentImage("");
+    setCurrentCaption("");
     setNewCaption("");
   };
 
@@ -100,7 +109,10 @@ const ProfileCarousel: React.FC<ProfileCarouselProps> = ({ images, auth }) => {
     }
   };
 
-  const handleCarouselChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    isNew: boolean = false
+  ) => {
     const input = event.target as HTMLInputElement;
 
     if (input.files && input.files[0]) {
@@ -109,34 +121,24 @@ const ProfileCarousel: React.FC<ProfileCarouselProps> = ({ images, auth }) => {
       const reader = new FileReader();
       reader.onloadend = () => {
         if (typeof reader.result === "string") {
-          setCurrentImage(reader.result);
-          if (currentIndex !== null) {
-            const updatedItems = tempCarouselItems.map((item, index) => {
-              if (index === currentIndex) {
-                return { ...item, image: reader.result as string };
-              }
-              return item;
-            });
-            setTempCarouselItems(updatedItems);
+          if (isNew) {
+            setTempCarouselItems([
+              ...tempCarouselItems,
+              { image: reader.result, caption: newCaption },
+            ]);
+            setNewCaption("");
+          } else {
+            setCurrentImage(reader.result);
+            if (currentIndex !== null) {
+              const updatedItems = tempCarouselItems.map((item, index) => {
+                if (index === currentIndex) {
+                  return { ...item, image: reader.result as string };
+                }
+                return item;
+              });
+              setTempCarouselItems(updatedItems);
+            }
           }
-        }
-      };
-      reader.readAsDataURL(file);
-    } else {
-      console.log("No file chosen or file access error.");
-    }
-  };
-
-  const handleNewImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const input = event.target as HTMLInputElement;
-
-    if (input.files && input.files[0]) {
-      const file = input.files[0];
-
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        if (typeof reader.result === "string") {
-          setNewImage(reader.result);
         }
       };
       reader.readAsDataURL(file);
@@ -180,7 +182,7 @@ const ProfileCarousel: React.FC<ProfileCarouselProps> = ({ images, auth }) => {
             (carouselBundle, index) => (
               <div
                 key={index}
-                className="flex flex-col justify-center items-center w-full h-fit relative"
+                className="flex flex-col justify-center items-center h-fit relative"
               >
                 <img
                   src={carouselBundle.image}
@@ -194,11 +196,11 @@ const ProfileCarousel: React.FC<ProfileCarouselProps> = ({ images, auth }) => {
                   type="file"
                   accept="image/*"
                   ref={carouselInput}
-                  onChange={handleCarouselChange}
+                  onChange={handleImageChange}
                 />
                 {isEditing && currentIndex === index ? (
                   <textarea
-                    className="desc text-white text-base pl-3 pr-5 pt-2 w-full bg-gray-200 w-1/2 overflow-hidden italic text-ellipsis break-words mt-5 border-2 border-gray-100 rounded-xl"
+                    className="desc text-white text-base pl-3 pr-5 pt-2 w-[300px] bg-gray-200 w-1/2 overflow-hidden italic text-ellipsis break-words mt-5 border-2 border-gray-100 rounded-xl"
                     value={currentCaption}
                     maxLength={150}
                     autoCorrect="on"
@@ -212,24 +214,29 @@ const ProfileCarousel: React.FC<ProfileCarouselProps> = ({ images, auth }) => {
                 {auth && isEditing && (
                   <div>
                     <button
-                      className="absolute top-2 right-2"
-                      onClick={handleNewImageClick}
+                      className="absolute top-0 right-2"
+                      onClick={() => handleNewImageClick()}
                     >
                       <FontAwesomeIcon icon={faPlus} />
                     </button>
                     <button
-                      className="absolute top-12 right-2"
+                      className="absolute top-10 right-2"
+                      onClick={() => handleEditIconClick(index)}
+                    >
+                      <FontAwesomeIcon icon={faPencilAlt} />
+                    </button>
+                    <button
+                      className="absolute top-20 right-2"
                       onClick={() => handleDeleteClick(index)}
                     >
                       <FontAwesomeIcon icon={faTrash} />
                     </button>
-
                     <input
                       className="PFP-input hidden"
                       type="file"
                       accept="image/*"
                       ref={newImageInput}
-                      onChange={handleNewImageChange}
+                      onChange={(e) => handleImageChange(e, true)}
                     />
                   </div>
                 )}
@@ -237,37 +244,6 @@ const ProfileCarousel: React.FC<ProfileCarouselProps> = ({ images, auth }) => {
             )
           )}
         </Carousel>
-        {isEditing && newImage && (
-          <Carousel
-            responsive={responsive}
-            ssr={false}
-            infinite
-            autoPlay={!isEditing}
-            autoPlaySpeed={6000}
-            keyBoardControl
-            customTransition="transform 300ms ease-in-out"
-            transitionDuration={500}
-            containerClass="carousel-container"
-            removeArrowOnDeviceType={["tablet", "mobile"]}
-            deviceType="desktop"
-            dotListClass="custom-dot-list-style"
-            itemClass="carousel-item-padding-40-px"
-          >
-            <div className="flex flex-col justify-center items-center w-full h-fit relative">
-              <img
-                src={newImage}
-                className="object-contain h-96 max-w-full hover:opacity-30 cursor-pointer"
-              />
-              <textarea
-                className="desc text-white text-base pl-3 pr-5 pt-2 w-full bg-gray-200 w-1/2 overflow-hidden italic text-ellipsis break-words mt-5 border-2 border-gray-100 rounded-xl"
-                value={newCaption}
-                maxLength={150}
-                autoCorrect="on"
-                onChange={(e) => setNewCaption(e.target.value)}
-              />
-            </div>
-          </Carousel>
-        )}
         <div className="btn-container w-full justify-end flex">
           {auth && !isEditing && (
             <button className="btn-edit" onClick={handleEditClick}>
