@@ -187,7 +187,7 @@ const ProfileCarousel: React.FC<ProfileCarouselProps> = ({ images, auth }) => {
                 <img
                   src={carouselBundle.image}
                   onClick={() => handleImageClick(index)}
-                  className={`object-contain h-96 max-w-full ${
+                  className={`object-contain h-96 max-w-full rounded-xl${
                     auth && isEditing ? "hover:opacity-30 cursor-pointer" : ""
                   }`}
                 />
