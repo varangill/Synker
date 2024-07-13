@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "../../App.css";
 import Navigation from "../components/Navigation.tsx";
 import ProfileCard from "../components/ProfileCard.tsx";
-import testUserList from "../../test/testUserList.tsx";
+import testUserList from "../../mockData/testUserList.tsx";
 import sync from "../assets/images/sync-background.png";
 import windowResize from "../utils/WindowResize.tsx";
 
@@ -45,11 +45,11 @@ export default function SyncPage() {
             {displayedUsers.map((user, index) => (
               <div key={index}>
                 <ProfileCard
-                  gameTags={user.getGameTags()}
-                  username={user.getUsername()}
-                  description={user.getDescription()}
-                  profilePicture={user.getProfilePicture()}
-                  membership={user.getMembership()}
+                  gameTags={user.gameTags}
+                  username={user.username}
+                  description={user.description}
+                  profilePicture={user.profilePicture}
+                  membership={user.membership}
                 />
               </div>
             ))}

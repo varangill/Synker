@@ -1,10 +1,10 @@
-import { User } from "../../models/User";
+import { IUser } from "../../types/User";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 interface ReviewProps {
-  reviewer: User;
-  recipient: User;
+  reviewer: IUser;
+  recipient: IUser;
   rating: number;
   text: string;
   created_time: Date;
@@ -25,11 +25,11 @@ const ReviewBox: React.FC<ReviewProps> = ({
       <div className="flex flex-row items-center pb-5">
         <img
           className="rounded-full h-16"
-          src={reviewer.getProfilePicture()}
+          src={reviewer.profilePicture}
           alt="Reviewer profile"
         />
         <div className="ml-4">
-          <div className="font-bold">{reviewer.getUsername()}</div>
+          <div className="font-bold">{reviewer.username}</div>
           <div className="text-sm italic">{formattedDate} days ago</div>
         </div>
       </div>

@@ -1,12 +1,12 @@
 import React from "react";
-import { Lobby } from "../../models/Lobby";
+import { ILobby } from "../../types/Lobby";
 import LiveLobby from "../components/LiveLobby";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilter } from "@fortawesome/free-solid-svg-icons";
 import { faArrowsRotate } from "@fortawesome/free-solid-svg-icons";
 
 interface LiveGameProps {
-  lobbyList: Lobby[];
+  lobbyList: ILobby[];
 }
 
 // TODO: functionality for filter and refresh buttons
@@ -35,7 +35,7 @@ const LiveGame: React.FC<LiveGameProps> = ({ lobbyList }) => {
       <div className="h-1 bg-gray-100 w-full"></div>
       <div className="overflow-y-scroll no-scrollbar flex-grow mb-8">
         {lobbyList.map((lobby) => (
-          <LiveLobby key={lobby.getId()} lobby={lobby} />
+          <LiveLobby key={lobby.id} lobby={lobby} />
         ))}
       </div>
     </div>

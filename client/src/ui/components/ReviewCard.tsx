@@ -1,22 +1,21 @@
 import React from "react";
 import ReviewBox from "./ReviewBox";
-import { Review } from "../../models/Review";
+import { IReview } from "../../types/Review";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 interface ReviewCardProps {
-  reviewsList: Review[];
+  reviewsList: IReview[];
 }
 
 const ReviewCard: React.FC<ReviewCardProps> = ({ reviewsList }) => {
   reviewsList.sort(
     (a, b) =>
-      new Date(b.getCreatedTime()).getTime() -
-      new Date(a.getCreatedTime()).getTime()
+      new Date(b.createdTime).getTime() - new Date(a.createdTime).getTime()
   );
 
   const averageRating =
-    reviewsList.reduce((acc, review) => acc + review.getRating(), 0) /
+    reviewsList.reduce((acc, review) => acc + review.rating, 0) /
     reviewsList.length;
 
   return (
@@ -36,13 +35,13 @@ const ReviewCard: React.FC<ReviewCardProps> = ({ reviewsList }) => {
       <div className="max-h-[500px] overflow-y-scroll no-scrollbar rounded-b-2xl">
         <div className="pb-3"></div>
         {reviewsList.map((review) => (
-          <div key={review.getId()}>
+          <div key={review.id}>
             <ReviewBox
-              reviewer={review.getReviewer()}
-              recipient={review.getRecipient()}
-              rating={review.getRating()}
-              text={review.getText()}
-              created_time={review.getCreatedTime()}
+              reviewer={review.reviewer}
+              recipient={review.recipient}
+              rating={review.rating}
+              text={review.text}
+              created_time={review.createdTime}
             />
           </div>
         ))}

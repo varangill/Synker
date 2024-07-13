@@ -3,7 +3,7 @@ import Navigation from "../components/Navigation.tsx";
 import GameSelection from "../components/GameSelection.tsx";
 import LiveGame from "../components/LiveGame.tsx";
 import CreateLobby from "../components/LobbyCreation.tsx";
-import testLobbies from "../../test/testLobbies.tsx";
+import testLobbies from "../../mockData/testLobbies.tsx";
 import { useEffect, useState } from "react";
 import windowResize from "../utils/WindowResize.tsx";
 

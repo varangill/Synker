@@ -1,9 +1,9 @@
 import { useState } from "react";
 import Dropdown from "./Dropdown";
 import LobbyTag from "./LobbyTag";
-import { Lobby } from "../../models/Lobby";
-import testUser from "../../test/testUser";
-import testGame from "../../test/testGame";
+import { ILobby } from "../../types/Lobby";
+import testUser from "../../mockData/testUser";
+import testGame from "../../mockData/testGame";
 
 const CreateLobby = () => {
   const [selectedGame, setSelectedGame] = useState<string[]>([]);
@@ -64,18 +64,18 @@ const CreateLobby = () => {
     const maxPlayers = selectedMaxPlayers[0]; // Replace with actual max players if needed
     const game = testGame; // Use testGame as the selected game
 
-    const newLobby = new Lobby(
+    const newLobby: ILobby = {
       id,
       owner,
-      playersList,
+      players: playersList,
       createdDate,
       startDate,
       title,
       description,
       maxPlayers,
       game,
-      selectedTags
-    );
+      lobbyTags: selectedTags,
+    };
 
     // Log the new Lobby object
     console.log(newLobby);

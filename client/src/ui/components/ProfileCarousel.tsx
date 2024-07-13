@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { CarouselBundle } from "../../models/Carousel";
+import { ICarouselBundle } from "../../types/Carousel";
 import CancelSaveButton from "./CancelSaveButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -12,7 +12,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 interface ProfileCarouselProps {
-  images: CarouselBundle[];
+  images: ICarouselBundle[];
   auth: boolean;
 }
 
@@ -37,9 +37,9 @@ const responsive = {
 
 const ProfileCarousel: React.FC<ProfileCarouselProps> = ({ images, auth }) => {
   const [allCarouselItems, setAllCarouselItems] =
-    useState<CarouselBundle[]>(images);
+    useState<ICarouselBundle[]>(images);
   const [tempCarouselItems, setTempCarouselItems] =
-    useState<CarouselBundle[]>(images);
+    useState<ICarouselBundle[]>(images);
   const [currentIndex, setCurrentIndex] = useState<number | null>(null);
   const [currentImage, setCurrentImage] = useState<string>("");
   const [currentCaption, setCurrentCaption] = useState<string>("");
