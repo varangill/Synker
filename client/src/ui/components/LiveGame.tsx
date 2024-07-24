@@ -1,12 +1,12 @@
 import React from "react";
-import { ILobby } from "../../types/Lobby";
+import { Lobby } from "../../types/Lobby";
 import LiveLobby from "../components/LiveLobby";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilter } from "@fortawesome/free-solid-svg-icons";
 import { faArrowsRotate } from "@fortawesome/free-solid-svg-icons";
 
 interface LiveGameProps {
-  lobbyList: ILobby[];
+  lobbyList: Lobby[];
 }
 
 // TODO: functionality for filter and refresh buttons

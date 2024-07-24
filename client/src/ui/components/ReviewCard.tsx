@@ -1,11 +1,11 @@
 import React from "react";
 import ReviewBox from "./ReviewBox";
-import { IReview } from "../../types/Review";
+import { Review } from "../../types/Review";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 interface ReviewCardProps {
-  reviewsList: IReview[];
+  reviewsList: Review[];
 }
 
 const ReviewCard: React.FC<ReviewCardProps> = ({ reviewsList }) => {

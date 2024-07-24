@@ -1,10 +1,10 @@
-interface ICarouselBundle {
+type CarouselBundle = {
   image: string;
   caption: string;
-}
+};
 
-interface ICarousel {
-  images: ICarouselBundle[];
-}
+type Carousel = {
+  images: CarouselBundle[];
+};
 
-export type { ICarouselBundle, ICarousel };
+export type { CarouselBundle, Carousel };

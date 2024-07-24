@@ -2,14 +2,20 @@ import "../../App.css";
 import Navigation from "../components/Navigation.tsx";
 import GameSelection from "../components/GameSelection.tsx";
 import LiveGame from "../components/LiveGame.tsx";
-import CreateLobby from "../components/LobbyCreation.tsx";
-import testLobbies from "../../mockData/testLobbies.tsx";
+import CreateLobby from "../components/CreateLobby.tsx";
+import testLobbies from "../../mockData/testLobbies.json";
 import { useEffect, useState } from "react";
 import windowResize from "../utils/WindowResize.tsx";
+import { Lobby } from "../../types/Lobby.tsx";
+
+// TODO: Get a list of lobbies from the database
+const lobbyList: Lobby[] = testLobbies.map((lobby) => ({
+  ...lobby,
+  createdDate: new Date(lobby.createdDate),
+  startDate: new Date(lobby.startDate),
+}));
 
 export default function LivePage() {
-  // TODO: Get a list of lobbies from the database
-  const testLobbyList = testLobbies;
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 650);
 
   useEffect(() => {
@@ -35,7 +41,7 @@ export default function LivePage() {
         </div>
 
         <div className="live-game-container flex-grow h-full">
-          <LiveGame lobbyList={testLobbyList} />
+          <LiveGame lobbyList={lobbyList} />
         </div>
       </div>
     </div>

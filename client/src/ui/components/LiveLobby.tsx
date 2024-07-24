@@ -1,9 +1,9 @@
 import React from "react";
 import LobbyTag from "../components/LobbyTag";
-import { ILobby } from "../../types/Lobby";
+import { Lobby } from "../../types/Lobby";
 
 interface LiveLobbyProps {
-  lobby: ILobby;
+  lobby: Lobby;
 }
 
 const LiveLobby: React.FC<LiveLobbyProps> = ({ lobby }) => {
@@ -16,11 +16,7 @@ const LiveLobby: React.FC<LiveLobbyProps> = ({ lobby }) => {
         <div className="pfp-images flex flex-wrap mt-2 object-contain gap-3 w-2/3">
           {lobby.players.map((player) => (
             <div key={player.id}>
-              <img
-                className="pfp-1 max-h-20 max-w-20"
-                src={player.profilePicture}
-                alt={`${player.username}'s profile`}
-              />
+              <img className="pfp-1 h-20 w-20" src={player.profilePicture} />
               <div>{player.username}</div>
             </div>
           ))}

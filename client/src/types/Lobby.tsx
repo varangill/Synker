@@ -1,17 +1,17 @@
-import { IUser } from "./User";
-import { IGame } from "./Game";
+import { LobbyUser } from "./User";
+import { Game } from "./Game";
 
-interface ILobby {
+type Lobby = {
   id: string;
-  owner: IUser;
-  players: IUser[];
+  owner: LobbyUser;
+  players: LobbyUser[];
   createdDate: Date;
   startDate: Date;
   title: string;
   description: string;
   maxPlayers: number;
-  game: IGame;
+  game: Game;
   lobbyTags: string[];
-}
+};
 
-export type { ILobby };
+export type { Lobby };

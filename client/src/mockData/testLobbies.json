@@ -1,0 +1,106 @@
+[
+  {
+    "id": "1",
+    "owner": {
+      "id": "1",
+      "username": "User1",
+      "profilePicture": "/assets/images/background.png"
+    },
+    "players": [
+      {
+        "id": "1",
+        "username": "User1",
+        "profilePicture": "/assets/images/background.png"
+      },
+      {
+        "id": "2",
+        "username": "User2",
+        "profilePicture": "/assets/images/logo.png"
+      },
+      {
+        "id": "3",
+        "username": "User3",
+        "profilePicture": "/assets/images/nav-bar-background.png"
+      }
+    ],
+    "createdDate": "2024-01-01T00:00:00Z",
+    "startDate": "2024-01-01T00:00:00Z",
+    "title": "Competitive Match",
+    "description": "Looking for skilled players",
+    "maxPlayers": 5,
+    "game": {
+      "id": "1",
+      "name": "Valorant",
+      "genre": "FPS",
+      "color": "Red",
+      "picture": "/assets/images/background.png"
+    },
+    "lobbyTags": ["Tag1", "Tag2"]
+  },
+  {
+    "id": "2",
+    "owner": {
+      "id": "2",
+      "username": "User2",
+      "profilePicture": "/assets/images/logo.png"
+    },
+    "players": [
+      {
+        "id": "2",
+        "username": "User2",
+        "profilePicture": "/assets/images/logo.png"
+      },
+      {
+        "id": "3",
+        "username": "User3",
+        "profilePicture": "/assets/images/nav-bar-background.png"
+      }
+    ],
+    "createdDate": "2024-01-02T00:00:00Z",
+    "startDate": "2024-01-02T00:00:00Z",
+    "title": "Casual Play",
+    "description": "Just for fun",
+    "maxPlayers": 5,
+    "game": {
+      "id": "2",
+      "name": "League of Legends",
+      "genre": "MOBA",
+      "color": "Blue",
+      "picture": "/assets/images/logo.png"
+    },
+    "lobbyTags": ["Fun", "Chill"]
+  },
+  {
+    "id": "3",
+    "owner": {
+      "id": "3",
+      "username": "User3",
+      "profilePicture": "/assets/images/nav-bar-background.png"
+    },
+    "players": [
+      {
+        "id": "3",
+        "username": "User3",
+        "profilePicture": "/assets/images/nav-bar-background.png"
+      },
+      {
+        "id": "4",
+        "username": "User4",
+        "profilePicture": "/assets/images/sync-background.png"
+      }
+    ],
+    "createdDate": "2024-01-03T00:00:00Z",
+    "startDate": "2024-01-03T00:00:00Z",
+    "title": "Ranked Grind",
+    "description": "Climbing the ladder",
+    "maxPlayers": 5,
+    "game": {
+      "id": "3",
+      "name": "Apex Legends",
+      "genre": "Battle Royale",
+      "color": "Green",
+      "picture": "/assets/images/nav-bar-background.png"
+    },
+    "lobbyTags": ["Ranked", "Serious"]
+  }
+]

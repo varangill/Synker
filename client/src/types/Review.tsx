@@ -1,12 +1,12 @@
-import { IUser } from "./User";
+import { ReviewUser } from "./User";
 
-interface IReview {
+type Review = {
   id: string;
-  reviewer: IUser;
-  recipient: IUser;
+  reviewer: ReviewUser;
+  recipient: ReviewUser;
   rating: number;
   text: string;
   createdTime: Date;
-}
+};
 
-export type { IReview };
+export type { Review };
