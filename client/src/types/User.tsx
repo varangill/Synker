@@ -32,4 +32,10 @@ type SyncUser = {
   membership: string;
 };
 
-export type { User, LobbyUser, SyncUser };
+type ReviewUser = {
+  id: string;
+  username: string;
+  profilePicture: string;
+};
+
+export type { User, LobbyUser, SyncUser, ReviewUser };
