@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "../assets/styles/Navigation.css";
-import logo from "../assets/images/logo.png";
+import "../../assets/styles/Navigation.css";
+import logo from "../../assets/images/logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import windowResize from "../utils/WindowResize";
+import windowResize from "../../utils/WindowResize";
 import {
   faMagnifyingGlass,
   faUserGroup,

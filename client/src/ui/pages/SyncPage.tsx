@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "../../App.css";
-import Navigation from "../components/Navigation.tsx";
-import ProfileCard from "../components/ProfileCard.tsx";
+import Navigation from "../components/common/Navigation";
+import ProfileCard from "../components/sync/ProfileCard.tsx";
 import testUserList from "../../mockData/testUserList.json";
 import sync from "../assets/images/sync-background.png";
 import windowResize from "../utils/WindowResize.tsx";

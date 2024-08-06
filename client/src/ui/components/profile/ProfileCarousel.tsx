@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { CarouselBundle } from "../../types/Carousel";
-import CancelSaveButton from "./CancelSaveButton";
+import { CarouselBundle } from "../../../types/Carousel";
+import CancelSaveButton from "../common/CancelSaveButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEdit,

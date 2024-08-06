@@ -1,6 +1,6 @@
 import React from "react";
-import { Lobby } from "../../types/Lobby";
-import LiveLobby from "../components/LiveLobby";
+import { Lobby } from "../../../types/Lobby";
+import LiveLobby from "./LiveLobby";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilter } from "@fortawesome/free-solid-svg-icons";
 import { faArrowsRotate } from "@fortawesome/free-solid-svg-icons";

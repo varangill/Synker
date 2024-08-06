@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
-import Dropdown from "./Dropdown";
-import CancelSaveButton from "./CancelSaveButton";
+import Dropdown from "../common/Dropdown";
+import CancelSaveButton from "../common/CancelSaveButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
 import { faStar } from "@fortawesome/free-solid-svg-icons";

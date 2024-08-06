@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import CancelSaveButton from "./CancelSaveButton";
+import CancelSaveButton from "../common/CancelSaveButton";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 

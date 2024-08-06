@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Dropdown from "./Dropdown";
+import Dropdown from "../common/Dropdown";
 
 const GameSelection = () => {
   const [selectedOption, setselectedOption] = useState<(string | number)[]>([]);

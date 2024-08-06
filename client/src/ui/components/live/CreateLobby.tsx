@@ -1,10 +1,10 @@
 import { useState } from "react";
-import Dropdown from "./Dropdown";
+import Dropdown from "../common/Dropdown";
 import LobbyTag from "./LobbyTag";
-import { Lobby } from "../../types/Lobby";
-import testUserList from "../../mockData/testUserList.json"; // Assuming this is the list of test users
-import testGame from "../../mockData/testGame.json"; // Assuming this is the selected game
-import { User } from "../../types/User"; // Import the User type
+import { Lobby } from "../../../types/Lobby";
+import testUserList from "../../../mockData/testUserList.json"; // Assuming this is the list of test users
+import testGame from "../../../mockData/testGame.json"; // Assuming this is the selected game
+import { User } from "../../../types/User"; // Import the User type
 
 const CreateLobby = () => {
   const [selectedGame, setSelectedGame] = useState<string[]>([]);

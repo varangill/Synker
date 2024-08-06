@@ -1,5 +1,5 @@
 import("../../App.css");
-import Navigation from "../components/Navigation.tsx";
+import Navigation from "../components/common/Navigation";
 
 export default function FriendsPage() {
   return (

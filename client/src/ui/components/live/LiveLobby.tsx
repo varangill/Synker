@@ -1,6 +1,6 @@
 import React from "react";
-import LobbyTag from "../components/LobbyTag";
-import { Lobby } from "../../types/Lobby";
+import LobbyTag from "./LobbyTag";
+import { Lobby } from "../../../types/Lobby";
 
 interface LiveLobbyProps {
   lobby: Lobby;
