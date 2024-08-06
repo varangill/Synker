@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import Dropdown from "./Dropdown";
+import CancelSaveButton from "./CancelSaveButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
@@ -115,16 +116,16 @@ const Profile: React.FC<ProfileProps> = ({
   editGameTags.sort();
 
   return (
-    <div className="profile-container w-64 bg-gray-200 rounded-2xl flex flex-col h-fit max-h-128">
+    <div className="profile-container w-96 bg-gray-200 rounded-2xl flex flex-col h-fit">
       <input
         className="PFP-input hidden"
         type="file"
         accept="image/*"
         ref={imgInput}
         onChange={handleProfilePicChange}
-      ></input>
+      />
       <img
-        className={`profile-pic w-64 h-64 object-fit ${
+        className={`profile-pic w-96 h-96 object-fit ${
           isEditing == true ? "hover:opacity-30 cursor-pointer" : ""
         }`}
         src={isEditing ? tempProfilePic : editProfilePic}
@@ -143,7 +144,7 @@ const Profile: React.FC<ProfileProps> = ({
       {isEditing ? (
         <div>
           <textarea
-            className="desc text-white text-lg pl-3 pr-5 pt-2 w-full bg-gray-200 w-auto overflow-hidden text-ellipsis break-words"
+            className="desc text-white text-base pl-3 pr-5 pt-2 w-full bg-gray-200 w-auto overflow-hidden text-ellipsis break-words"
             value={tempDescription}
             onChange={(e) => setTempDescription(e.target.value)}
             style={{ height: "auto", overflowY: "hidden" }}
@@ -165,12 +166,12 @@ const Profile: React.FC<ProfileProps> = ({
           </div>
         </div>
       ) : (
-        <div className="desc text-white text-lg pl-3 pr-5 pt-2 w-full overflow-hidden text-ellipsis break-words">
+        <div className="desc text-white text-base pl-5 pr-5 pt-2 w-full overflow-hidden text-ellipsis break-words">
           {editDescription}
         </div>
       )}
 
-      <div className="tag-container p-3 flex flex-wrap gap-2">
+      <div className="tag-container p-5 flex flex-wrap gap-2">
         {(isEditing ? tempGameTags : editGameTags).map((option, index) => (
           <div
             key={index}
@@ -184,27 +185,17 @@ const Profile: React.FC<ProfileProps> = ({
           </div>
         ))}
       </div>
-      <div className="btn-container w-full justify-end flex pr-3">
+      <div className="btn-container w-full justify-end flex pr-5">
         {auth && !isEditing && (
           <button className="btn-edit" onClick={handleEditClick}>
             <FontAwesomeIcon icon={faEdit} className="text-white" />
           </button>
         )}
         {auth && isEditing && (
-          <div className="btn-container flex flex-row gap-1 pt-2">
-            <button
-              className="btn-cancel btn-save h-9 flex rounded-xl hover:bg-gray-100 items-center justify-center text-white font-bold w-24"
-              onClick={handleEditClick}
-            >
-              CANCEL
-            </button>
-            <button
-              className="btn-save h-9 flex rounded-xl bg-purple-100 hover:bg-purple-200 items-center justify-center text-white font-bold w-24"
-              onClick={handleSaveClick}
-            >
-              SAVE
-            </button>
-          </div>
+          <CancelSaveButton
+            onCancelClick={handleEditClick}
+            onSaveClick={handleSaveClick}
+          />
         )}
       </div>
       <div className="space pb-5"></div>

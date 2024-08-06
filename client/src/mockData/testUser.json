@@ -1,0 +1,24 @@
+{
+  "id": "2",
+  "gameTags": ["Fortnite", "Minecraft", "Overwatch", "Call of Duty"],
+  "username": "3zPz",
+  "description": "Vivamus lacinia odio vitae vestibulum vestibulum. Cras venenatis euismod malesuada.",
+  "profilePicture": "/assets/images/background.png",
+  "membership": "Platinum",
+  "auth": false,
+  "friends": ["3", "4", "5"],
+  "status": true,
+  "introvert": 2,
+  "observant": 5,
+  "thinking": 4,
+  "judging": 3,
+  "carousel": {
+    "images": [
+      {
+        "image": "/assets/images/background.png",
+        "caption": "The time when I got 7 fortune in TFT!"
+      },
+      { "image": "/assets/images/logo.png", "caption": "User Image 2" }
+    ]
+  }
+}

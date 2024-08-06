@@ -1,9 +1,10 @@
 import { useState } from "react";
 import Dropdown from "./Dropdown";
 import LobbyTag from "./LobbyTag";
-import { Lobby } from "../../models/Lobby";
-import testUser from "../../test/testUser";
-import testGame from "../../test/testGame";
+import { Lobby } from "../../types/Lobby";
+import testUserList from "../../mockData/testUserList.json"; // Assuming this is the list of test users
+import testGame from "../../mockData/testGame.json"; // Assuming this is the selected game
+import { User } from "../../types/User"; // Import the User type
 
 const CreateLobby = () => {
   const [selectedGame, setSelectedGame] = useState<string[]>([]);
@@ -28,6 +29,7 @@ const CreateLobby = () => {
   const isFormComplete = () => {
     return (
       selectedGame.length > 0 &&
+      selectedMaxPlayers.length > 0 &&
       selectedMaxPlayers[0] > 0 &&
       selectedTitle.trim() !== "" &&
       selectedDescription.trim() !== "" &&
@@ -54,9 +56,9 @@ const CreateLobby = () => {
       return;
     }
 
-    const id = "unique-lobby-id"; // Generate a unique ID for the lobby
-    const owner = testUser; // Use testUser as the owner
-    const playersList = [testUser];
+    const id = "unique-lobby-id"; // TODO: Generate a unique ID for the lobby
+    const owner: User = testUserList[0]; // TODO: Make current user the owner of the lobby
+    const playersList: User[] = [];
     const createdDate = new Date();
     const startDate = new Date(); // Replace with actual start date if needed
     const title = selectedTitle || "Default Title"; // Assuming the first option is the game title
@@ -64,18 +66,18 @@ const CreateLobby = () => {
     const maxPlayers = selectedMaxPlayers[0]; // Replace with actual max players if needed
     const game = testGame; // Use testGame as the selected game
 
-    const newLobby = new Lobby(
+    const newLobby: Lobby = {
       id,
       owner,
-      playersList,
+      players: playersList,
       createdDate,
       startDate,
       title,
       description,
       maxPlayers,
       game,
-      selectedTags
-    );
+      lobbyTags: selectedTags,
+    };
 
     // Log the new Lobby object
     console.log(newLobby);
@@ -134,7 +136,7 @@ const CreateLobby = () => {
               <LobbyTag key={index} tagName={tag} />
             ))}
           </div>
-        </div>{" "}
+        </div>
         <div className="title-container flex-grow mb-4">
           <div className="text-white font-bold mb-1 text-sm">TITLE</div>
           <input

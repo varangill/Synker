@@ -1,0 +1,82 @@
+[
+  {
+    "id": "1",
+    "reviewer": {
+      "id": "101",
+      "username": "UserA",
+      "profilePicture": "/assets/images/background.png"
+    },
+    "recipient": {
+      "id": "102",
+      "username": "UserB",
+      "profilePicture": "/assets/images/background.png"
+    },
+    "rating": 4,
+    "text": "Great collaboration and very helpful!",
+    "createdTime": "2023-07-01T12:00:00Z"
+  },
+  {
+    "id": "2",
+    "reviewer": {
+      "id": "103",
+      "username": "UserC",
+      "profilePicture": "/assets/images/background.png"
+    },
+    "recipient": {
+      "id": "104",
+      "username": "UserD",
+      "profilePicture": "/assets/images/background.png"
+    },
+    "rating": 5,
+    "text": "Excellent work, delivered on time!",
+    "createdTime": "2023-07-02T14:30:00Z"
+  },
+  {
+    "id": "3",
+    "reviewer": {
+      "id": "105",
+      "username": "UserE",
+      "profilePicture": "/assets/images/background.png"
+    },
+    "recipient": {
+      "id": "106",
+      "username": "UserF",
+      "profilePicture": "/assets/images/background.png"
+    },
+    "rating": 3,
+    "text": "Good effort, but could improve on communication.",
+    "createdTime": "2023-07-03T09:15:00Z"
+  },
+  {
+    "id": "4",
+    "reviewer": {
+      "id": "107",
+      "username": "UserG",
+      "profilePicture": "/assets/images/background.png"
+    },
+    "recipient": {
+      "id": "108",
+      "username": "UserH",
+      "profilePicture": "/assets/images/background.png"
+    },
+    "rating": 2,
+    "text": "Had some issues with meeting deadlines.",
+    "createdTime": "2023-07-04T11:45:00Z"
+  },
+  {
+    "id": "5",
+    "reviewer": {
+      "id": "109",
+      "username": "UserI",
+      "profilePicture": "/assets/images/background.png"
+    },
+    "recipient": {
+      "id": "110",
+      "username": "UserJ",
+      "profilePicture": "/assets/images/background.png"
+    },
+    "rating": 5,
+    "text": "Outstanding performance, highly recommended!",
+    "createdTime": "2023-07-05T16:00:00Z"
+  }
+]
