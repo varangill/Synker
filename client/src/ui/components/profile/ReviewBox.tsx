@@ -1,10 +1,10 @@
-import { ReviewUser } from "../../types/User";
+import { GeneralUser } from "../../../types/User";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 interface ReviewProps {
-  reviewer: ReviewUser;
-  recipient: ReviewUser;
+  reviewer: GeneralUser;
+  recipient: GeneralUser;
   rating: number;
   text: string;
   created_time: Date;

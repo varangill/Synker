@@ -17,12 +17,6 @@ type User = {
   carousel: Carousel;
 };
 
-type LobbyUser = {
-  id: string;
-  username: string;
-  profilePicture: string;
-};
-
 type SyncUser = {
   id: string;
   username: string;
@@ -32,10 +26,10 @@ type SyncUser = {
   membership: string;
 };
 
-type ReviewUser = {
+type GeneralUser = {
   id: string;
   username: string;
   profilePicture: string;
 };
 
-export type { User, LobbyUser, SyncUser, ReviewUser };
+export type { User, SyncUser, GeneralUser };

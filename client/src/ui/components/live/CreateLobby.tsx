@@ -4,7 +4,7 @@ import LobbyTag from "./LobbyTag";
 import { Lobby } from "../../../types/Lobby";
 import testUserList from "../../../mockData/testUserList.json"; // Assuming this is the list of test users
 import testGame from "../../../mockData/testGame.json"; // Assuming this is the selected game
-import { User } from "../../../types/User"; // Import the User type
+import { GeneralUser } from "../../../types/User"; // Import the User type
 
 const CreateLobby = () => {
   const [selectedGame, setSelectedGame] = useState<string[]>([]);
@@ -57,8 +57,8 @@ const CreateLobby = () => {
     }
 
     const id = "unique-lobby-id"; // TODO: Generate a unique ID for the lobby
-    const owner: User = testUserList[0]; // TODO: Make current user the owner of the lobby
-    const playersList: User[] = [];
+    const owner: GeneralUser = testUserList[0]; // TODO: Make current user the owner of the lobby
+    const playersList: GeneralUser[] = [];
     const createdDate = new Date();
     const startDate = new Date(); // Replace with actual start date if needed
     const title = selectedTitle || "Default Title"; // Assuming the first option is the game title
