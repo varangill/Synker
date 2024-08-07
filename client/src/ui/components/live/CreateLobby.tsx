@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Dropdown from "../common/Dropdown";
+import Title from "../common/Title";
 import LobbyTag from "./LobbyTag";
 import { Lobby } from "../../../types/Lobby";
 import testUserList from "../../../mockData/testUserList.json"; // Assuming this is the list of test users
@@ -97,9 +98,7 @@ const CreateLobby = () => {
 
   return (
     <div className="lobby-creation-container rounded-2xl flex flex-col items-center bg-gray-200 w-full h-full">
-      <div className="lobby-creation-title flex text-white font-bold items-center p-2 xl:text-2xl lg:text-2xl md:text-base sm:text-xl">
-        LOBBY CREATION
-      </div>
+      <Title title="CREATE LOBBY" />
       <div className="title-line w-full bg-gray-100 h-1 mb-4"></div>
       <div className="flex flex-col justify-around w-4/5 h-full overflow-y-auto no-scrollbar pb-8">
         <div className="dropdown-container mb-4">

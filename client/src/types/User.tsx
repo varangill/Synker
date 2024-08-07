@@ -32,4 +32,11 @@ type GeneralUser = {
   profilePicture: string;
 };
 
-export type { User, SyncUser, GeneralUser };
+type FriendUser = {
+  id: string;
+  username: string;
+  profilePicture: string;
+  active: boolean;
+};
+
+export type { User, SyncUser, GeneralUser, FriendUser };

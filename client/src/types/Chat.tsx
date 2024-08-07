@@ -1,9 +1,15 @@
-import { GeneralUser } from "./User";
+import { GeneralUser, FriendUser } from "./User";
 
 type Message = {
   id: string;
+  content: string;
   sender: GeneralUser;
   time: Date;
+};
+
+type Friend = {
+  friend: FriendUser;
+  lastMessageSent: Date;
 };
 
 type Chat = {
@@ -11,7 +17,6 @@ type Chat = {
   members: GeneralUser[];
   active: boolean;
   messages: Message[];
-  lastMessageSent: Date;
 };
 
-export type { Chat };
+export type { Chat, Friend };

@@ -1,6 +1,7 @@
 import React from "react";
 import { Lobby } from "../../../types/Lobby";
 import LiveLobby from "./LiveLobby";
+import Title from "../common/Title";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilter } from "@fortawesome/free-solid-svg-icons";
 import { faArrowsRotate } from "@fortawesome/free-solid-svg-icons";
@@ -13,13 +14,11 @@ interface LiveGameProps {
 
 const LiveGame: React.FC<LiveGameProps> = ({ lobbyList }) => {
   return (
-    <div className="live-game-container w-full bg-gray-200 text-white rounded-2xl h-full flex flex-col">
-      <div className="font-bold w-full text-center items-center p-2 xl:text-2xl lg:text-2xl md:text-base sm:text-xl">
-        LIVE GAME
-      </div>
+    <div className="live-game-container rounded-2xl flex flex-col items-center bg-gray-200 w-full h-full text-white">
+      <Title title="LIVE GAME" />
       <div className="h-1 bg-gray-100 w-full"></div>
-      <div className="flex justify-between items-center m-2">
-        <div className="flex items-center gap-3 ml-4">
+      <div className="flex justify-between items-center m-2 w-full">
+        <div className="flex w-full gap-3 ml-4">
           <button className="filter-button flex items-center mr-4">
             <FontAwesomeIcon icon={faFilter} />
             <div className="fas fa-filter mr-2" />
@@ -33,7 +32,7 @@ const LiveGame: React.FC<LiveGameProps> = ({ lobbyList }) => {
         </div>
       </div>
       <div className="h-1 bg-gray-100 w-full"></div>
-      <div className="overflow-y-scroll no-scrollbar flex-grow mb-8">
+      <div className="overflow-y-scroll no-scrollbar flex-grow mb-8 w-full">
         {lobbyList.map((lobby) => (
           <LiveLobby key={lobby.id} lobby={lobby} />
         ))}

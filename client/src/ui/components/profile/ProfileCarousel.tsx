@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import Carousel from "react-multi-carousel";
+import Title from "../common/Title";
 import "react-multi-carousel/lib/styles.css";
 import { CarouselBundle } from "../../../types/Carousel";
 import CancelSaveButton from "../common/CancelSaveButton";
@@ -158,9 +159,7 @@ const ProfileCarousel: React.FC<ProfileCarouselProps> = ({ images, auth }) => {
 
   return (
     <div className="rounded-2xl flex flex-col items-center bg-gray-200 text-white w-full">
-      <div className="title flex text-white font-bold items-center p-2 xl:text-2xl lg:text-2xl md:text-base sm:text-xl">
-        PROFILE
-      </div>
+      <Title title="PROFILE" />
       <div className="title-line w-full bg-gray-100 h-1"></div>
       <div className={`w-full h-fit p-5 ${auth ? "h-fit" : ""}`}>
         <Carousel

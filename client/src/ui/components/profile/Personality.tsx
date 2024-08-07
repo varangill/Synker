@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import CancelSaveButton from "../common/CancelSaveButton";
+import Title from "../common/Title";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 
@@ -107,9 +108,7 @@ const Personality: React.FC<PersonalityProps> = ({
 
   return (
     <div className="game-selection-container rounded-2xl flex flex-col items-center bg-gray-200 w-full">
-      <div className="title text-white font-bold items-center pt-2 pb-2 xl:text-2xl lg:text-2xl md:text-base sm:text-xl">
-        PERSONALITY
-      </div>
+      <Title title="PERSONALITY" />
       <div className="title-line w-full bg-gray-100 h-1"></div>
       <div className="w-full flex flex-col items-center justify-center p-5">
         <div className="w-full mb-10">
