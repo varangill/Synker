@@ -1,0 +1,74 @@
+[
+  {
+    "friend": {
+      "id": "1",
+      "username": "Rensuo",
+      "profilePicture": "/assets/images/background.png",
+      "active": true
+    },
+    "lastMessageSent": "2024-08-08T12:30:00Z"
+  },
+  {
+    "friend": {
+      "id": "2",
+      "username": "GamerGirl",
+      "profilePicture": "/assets/images/background.png",
+      "active": true
+    },
+    "lastMessageSent": "2024-08-07T15:45:00Z"
+  },
+  {
+    "friend": {
+      "id": "3",
+      "username": "ProPlayer",
+      "profilePicture": "/assets/images/background.png",
+      "active": false
+    },
+    "lastMessageSent": "2024-08-06T09:15:00Z"
+  },
+  {
+    "friend": {
+      "id": "4",
+      "username": "MMOExpert",
+      "profilePicture": "/assets/images/background.png",
+      "active": true
+    },
+    "lastMessageSent": "2024-08-05T14:00:00Z"
+  },
+  {
+    "friend": {
+      "id": "5",
+      "username": "CasualGamer",
+      "profilePicture": "/assets/images/background.png",
+      "active": true
+    },
+    "lastMessageSent": "2024-08-04T11:20:00Z"
+  },
+  {
+    "friend": {
+      "id": "6",
+      "username": "Kelly",
+      "profilePicture": "/assets/images/background.png",
+      "active": false
+    },
+    "lastMessageSent": "2024-08-03T16:45:00Z"
+  },
+  {
+    "friend": {
+      "id": "6",
+      "username": "Kelly",
+      "profilePicture": "/assets/images/background.png",
+      "active": false
+    },
+    "lastMessageSent": "2024-08-03T16:45:00Z"
+  },
+  {
+    "friend": {
+      "id": "6",
+      "username": "Kelly",
+      "profilePicture": "/assets/images/background.png",
+      "active": false
+    },
+    "lastMessageSent": "2024-08-03T16:45:00Z"
+  }
+]
