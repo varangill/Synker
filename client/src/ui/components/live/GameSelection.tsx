@@ -42,9 +42,7 @@ const GameSelection = () => {
           className="btn-default h-9 flex rounded-xl bg-purple-100 hover:bg-purple-200 w-full items-center justify-center mt-3 mb-6"
           onClick={handleFindClick}
         >
-          <div className="find-button z-0 flex btn-text text-white h-8 font-bold items-center xl:text-xl lg:text-xl md:text-base sm:text-base">
-            FIND
-          </div>
+          <div className="btn-text z-0">FIND</div>
         </button>
       </div>
     </div>

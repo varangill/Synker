@@ -12,3 +12,11 @@
     scrollbar-width: none; /* Firefox */
   }
 }
+
+/* Custom global styles */
+:root {
+  --btn-px: 1rem;
+  --btn-text-color: #f8f0fb;
+}
+
+/* Additional global styles */

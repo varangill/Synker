@@ -12,6 +12,7 @@ const FriendsList: React.FC<FriendsListProps> = ({ friend }) => {
   const [friendList, setFriendList] = useState(friend);
   const [filter, setFilter] = useState("");
   const [addFriend, setAddFriend] = useState("");
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 650);
 
   useEffect(() => {
     const filteredFriends = friend.filter((user) =>
@@ -44,7 +45,7 @@ const FriendsList: React.FC<FriendsListProps> = ({ friend }) => {
           <button key={index}>
             <div className="friend flex flex-row gap-2 items-center mt-4 mb-4">
               <img src={user.friend.profilePicture} className="h-20 w-20"></img>
-              <div className="font-bold text-xl">{user.friend.username}</div>
+              <div className="btn-text">{user.friend.username}</div>
             </div>
             <div className="w-full bg-gray-100 h-1"></div>
           </button>
@@ -57,7 +58,7 @@ const FriendsList: React.FC<FriendsListProps> = ({ friend }) => {
           value={addFriend}
           onChange={(e) => setAddFriend(e.target.value)}
           placeholder="Add Friend"
-          className="bg-gray-100 w-3/5 h-10 rounded-xl pl-4 text-white mr-10"
+          className="bg-gray-100 w-4/5 h-10 rounded-xl pl-4 text-white mr-10"
         ></input>
         <button onClick={addFriendClick}>
           <FontAwesomeIcon icon={faUserPlus} className="text-xl" />

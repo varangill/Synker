@@ -83,7 +83,7 @@ const Navigation = () => {
         {isMobile && (
           <FontAwesomeIcon
             icon={faBars}
-            className="text-white text-2xl"
+            className="text-purple-100 text-2xl"
             onClick={toggleMenu}
           />
         )}
@@ -107,9 +107,7 @@ const Navigation = () => {
                 icon={faMagnifyingGlass}
                 className="object-contain h-2/4 w-5 text-white p-4"
               />
-              <div className="flex btn-text text-white h-8 font-bold items-center text-base lg:text-xl sm:text-sm ml-2">
-                SYNC
-              </div>
+              <div className="btn-text">SYNC</div>
             </button>
             <button
               className={`btn-default h-9 flex rounded-xl w-4/5 items-center mb-5 ${
@@ -123,9 +121,7 @@ const Navigation = () => {
                 icon={faUserGroup}
                 className="object-contain h-2/4 w-5 text-white p-4"
               />
-              <div className="flex btn-text text-white h-8 font-bold items-center text-base lg:text-xl sm:text-sm ml-2">
-                FRIENDS
-              </div>
+              <div className="btn-text">FRIENDS</div>
             </button>
             <button
               className={`btn-default h-9 flex rounded-xl w-4/5 items-center mb-5 ${
@@ -139,9 +135,7 @@ const Navigation = () => {
                 icon={faCirclePlay}
                 className="object-contain h-2/4 w-5 text-white p-4"
               />
-              <div className="flex btn-text text-white h-8 font-bold items-center text-base lg:text-xl sm:text-sm ml-2">
-                LIVE
-              </div>
+              <div className="btn-text">LIVE</div>
             </button>
           </div>
 
@@ -159,9 +153,7 @@ const Navigation = () => {
                 icon={faUser}
                 className="object-contain h-2/4 w-5 text-white p-4"
               />
-              <div className="flex btn-text text-white h-8 font-bold items-center text-base lg:text-xl sm:text-sm ml-2">
-                PROFILE
-              </div>
+              <div className="btn-text">PROFILE</div>
             </button>
             <div className="flex flex-row w-4/5 justify-between">
               <button
@@ -172,9 +164,7 @@ const Navigation = () => {
                   icon={faRightFromBracket}
                   className="object-contain h-2/4 w-5 text-white p-4"
                 />
-                <div className="flex btn-text text-white h-8 font-bold items-center text-base lg:text-xl sm:text-sm ml-2">
-                  LOGOUT
-                </div>
+                <div className="btn-text">LOGOUT</div>
               </button>
               <button
                 className="btn-default h-9 flex rounded-xl items-center mb-5 hover:bg-gray-300"
@@ -189,6 +179,7 @@ const Navigation = () => {
           </div>
         </div>
       )}
+      {isMobile && <div className="bg-purple-100 w-full h-1"></div>}
     </div>
   );
 };
