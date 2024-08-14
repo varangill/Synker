@@ -14,7 +14,7 @@ export default {
       pink: "#ff49db",
       orange: "#ff7849",
       green: "#13ce66",
-      red: "#d1001f",
+      red: "#F72536",
       gold: "#F2841A",
       yellow: "#e5de00",
       gray: {

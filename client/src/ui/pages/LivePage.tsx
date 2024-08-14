@@ -26,10 +26,10 @@ export default function LivePage() {
     <div className="App flex flex-row bg-gray-100 h-screen">
       <Navigation />
 
-      <div className="live-game-screen-container flex w-full flex-wrap overflow-x-hidden p-10 gap-10 h-full justify-center">
+      <div className="live-game-screen-container flex w-full flex-wrap overflow-x-hidden p-10 gap-10 h-full justify-center no-scrollbar">
         <div
           className={`xl:w-1/5 lg:w-1/3 md:w-full sm:w-full flex flex-col ${
-            isMobile ? "mt-20" : ""
+            isMobile ? "pt-[90px]" : ""
           }`}
         >
           <div className="game-selection-container w-full h-1/4 max-h-52 mb-5">

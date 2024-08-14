@@ -9,14 +9,26 @@ type Message = {
 
 type Friend = {
   friend: FriendUser;
+  unreadCount: number;
+  lastMessageSent: Date;
+};
+
+type GroupChat = {
+  id: string;
+  members: FriendUser[];
+  chatName: string;
+  chatProfilePicture: string;
+  unreadCount: number;
   lastMessageSent: Date;
 };
 
 type Chat = {
   id: string;
-  members: GeneralUser[];
-  active: boolean;
+  chatName: string;
+  members: FriendUser[];
   messages: Message[];
 };
 
-export type { Chat, Friend };
+type ChatList = Friend | GroupChat;
+
+export type { Chat, Friend, GroupChat, ChatList };

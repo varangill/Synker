@@ -6,7 +6,8 @@
       "profilePicture": "/assets/images/background.png",
       "active": true
     },
-    "lastMessageSent": "2024-08-08T12:30:00Z"
+    "lastMessageSent": "2024-08-08T12:30:00Z",
+    "unreadCount": 2
   },
   {
     "friend": {
@@ -15,7 +16,8 @@
       "profilePicture": "/assets/images/background.png",
       "active": true
     },
-    "lastMessageSent": "2024-08-07T15:45:00Z"
+    "lastMessageSent": "2024-08-07T15:45:00Z",
+    "unreadCount": 0
   },
   {
     "friend": {
@@ -24,7 +26,8 @@
       "profilePicture": "/assets/images/background.png",
       "active": false
     },
-    "lastMessageSent": "2024-08-06T09:15:00Z"
+    "lastMessageSent": "2024-08-06T09:15:00Z",
+    "unreadCount": 3
   },
   {
     "friend": {
@@ -33,7 +36,8 @@
       "profilePicture": "/assets/images/background.png",
       "active": true
     },
-    "lastMessageSent": "2024-08-05T14:00:00Z"
+    "lastMessageSent": "2024-08-05T14:00:00Z",
+    "unreadCount": 0
   },
   {
     "friend": {
@@ -42,7 +46,8 @@
       "profilePicture": "/assets/images/background.png",
       "active": true
     },
-    "lastMessageSent": "2024-08-04T11:20:00Z"
+    "lastMessageSent": "2024-08-04T11:20:00Z",
+    "unreadCount": 1
   },
   {
     "friend": {
@@ -51,24 +56,103 @@
       "profilePicture": "/assets/images/background.png",
       "active": false
     },
-    "lastMessageSent": "2024-08-03T16:45:00Z"
+    "lastMessageSent": "2024-08-03T16:45:00Z",
+    "unreadCount": 4
   },
   {
-    "friend": {
-      "id": "6",
-      "username": "Kelly",
-      "profilePicture": "/assets/images/background.png",
-      "active": false
-    },
-    "lastMessageSent": "2024-08-03T16:45:00Z"
+    "id": "7",
+    "members": [
+      {
+        "id": "1",
+        "username": "Rensuo",
+        "profilePicture": "/assets/images/background.png",
+        "active": true
+      },
+      {
+        "id": "3",
+        "username": "ProPlayer",
+        "profilePicture": "/assets/images/background.png",
+        "active": false
+      }
+    ],
+    "chatName": "Duo Queue",
+    "chatProfilePicture": "/assets/images/background.png",
+    "lastMessageSent": "2024-08-08T13:00:00Z",
+    "unreadCount": 5
   },
   {
-    "friend": {
-      "id": "6",
-      "username": "Kelly",
-      "profilePicture": "/assets/images/background.png",
-      "active": false
-    },
-    "lastMessageSent": "2024-08-03T16:45:00Z"
+    "id": "8",
+    "members": [
+      {
+        "id": "2",
+        "username": "GamerGirl",
+        "profilePicture": "/assets/images/background.png",
+        "active": true
+      },
+      {
+        "id": "4",
+        "username": "MMOExpert",
+        "profilePicture": "/assets/images/background.png",
+        "active": true
+      },
+      {
+        "id": "5",
+        "username": "CasualGamer",
+        "profilePicture": "/assets/images/background.png",
+        "active": true
+      }
+    ],
+    "chatName": "Gaming Squad",
+    "chatProfilePicture": "/assets/images/background.png",
+    "lastMessageSent": "2024-08-07T16:30:00Z",
+    "unreadCount": 7
+  },
+  {
+    "id": "9",
+    "members": [
+      {
+        "id": "6",
+        "username": "Kelly",
+        "profilePicture": "/assets/images/background.png",
+        "active": false
+      },
+      {
+        "id": "5",
+        "username": "CasualGamer",
+        "profilePicture": "/assets/images/background.png",
+        "active": true
+      }
+    ],
+    "chatName": "Casual Conversations",
+    "chatProfilePicture": "/assets/images/background.png",
+    "lastMessageSent": "2024-08-06T18:45:00Z",
+    "unreadCount": 2
+  },
+  {
+    "id": "10",
+    "members": [
+      {
+        "id": "1",
+        "username": "Rensuo",
+        "profilePicture": "/assets/images/background.png",
+        "active": true
+      },
+      {
+        "id": "2",
+        "username": "GamerGirl",
+        "profilePicture": "/assets/images/background.png",
+        "active": true
+      },
+      {
+        "id": "4",
+        "username": "MMOExpert",
+        "profilePicture": "/assets/images/background.png",
+        "active": true
+      }
+    ],
+    "chatName": "Strategy Group",
+    "chatProfilePicture": "/assets/images/background.png",
+    "lastMessageSent": "2024-08-05T14:45:00Z",
+    "unreadCount": 9
   }
 ]
