@@ -45,8 +45,9 @@ const FriendsList: React.FC<FriendsListProps> = ({
     // If addFriend is not found in database, display error
     if (addFriend == "") {
       showToast("Username not found!", "error");
+    } else {
+      showToast("Friend Request sent!", "success");
     }
-    showToast("Friend Request sent!", "success");
   };
 
   return (
