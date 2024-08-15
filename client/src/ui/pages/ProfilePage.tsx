@@ -27,7 +27,7 @@ export default function ProfilePage() {
   }, []);
 
   return (
-    <div className="App flex flex-row bg-gray-100 h-screen">
+    <div className="App flex flex-row bg-primary-100 h-screen">
       <Navigation />
       <div className="profile-screen-container flex flex-row w-full h-full flex-wrap overflow-y-scroll overflow-x-hidden p-10 gap-10 justify-center no-scrollbar">
         <div>

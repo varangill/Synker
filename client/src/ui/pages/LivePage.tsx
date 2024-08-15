@@ -23,7 +23,7 @@ export default function LivePage() {
   }, []);
 
   return (
-    <div className="App flex flex-row bg-gray-100 h-screen">
+    <div className="App flex flex-row bg-primary-100 h-screen">
       <Navigation />
 
       <div className="live-game-screen-container flex w-full flex-wrap overflow-x-hidden p-10 gap-10 h-full justify-center no-scrollbar">

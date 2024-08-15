@@ -17,13 +17,13 @@ export default {
       red: "#F72536",
       gold: "#F2841A",
       yellow: "#e5de00",
-      gray: {
+      primary: {
         100: "#302D37",
         200: "#211A1D",
         300: "#2C2932",
         400: "#6E676E",
       },
-      purple: {
+      accent: {
         100: "#6320EE",
         200: "#7236EF",
       },

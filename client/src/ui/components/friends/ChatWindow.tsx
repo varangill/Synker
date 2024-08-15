@@ -15,8 +15,8 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ chat }) => {
   }, []);
   return (
     <div
-      className={` flex flex-col items-center bg-gray-200 w-full h-full ${
-        isMobile ? "" : "rounded-2xl border-l-4 border-b-4 border-purple-100"
+      className={` flex flex-col items-center bg-primary-200 w-full h-full ${
+        isMobile ? "" : "rounded-2xl border-l-4 border-b-4 border-accent-100"
       }`}
     >
       {chat.messages.map((message, index) => (

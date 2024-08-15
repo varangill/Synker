@@ -107,9 +107,9 @@ const Personality: React.FC<PersonalityProps> = ({
   };
 
   return (
-    <div className="game-selection-container rounded-2xl flex flex-col items-center bg-gray-200 w-full">
+    <div className="game-selection-container rounded-2xl flex flex-col items-center bg-primary-200 w-full">
       <Title title="PERSONALITY" />
-      <div className="title-line w-full bg-gray-100 h-1"></div>
+      <div className="title-line w-full bg-primary-100 h-1"></div>
       <div className="w-full flex flex-col items-center justify-center p-5">
         <div className="w-full mb-10">
           <div className="flex justify-between text-white font-bold text-sm mb-4">

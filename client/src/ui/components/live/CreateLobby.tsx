@@ -97,9 +97,9 @@ const CreateLobby = () => {
   };
 
   return (
-    <div className="lobby-creation-container rounded-2xl flex flex-col items-center bg-gray-200 w-full h-full">
+    <div className="lobby-creation-container rounded-2xl flex flex-col items-center bg-primary-200 w-full h-full">
       <Title title="CREATE LOBBY" />
-      <div className="title-line w-full bg-gray-100 h-1 mb-4"></div>
+      <div className="title-line w-full bg-primary-100 h-1 mb-4"></div>
       <div className="flex flex-col justify-around w-4/5 h-full overflow-y-auto no-scrollbar pb-8">
         <div className="dropdown-container mb-4">
           <div className="text-white font-bold mb-1 text-sm">GAME</div>
@@ -140,7 +140,7 @@ const CreateLobby = () => {
           <div className="text-white font-bold mb-1 text-sm">TITLE</div>
           <input
             type="text"
-            className="title-input w-full p-2 rounded-md bg-gray-100 text-gray-900 text-white"
+            className="title-input w-full p-2 rounded-md bg-primary-100 text-primary-900 text-white"
             placeholder="Enter lobby title..."
             value={selectedTitle}
             onChange={(e) => setSelectedTitle(e.target.value)}
@@ -149,7 +149,7 @@ const CreateLobby = () => {
         <div className="description-container flex-grow mb-4">
           <div className="text-white font-bold mb-1 text-sm">DESCRIPTION</div>
           <textarea
-            className="description-input w-full p-2 rounded-md bg-gray-100 text-gray-900 text-white"
+            className="description-input w-full p-2 rounded-md bg-primary-100 text-primary-900 text-white"
             placeholder="Enter lobby description..."
             value={selectedDescription}
             style={{ height: "auto", overflowY: "hidden" }}
@@ -166,7 +166,7 @@ const CreateLobby = () => {
           <div className="h-12" />
         )}
         <button
-          className="btn-default h-9 flex rounded-xl bg-purple-100 hover:bg-purple-200 w-full items-center justify-center"
+          className="btn-default h-9 flex rounded-xl bg-accent-100 hover:bg-accent-200 w-full items-center justify-center"
           onClick={handleFindClick}
         >
           <div className="btn-text z-0 flex btn-text text-white h-8 font-bold items-center xl:text-xl lg:text-xl md:text-base sm:text-base">

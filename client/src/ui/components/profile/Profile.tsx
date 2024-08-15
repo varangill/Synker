@@ -116,7 +116,7 @@ const Profile: React.FC<ProfileProps> = ({
   editGameTags.sort();
 
   return (
-    <div className="profile-container w-96 bg-gray-200 rounded-2xl flex flex-col h-fit">
+    <div className="profile-container w-96 bg-primary-200 rounded-2xl flex flex-col h-fit">
       <input
         className="PFP-input hidden"
         type="file"
@@ -140,11 +140,11 @@ const Profile: React.FC<ProfileProps> = ({
           Platinum Member
         </div>
       )}
-      <div className="line bg-gray-100 w-full h-1"></div>
+      <div className="line bg-primary-100 w-full h-1"></div>
       {isEditing ? (
         <div>
           <textarea
-            className="desc text-white text-base pl-3 pr-5 pt-2 w-full bg-gray-200 w-auto overflow-hidden text-ellipsis break-words"
+            className="desc text-white text-base pl-3 pr-5 pt-2 w-full bg-primary-200 w-auto overflow-hidden text-ellipsis break-words"
             value={tempDescription}
             onChange={(e) => setTempDescription(e.target.value)}
             style={{ height: "auto", overflowY: "hidden" }}
@@ -175,10 +175,12 @@ const Profile: React.FC<ProfileProps> = ({
         {(isEditing ? tempGameTags : editGameTags).map((option, index) => (
           <div
             key={index}
-            className="w-fit rounded-xl p-1 pl-2 pr-2 h-8 bg-gray-100"
+            className="w-fit rounded-xl p-1 pl-2 pr-2 h-8 bg-primary-100"
           >
             <div
-              className={`${getColor() || "text-gray-800"} whitespace-nowrap`}
+              className={`${
+                getColor() || "text-primary-800"
+              } whitespace-nowrap`}
             >
               {option}
             </div>

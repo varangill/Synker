@@ -25,9 +25,9 @@ const GameSelection = () => {
   };
 
   return (
-    <div className="game-selection-container rounded-2xl flex flex-col items-center bg-gray-200 w-full h-fit">
+    <div className="game-selection-container rounded-2xl flex flex-col items-center bg-primary-200 w-full h-fit">
       <Title title="GAME SELECTION" />
-      <div className="title-line w-full bg-gray-100 h-1"></div>
+      <div className="title-line w-full bg-primary-100 h-1"></div>
       <div className="flex flex-col justify-evenly w-4/5 h-full">
         <div className="dropdown-container h-8 z-10 mt-6 mb-3">
           <Dropdown
@@ -39,7 +39,7 @@ const GameSelection = () => {
           />
         </div>
         <button
-          className="btn-default h-9 flex rounded-xl bg-purple-100 hover:bg-purple-200 w-full items-center justify-center mt-3 mb-6"
+          className="btn-default h-9 flex rounded-xl bg-accent-100 hover:bg-accent-200 w-full items-center justify-center mt-3 mb-6"
           onClick={handleFindClick}
         >
           <div className="btn-text z-0">FIND</div>

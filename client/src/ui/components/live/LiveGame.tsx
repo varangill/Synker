@@ -14,9 +14,9 @@ interface LiveGameProps {
 
 const LiveGame: React.FC<LiveGameProps> = ({ lobbyList }) => {
   return (
-    <div className="live-game-container rounded-2xl flex flex-col items-center bg-gray-200 w-full h-full text-white">
+    <div className="live-game-container rounded-2xl flex flex-col items-center bg-primary-200 w-full h-full text-white">
       <Title title="LIVE GAME" />
-      <div className="h-1 bg-gray-100 w-full"></div>
+      <div className="h-1 bg-primary-100 w-full"></div>
       <div className="flex justify-between items-center m-2 w-full">
         <div className="flex w-full gap-3 ml-4">
           <button className="filter-button flex items-center mr-4">
@@ -31,7 +31,7 @@ const LiveGame: React.FC<LiveGameProps> = ({ lobbyList }) => {
           </button>
         </div>
       </div>
-      <div className="h-1 bg-gray-100 w-full"></div>
+      <div className="h-1 bg-primary-100 w-full"></div>
       <div className="overflow-y-scroll no-scrollbar flex-grow mb-8 w-full">
         {lobbyList.map((lobby) => (
           <LiveLobby key={lobby.id} lobby={lobby} />

@@ -33,7 +33,7 @@ export default function FriendsPage() {
   };
 
   return (
-    <div className="App flex flex-row bg-gray-100 h-screen">
+    <div className="App flex flex-row bg-primary-100 h-screen">
       <Navigation />
       <div
         className={`friends-screen-container flex w-full flex-wrap overflow-x-hidden h-full justify-center gap-10 ${
