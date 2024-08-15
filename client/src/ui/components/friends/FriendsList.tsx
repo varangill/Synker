@@ -22,6 +22,7 @@ const FriendsList: React.FC<FriendsListProps> = ({
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 800);
 
   // TODO: Debouncing
+  // TODO: Create new group chat functionality
 
   useEffect(() => {
     const filteredChats = chatItems.filter((item) =>
