@@ -52,7 +52,7 @@ const ConversationList: React.FC<ConversationListProps> = ({
 
   return (
     <div
-      className={`flex flex-col items-center bg-primary-200 w-1/3 min-w-[150px] h-full ${
+      className={`flex flex-col items-center bg-primary-200 w-1/3 min-w-[19 0px] h-full ${
         isMobile
           ? "border-r-4 border-accent-100"
           : "rounded-2xl mr-10 border-l-4 border-b-4 border-accent-100"
@@ -88,26 +88,26 @@ const ConversationList: React.FC<ConversationListProps> = ({
                 : "hover:bg-primary-300"
             }`}
           >
-            <div className="friend flex flex-row gap-2 items-center mt-4 mb-4">
+            <div className="friend flex flex-row items-center mt-2 mb-4">
               <img
                 src={
                   "friend" in item
                     ? item.friend.profilePicture
                     : item.chatProfilePicture
                 }
-                className="h-1/5 w-1/5"
+                className="h-1/5 w-1/5 mr-2"
                 alt={
                   "friend" in item
                     ? `${item.friend.username}'s profile`
                     : `${item.chatName} group chat profile`
                 }
               />
-              <div className="btn-text">
+              <div className="text text-left text-nowrap overflow-hidden text-ellipsis">
                 {"friend" in item ? item.friend.username : item.chatName}
               </div>
               <div className="flex flex-grow"></div>
               {item.unreadCount > 0 && (
-                <div className="bg-red rounded-full h-6 w-6 text-white font-bold flex items-center justify-center">
+                <div className="bg-red rounded-full h-6 w-6 min-h-6 min-w-6 text-white font-bold flex items-center justify-center ml-2">
                   {item.unreadCount}
                 </div>
               )}
@@ -122,9 +122,10 @@ const ConversationList: React.FC<ConversationListProps> = ({
           type="text"
           value={addFriendInput}
           onChange={(e) => setAddFriendInput(e.target.value)}
-          placeholder="Add Friend"
-          className="bg-primary-100 w-full h-8 rounded-xl pl-4 text-white mr-4 text-base"
-        ></input>
+          placeholder={isMobile ? "User" : "Add friend"}
+          className="bg-primary-100 w-full h-8 rounded-xl pl-4 text-white mr-4 pr-4 text-base placeholder:text-xs md:placeholder:text-xs lg:placeholder:text-base leading-8"
+        />
+
         <button onClick={() => handleAddFriendClick(addFriendInput)}>
           <FontAwesomeIcon
             icon={faUserPlus}

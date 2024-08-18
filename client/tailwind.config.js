@@ -76,6 +76,23 @@ export default {
             fontSize: theme("fontSize.xl"),
           },
         },
+        ".text": {
+          color: "var(--btn-text-color)",
+          height: "2rem",
+          fontWeight: "",
+          display: "flex",
+          alignItems: "center",
+          fontSize: theme("fontSize.base"),
+          "@screen sm": {
+            fontSize: theme("fontSize.xs"),
+          },
+          "@screen md": {
+            fontSize: theme("fontSize.xs"),
+          },
+          "@screen lg": {
+            fontSize: theme("fontSize.base"),
+          },
+        },
       };
 
       addUtilities(newUtilities, ["responsive"]);
