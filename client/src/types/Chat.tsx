@@ -29,6 +29,6 @@ type Chat = {
   messages: Message[];
 };
 
-type ChatList = Friend | GroupChat;
+type Conversation = Friend | GroupChat;
 
-export type { Chat, Friend, GroupChat, ChatList };
+export type { Chat, Friend, GroupChat, Conversation };

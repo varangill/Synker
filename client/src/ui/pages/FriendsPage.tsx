@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
-import { ChatList } from "../../types/Chat";
+import { Conversation } from "../../types/Chat";
 import Navigation from "../components/common/Navigation";
-import FriendsList from "../components/friends/FriendsList";
+import ConversationList from "../components/friends/ConversationList";
 import ChatWindow from "../components/friends/ChatWindow";
 import testFriendList from "../../mockData/testFriendList.json";
 import windowResize from "../utils/WindowResize";
 
 // TODO: Get data from the back-end
 
-const parsedChatList: ChatList[] = [...testFriendList].map((item) => ({
+const parsedChatList: Conversation[] = [...testFriendList].map((item) => ({
   ...item,
   lastMessageSent: new Date(item.lastMessageSent),
 }));
@@ -19,7 +19,9 @@ parsedChatList.sort(
 
 export default function FriendsPage() {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 650);
-  const [selectedChat, setSelectedChat] = useState<ChatList>(parsedChatList[0]);
+  const [selectedChat, setSelectedChat] = useState<Conversation>(
+    parsedChatList[0]
+  );
 
   // TODO: Once a chat is selected, unreadCount should go to 0
 
@@ -27,7 +29,7 @@ export default function FriendsPage() {
     windowResize(setIsMobile);
   }, []);
 
-  const handleChatSelect = (chat: ChatList) => {
+  const handleChatSelect = (chat: Conversation) => {
     setSelectedChat(chat);
     console.log(chat);
   };
@@ -42,8 +44,8 @@ export default function FriendsPage() {
       >
         <div className={`w-full h-full ${isMobile ? "pt-[90px]" : ""}`}>
           <div className="flex flex-row w-full h-full">
-            <FriendsList
-              chatItems={parsedChatList}
+            <ConversationList
+              conversationList={parsedChatList}
               selectedChat={selectedChat}
               handleChatSelect={handleChatSelect}
             />

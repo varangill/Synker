@@ -2,51 +2,51 @@ import React, { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
-import { ChatList } from "../../../types/Chat";
+import { Conversation } from "../../../types/Chat";
 import "react-toastify/dist/ReactToastify.css";
 import Title from "../common/Title";
-import { showToast } from "../../utils/ShowToast";
+import { showSuccessToast, showErrorToast } from "../../utils/ShowToast";
 import windowResize from "../../utils/WindowResize";
 
-interface FriendsListProps {
-  chatItems: ChatList[];
-  selectedChat: ChatList;
-  handleChatSelect: (chat: ChatList) => void;
+interface ConversationListProps {
+  conversationList: Conversation[];
+  selectedChat: Conversation;
+  handleChatSelect: (chat: Conversation) => void;
 }
 
-const FriendsList: React.FC<FriendsListProps> = ({
-  chatItems,
+const ConversationList: React.FC<ConversationListProps> = ({
+  conversationList,
   selectedChat,
   handleChatSelect,
 }) => {
-  const [filteredChatList, setFilteredChatList] = useState(chatItems);
+  const [filteredChatList, setFilteredChatList] = useState(conversationList);
   const [filter, setFilter] = useState("");
-  const [addFriend, setAddFriend] = useState("");
+  const [addFriendInput, setAddFriendInput] = useState("");
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 800);
 
   // TODO: Debouncing
   // TODO: Create new group chat functionality
 
   useEffect(() => {
-    const filteredChats = chatItems.filter((item) =>
+    const filteredChats = conversationList.filter((item) =>
       "friend" in item
         ? item.friend.username.toLowerCase().includes(filter.toLowerCase())
         : item.chatName.toLowerCase().includes(filter.toLowerCase())
     );
     setFilteredChatList(filteredChats);
-  }, [filter, chatItems]);
+  }, [filter, conversationList]);
 
   useEffect(() => {
     windowResize(setIsMobile);
   }, []);
 
-  const addFriendClick = (addFriend: string) => {
+  const handleAddFriendClick = (addFriend: string) => {
     // TODO: Add friend functionality
     // If addFriend is not found in database, display error
     if (addFriend == "") {
-      showToast("Username not found!", "error");
+      showErrorToast("Username not found.");
     } else {
-      showToast("Friend request sent!", "success");
+      showSuccessToast("Friend request sent.");
     }
   };
 
@@ -120,12 +120,12 @@ const FriendsList: React.FC<FriendsListProps> = ({
       <div className="add-friend-container p-4 text-white flex items-center">
         <input
           type="text"
-          value={addFriend}
-          onChange={(e) => setAddFriend(e.target.value)}
+          value={addFriendInput}
+          onChange={(e) => setAddFriendInput(e.target.value)}
           placeholder="Add Friend"
           className="bg-primary-100 w-full h-8 rounded-xl pl-4 text-white mr-4 text-base"
         ></input>
-        <button onClick={() => addFriendClick(addFriend)}>
+        <button onClick={() => handleAddFriendClick(addFriendInput)}>
           <FontAwesomeIcon
             icon={faUserPlus}
             className="object-contain h-2/4 w-5 text-white"
@@ -136,4 +136,4 @@ const FriendsList: React.FC<FriendsListProps> = ({
   );
 };
 
-export default FriendsList;
+export default ConversationList;
