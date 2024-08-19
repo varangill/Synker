@@ -1,10 +1,10 @@
-import { ReviewUser } from "../../types/User";
+import { GeneralUser } from "../../../types/User";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 interface ReviewProps {
-  reviewer: ReviewUser;
-  recipient: ReviewUser;
+  reviewer: GeneralUser;
+  recipient: GeneralUser;
   rating: number;
   text: string;
   created_time: Date;
@@ -21,7 +21,7 @@ const ReviewBox: React.FC<ReviewProps> = ({
   const formattedDate = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
 
   return (
-    <div className="w-full h-full bg-gray-200 text-white pb-3 pl-5 pr-5">
+    <div className="w-full h-full bg-primary-200 text-white pb-3 pl-5 pr-5">
       <div className="flex flex-row items-center pb-5">
         <img
           className="rounded-full h-16 w-16"
@@ -40,7 +40,7 @@ const ReviewBox: React.FC<ReviewProps> = ({
         <div className="ml-2">({rating.toFixed(1)})</div>
       </div>
       <div className="pb-3 mt-1">{text}</div>
-      <div className="title-line w-full bg-gray-100 h-0.5"></div>
+      <div className="title-line w-full bg-primary-100 h-0.5"></div>
     </div>
   );
 };

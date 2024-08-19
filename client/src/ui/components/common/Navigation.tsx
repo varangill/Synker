@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "../assets/styles/Navigation.css";
-import logo from "../assets/images/logo.png";
+import "../../assets/styles/Navigation.css";
+import logo from "../../assets/images/logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import windowResize from "../utils/WindowResize";
+import windowResize from "../../utils/WindowResize";
 import {
   faMagnifyingGlass,
   faUserGroup,
@@ -61,9 +61,9 @@ const Navigation = () => {
         isMobile
           ? "fixed w-full h-fit"
           : "relative w-96 xl:w-1/6 md:w-80 sm:w-64 h-full"
-      } top-0 left-0 bg-gray-200 flex flex-col z-50`}
+      } top-0 left-0 bg-primary-200 flex flex-col z-50`}
     >
-      <div className="nav-bar-top flex justify-between items-center p-4 bg-gray-200">
+      <div className="nav-bar-top flex justify-between items-center p-4 bg-primary-200">
         <div className="logo-title flex items-center object-contain hover:cursor-pointer">
           <img
             className={`logo object-scale-down ${isMobile ? "w-14" : "w-20"}`}
@@ -83,7 +83,7 @@ const Navigation = () => {
         {isMobile && (
           <FontAwesomeIcon
             icon={faBars}
-            className="text-white text-2xl"
+            className="text-accent-100 text-2xl"
             onClick={toggleMenu}
           />
         )}
@@ -91,15 +91,17 @@ const Navigation = () => {
       {(isMenuOpen || !isMobile) && (
         <div
           className={`nav-bar-menu flex flex-col items-center ${
-            isMobile ? "bg-gray-800" : "bg-gray-800 h-full justify-between"
+            isMobile
+              ? "bg-primary-800"
+              : "bg-primary-800 h-full justify-between"
           } w-full`}
         >
           <div className="w-full items-center flex flex-col justify-center items-end mt-6">
             <button
               className={`btn-default h-9 flex rounded-xl w-4/5 items-center mb-5 ${
                 currentPath === "/sync"
-                  ? "bg-purple-100 hover:bg-purple-200"
-                  : "bg-gray-100 hover:bg-gray-300"
+                  ? "bg-accent-100 hover:bg-accent-200"
+                  : "bg-primary-100 hover:bg-primary-300"
               }`}
               onClick={handleSyncClick}
             >
@@ -107,15 +109,13 @@ const Navigation = () => {
                 icon={faMagnifyingGlass}
                 className="object-contain h-2/4 w-5 text-white p-4"
               />
-              <div className="flex btn-text text-white h-8 font-bold items-center text-base lg:text-xl sm:text-sm ml-2">
-                SYNC
-              </div>
+              <div className="btn-text">SYNC</div>
             </button>
             <button
               className={`btn-default h-9 flex rounded-xl w-4/5 items-center mb-5 ${
                 currentPath === "/friends"
-                  ? "bg-purple-100 hover:bg-purple-200"
-                  : "bg-gray-100 hover:bg-gray-300"
+                  ? "bg-accent-100 hover:bg-accent-200"
+                  : "bg-primary-100 hover:bg-primary-300"
               }`}
               onClick={handleFriendsClick}
             >
@@ -123,15 +123,13 @@ const Navigation = () => {
                 icon={faUserGroup}
                 className="object-contain h-2/4 w-5 text-white p-4"
               />
-              <div className="flex btn-text text-white h-8 font-bold items-center text-base lg:text-xl sm:text-sm ml-2">
-                FRIENDS
-              </div>
+              <div className="btn-text">FRIENDS</div>
             </button>
             <button
               className={`btn-default h-9 flex rounded-xl w-4/5 items-center mb-5 ${
                 currentPath === "/live"
-                  ? "bg-purple-100 hover:bg-purple-200"
-                  : "bg-gray-100 hover:bg-gray-300"
+                  ? "bg-accent-100 hover:bg-accent-200"
+                  : "bg-primary-100 hover:bg-primary-300"
               }`}
               onClick={handleLiveClick}
             >
@@ -139,19 +137,17 @@ const Navigation = () => {
                 icon={faCirclePlay}
                 className="object-contain h-2/4 w-5 text-white p-4"
               />
-              <div className="flex btn-text text-white h-8 font-bold items-center text-base lg:text-xl sm:text-sm ml-2">
-                LIVE
-              </div>
+              <div className="btn-text">LIVE</div>
             </button>
           </div>
 
           <div className="w-full items-center flex flex-col">
-            <div className="line h-1 w-full bg-gray-100 mb-5"></div>
+            <div className="line h-1 w-full bg-primary-100 mb-5"></div>
             <button
               className={`btn-default h-9 flex rounded-xl w-4/5 items-center mb-5 ${
                 currentPath === "/profile"
-                  ? "bg-purple-100 hover:bg-purple-200"
-                  : "bg-gray-100 hover:bg-gray-300"
+                  ? "bg-accent-100 hover:bg-accent-200"
+                  : "bg-primary-100 hover:bg-primary-300"
               }`}
               onClick={handleProfileClick}
             >
@@ -159,25 +155,21 @@ const Navigation = () => {
                 icon={faUser}
                 className="object-contain h-2/4 w-5 text-white p-4"
               />
-              <div className="flex btn-text text-white h-8 font-bold items-center text-base lg:text-xl sm:text-sm ml-2">
-                PROFILE
-              </div>
+              <div className="btn-text">PROFILE</div>
             </button>
             <div className="flex flex-row w-4/5 justify-between">
               <button
-                className="btn-default h-9 flex rounded-xl w-fit items-center mb-5 pr-4 hover:bg-gray-300"
+                className="btn-default h-9 flex rounded-xl w-fit items-center mb-5 pr-4 hover:bg-primary-300"
                 onClick={handleLogoutClick}
               >
                 <FontAwesomeIcon
                   icon={faRightFromBracket}
                   className="object-contain h-2/4 w-5 text-white p-4"
                 />
-                <div className="flex btn-text text-white h-8 font-bold items-center text-base lg:text-xl sm:text-sm ml-2">
-                  LOGOUT
-                </div>
+                <div className="btn-text">LOGOUT</div>
               </button>
               <button
-                className="btn-default h-9 flex rounded-xl items-center mb-5 hover:bg-gray-300"
+                className="btn-default h-9 flex rounded-xl items-center mb-5 hover:bg-primary-300"
                 onClick={handleSettingsClick}
               >
                 <FontAwesomeIcon
@@ -189,6 +181,7 @@ const Navigation = () => {
           </div>
         </div>
       )}
+      {isMobile && <div className="bg-accent-100 w-full h-1"></div>}
     </div>
   );
 };

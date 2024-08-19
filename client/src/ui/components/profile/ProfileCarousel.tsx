@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import Carousel from "react-multi-carousel";
+import Title from "../common/Title";
 import "react-multi-carousel/lib/styles.css";
-import { CarouselBundle } from "../../types/Carousel";
-import CancelSaveButton from "./CancelSaveButton";
+import { CarouselBundle } from "../../../types/Carousel";
+import CancelSaveButton from "../common/CancelSaveButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEdit,
@@ -157,11 +158,9 @@ const ProfileCarousel: React.FC<ProfileCarouselProps> = ({ images, auth }) => {
   }, [allCarouselItems, isEditing]);
 
   return (
-    <div className="rounded-2xl flex flex-col items-center bg-gray-200 text-white w-full">
-      <div className="title flex text-white font-bold items-center p-2 xl:text-2xl lg:text-2xl md:text-base sm:text-xl">
-        PROFILE
-      </div>
-      <div className="title-line w-full bg-gray-100 h-1"></div>
+    <div className="rounded-2xl flex flex-col items-center bg-primary-200 text-white w-full">
+      <Title title="PROFILE" />
+      <div className="title-line w-full bg-primary-100 h-1"></div>
       <div className={`w-full h-fit p-5 ${auth ? "h-fit" : ""}`}>
         <Carousel
           responsive={responsive}
@@ -200,7 +199,7 @@ const ProfileCarousel: React.FC<ProfileCarouselProps> = ({ images, auth }) => {
                 />
                 {isEditing && currentIndex === index ? (
                   <textarea
-                    className="desc text-white text-base pl-3 pr-5 pt-2 w-[300px] bg-gray-200 w-1/2 overflow-hidden italic text-ellipsis break-words mt-5 border-2 border-gray-100 rounded-xl"
+                    className="desc text-white text-base pl-3 pr-5 pt-2 w-[300px] bg-primary-200 w-1/2 overflow-hidden italic text-ellipsis break-words mt-5 border-2 border-primary-100 rounded-xl"
                     value={currentCaption}
                     maxLength={150}
                     autoCorrect="on"

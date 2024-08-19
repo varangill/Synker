@@ -75,7 +75,7 @@ const Dropdown: React.FC<DropdownProps> = ({
     <div ref={dropdownRef} className="relative z-9">
       <button
         onClick={toggleDropdown}
-        className="dropdownSearchButton justify-between btn-default h-9 flex rounded-xl bg-gray-100 hover:bg-gray-300 w-full items-center justify-center w-full"
+        className="dropdownSearchButton justify-between btn-default h-9 flex rounded-xl bg-primary-100 hover:bg-primary-300 w-full items-center justify-center w-full"
       >
         <div className="btn-text flex whitespace-nowrap overflow-hidden text-ellipsis w-11/12 px-4 text-white h-8 font-bold items-center xl:text-md lg:text-md md:text-base sm:text-base">
           {selected.length > 0 ? selected.join(", ") : placeholder}
@@ -88,13 +88,13 @@ const Dropdown: React.FC<DropdownProps> = ({
       </button>
 
       {isOpen && (
-        <div className="dropdownContainer bg-gray-200 border-solid border-gray-100 border-2 rounded-xl absolute w-full z-30">
+        <div className="dropdownContainer bg-primary-200 border-solid border-primary-100 border-2 rounded-xl absolute w-full z-30">
           <div className="max-h-48 overflow-auto no-scrollbar">
             {dropdownList.map((option, index) => (
               <div
                 key={index}
-                className={`dropdownOption text-white hover:bg-purple-200 p-2 cursor-pointer ${
-                  selected.includes(option) ? "bg-purple-200" : ""
+                className={`dropdownOption text-white hover:bg-accent-200 p-2 cursor-pointer ${
+                  selected.includes(option) ? "bg-accent-200" : ""
                 }`}
                 onClick={() => handleSelect(option)}
               >
@@ -104,7 +104,7 @@ const Dropdown: React.FC<DropdownProps> = ({
           </div>
           {type === "multiple" && (
             <button
-              className="btn-default h-9 flex bg-purple-100 hover:bg-purple-200 w-full items-center justify-center"
+              className="btn-default h-9 flex bg-accent-100 hover:bg-accent-200 w-full items-center justify-center"
               onClick={toggleDropdown}
             >
               <div className="find-button z-0 flex btn-text text-white h-8 font-bold items-center text-xl sm:text-base">

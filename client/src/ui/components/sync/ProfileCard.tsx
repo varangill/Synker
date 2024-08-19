@@ -41,7 +41,7 @@ const ProfileCard: React.FC<ProfileProps> = ({
 
   return (
     <div
-      className="profile-container relative w-80 bg-gray-100 rounded-2xl flex flex-col h-[550px] p-4 cursor-pointer border-2 hover:border-purple-100"
+      className="profile-container relative w-80 bg-primary-100 rounded-2xl flex flex-col h-[550px] p-4 cursor-pointer border-2 hover:border-accent-100"
       onClick={() => handleProfileClick(username)}
     >
       <div className="flex items-center">
@@ -68,10 +68,10 @@ const ProfileCard: React.FC<ProfileProps> = ({
       <div className="invis-box flex-grow"></div>
       <div className="tag-container p-1 flex flex-wrap gap-2 mt-2">
         {gameTags.map((option, index) => (
-          <div key={index} className="w-fit rounded-xl m-1 h-8 bg-gray-10">
+          <div key={index} className="w-fit rounded-xl m-1 h-8 bg-primary-10">
             <div
               className={`${
-                getColor() || "text-gray-800"
+                getColor() || "text-primary-800"
               } whitespace-nowrap text-sm rounded-xl border-2 p-1`}
             >
               {option}
@@ -81,7 +81,7 @@ const ProfileCard: React.FC<ProfileProps> = ({
       </div>
       <div className="btn-container w-full justify-end flex p-5">
         <button
-          className="btn-default h-9 flex rounded-xl bg-purple-100 hover:bg-purple-200 w-full items-center justify-center mt-3"
+          className="btn-default h-9 flex rounded-xl bg-accent-100 hover:bg-accent-200 w-full items-center justify-center mt-3"
           onClick={(e) => {
             e.stopPropagation();
             handleMatchClick(username);

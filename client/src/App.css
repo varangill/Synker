@@ -12,3 +12,15 @@
     scrollbar-width: none; /* Firefox */
   }
 }
+
+/* Custom global styles */
+:root {
+  --primary-color-100: #302D37
+  --secondary-color-200: #211A1D
+  --accent-color-100: #6320EE
+  --accent-color-200: #7236EF
+  --btn-px: 1rem;
+  --btn-text-color: #f8f0fb;
+}
+
+/* Additional global styles */
