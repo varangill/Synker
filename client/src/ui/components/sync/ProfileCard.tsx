@@ -1,6 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { showSuccessToast } from "../../utils/ShowToast";
 
 interface ProfileProps {
   gameTags: string[];
@@ -18,6 +19,7 @@ const ProfileCard: React.FC<ProfileProps> = ({
   membership,
 }) => {
   const handleMatchClick = (username: string) => {
+    showSuccessToast(`Syncing with ${username}.`);
     console.log("Match button clicked for: ", username);
   };
 

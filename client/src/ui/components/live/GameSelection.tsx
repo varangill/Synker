@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Dropdown from "../common/Dropdown";
 import Title from "../common/Title";
+import { showErrorToast, showSuccessToast } from "../../utils/ShowToast";
 
 const GameSelection = () => {
   const [selectedOption, setselectedOption] = useState<(string | number)[]>([]);
@@ -21,7 +22,13 @@ const GameSelection = () => {
 
   const handleFindClick = () => {
     // TODO: query back-end for results of live lobby to display on LivePage
-    console.log("Finding lobbies for:", selectedOption.join(", "));
+    if (selectedOption.length == 0) {
+      showErrorToast("Select a game.");
+      return;
+    } else {
+      showSuccessToast(`Finding lobbies for ${selectedOption}.`);
+      console.log("Finding lobbies for:", selectedOption.join(", "));
+    }
   };
 
   return (

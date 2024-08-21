@@ -1,12 +1,17 @@
 import React from "react";
 import LobbyTag from "./LobbyTag";
 import { Lobby } from "../../../types/Lobby";
+import { showSuccessToast } from "../../utils/ShowToast";
 
 interface LiveLobbyProps {
   lobby: Lobby;
 }
 
 const LiveLobby: React.FC<LiveLobbyProps> = ({ lobby }) => {
+  function handleJoinClick() {
+    showSuccessToast(`Joining ${lobby.title}.`);
+  }
+
   return (
     <div className="lf-stack-container bg-primary-200 w-full h-fit flex flex-col pt-5 pl-5 pr-5">
       <div className="stack-text text-white font-bold text-base">
@@ -36,7 +41,10 @@ const LiveLobby: React.FC<LiveLobbyProps> = ({ lobby }) => {
             {lobby.players.length}/{lobby.maxPlayers} PLAYERS
           </div>
           <div className="btn-container text-center h-8 w-full items-center flex justify-center mb-2">
-            <button className="btn-default h-9 flex rounded-xl bg-accent-100 hover:bg-accent-200 w-full items-center justify-center">
+            <button
+              onClick={handleJoinClick}
+              className="btn-default h-9 flex rounded-xl bg-accent-100 hover:bg-accent-200 w-full items-center justify-center"
+            >
               <div className="btn-txt text-white font-bold text-base">JOIN</div>
             </button>
           </div>

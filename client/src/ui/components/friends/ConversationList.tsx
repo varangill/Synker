@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { ToastContainer } from "react-toastify";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
 import { Conversation } from "../../../types/Chat";
@@ -46,7 +45,7 @@ const ConversationList: React.FC<ConversationListProps> = ({
     if (addFriend == "") {
       showErrorToast("Username not found.");
     } else {
-      showSuccessToast("Friend request sent.");
+      showSuccessToast(`Friend request sent to ${addFriend}.`);
     }
   };
 
@@ -58,7 +57,6 @@ const ConversationList: React.FC<ConversationListProps> = ({
           : "rounded-2xl mr-10 border-l-4 border-b-4 border-accent-100"
       }`}
     >
-      <ToastContainer />
       <Title title="CHATS" />
       <div className="bg-primary-100 h-1 w-full"></div>
       <div className="search-bar-container p-4 w-full flex justify-center">

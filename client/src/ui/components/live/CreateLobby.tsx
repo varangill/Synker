@@ -6,9 +6,7 @@ import { Lobby } from "../../../types/Lobby";
 import testUserList from "../../../mockData/testUserList.json";
 import testGame from "../../../mockData/testGame.json";
 import { GeneralUser } from "../../../types/User";
-import { showErrorToast } from "../../utils/ShowToast";
-import { showSuccessToast } from "../../utils/ShowToast";
-import { ToastContainer } from "react-toastify";
+import { showErrorToast, showSuccessToast } from "../../utils/ShowToast";
 
 const CreateLobby = () => {
   const [selectedGame, setSelectedGame] = useState<string[]>([]);
@@ -91,13 +89,12 @@ const CreateLobby = () => {
       setSelectedDescription("");
 
       // TODO: Perform any additional actions, such as sending the lobby to the backend
-      showSuccessToast("New lobby created.");
+      showSuccessToast(`${selectedTitle} lobby created.`);
     }
   };
 
   return (
     <div className="lobby-creation-container rounded-2xl flex flex-col items-center bg-primary-200 w-full h-full">
-      <ToastContainer />
       <Title title="CREATE LOBBY" />
       <div className="title-line w-full bg-primary-100 h-1 mb-4"></div>
       <div className="flex flex-col justify-around w-4/5 h-full overflow-y-auto no-scrollbar pb-8">
