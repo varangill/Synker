@@ -3,6 +3,7 @@ import CancelSaveButton from "../common/CancelSaveButton";
 import Title from "../common/Title";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
+import { showSuccessToast } from "../../utils/ShowToast";
 
 interface PersonalityProps {
   introvert: number;
@@ -78,6 +79,7 @@ const Personality: React.FC<PersonalityProps> = ({
     setThinkingScore(tempThinkingScore);
     setJudgingScore(tempJudgingScore);
     setIsEditing(false);
+    showSuccessToast("Personality types saved.");
   };
 
   const sliderStyle = {

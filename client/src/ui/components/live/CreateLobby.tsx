@@ -3,9 +3,10 @@ import Dropdown from "../common/Dropdown";
 import Title from "../common/Title";
 import LobbyTag from "./LobbyTag";
 import { Lobby } from "../../../types/Lobby";
-import testUserList from "../../../mockData/testUserList.json"; // Assuming this is the list of test users
-import testGame from "../../../mockData/testGame.json"; // Assuming this is the selected game
-import { GeneralUser } from "../../../types/User"; // Import the User type
+import testUserList from "../../../mockData/testUserList.json";
+import testGame from "../../../mockData/testGame.json";
+import { GeneralUser } from "../../../types/User";
+import { showErrorToast, showSuccessToast } from "../../utils/ShowToast";
 
 const CreateLobby = () => {
   const [selectedGame, setSelectedGame] = useState<string[]>([]);
@@ -13,7 +14,6 @@ const CreateLobby = () => {
   const [selectedMaxPlayers, setSelectedMaxPlayers] = useState<number[]>([]);
   const [selectedTitle, setSelectedTitle] = useState("");
   const [selectedDescription, setSelectedDescription] = useState("");
-  const [message, setMessage] = useState("");
 
   const handleGameChange = (selectedValues: (string | number)[]) => {
     setSelectedGame(selectedValues as string[]);
@@ -51,49 +51,46 @@ const CreateLobby = () => {
 
   const tagsList = ["Tag1", "Tag2", "Tag3", "Tag4", "Tag5"];
 
-  const handleFindClick = () => {
+  const handleCreateClick = () => {
     if (!isFormComplete()) {
-      setMessage("Invalid Form. Please fill out all fields.");
-      return;
+      showErrorToast("Form is incomplete.");
+    } else {
+      const id = "unique-lobby-id"; // TODO: Generate a unique ID for the lobby
+      const owner: GeneralUser = testUserList[0]; // TODO: Make current user the owner of the lobby
+      const playersList: GeneralUser[] = [];
+      const createdDate = new Date();
+      const startDate = new Date();
+      const title = selectedTitle || "Default Title";
+      const description = selectedDescription;
+      const maxPlayers = selectedMaxPlayers[0];
+      const game = testGame; // TODO: Get game from backend
+
+      const newLobby: Lobby = {
+        id,
+        owner,
+        players: playersList,
+        createdDate,
+        startDate,
+        title,
+        description,
+        maxPlayers,
+        game,
+        lobbyTags: selectedTags,
+      };
+
+      // Log the new Lobby object
+      console.log(newLobby);
+
+      // Reset the form values to their defaults
+      setSelectedGame([]);
+      setSelectedTags([]);
+      setSelectedMaxPlayers([]);
+      setSelectedTitle("");
+      setSelectedDescription("");
+
+      // TODO: Perform any additional actions, such as sending the lobby to the backend
+      showSuccessToast(`${selectedTitle} lobby created.`);
     }
-
-    const id = "unique-lobby-id"; // TODO: Generate a unique ID for the lobby
-    const owner: GeneralUser = testUserList[0]; // TODO: Make current user the owner of the lobby
-    const playersList: GeneralUser[] = [];
-    const createdDate = new Date();
-    const startDate = new Date(); // Replace with actual start date if needed
-    const title = selectedTitle || "Default Title"; // Assuming the first option is the game title
-    const description = selectedDescription;
-    const maxPlayers = selectedMaxPlayers[0]; // Replace with actual max players if needed
-    const game = testGame; // Use testGame as the selected game
-
-    const newLobby: Lobby = {
-      id,
-      owner,
-      players: playersList,
-      createdDate,
-      startDate,
-      title,
-      description,
-      maxPlayers,
-      game,
-      lobbyTags: selectedTags,
-    };
-
-    // Log the new Lobby object
-    console.log(newLobby);
-
-    // Reset the form values to their defaults
-    setSelectedGame([]);
-    setSelectedTags([]);
-    setSelectedMaxPlayers([]);
-    setSelectedTitle("");
-    setSelectedDescription("");
-
-    // Display success message
-    setMessage("Lobby creation successful!");
-
-    // TODO: Perform any additional actions, such as sending the lobby to the backend
   };
 
   return (
@@ -130,13 +127,13 @@ const CreateLobby = () => {
             onSelectionChange={handleTagSelectionChange}
             placeholder="SELECT TAGS ..."
           />
-          <div className="tag-list mt-4 flex flex-wrap gap-2 max-h-52 overflow-y-auto no-scrollbar">
+          <div className="tag-list flex flex-wrap flex-grow gap-2 max-h-52 overflow-y-auto no-scrollbar">
             {selectedTags.map((tag, index) => (
               <LobbyTag key={index} tagName={tag} />
             ))}
           </div>
         </div>
-        <div className="title-container flex-grow mb-4">
+        <div className="title-container mb-4">
           <div className="text-white font-bold mb-1 text-sm">TITLE</div>
           <input
             type="text"
@@ -158,16 +155,10 @@ const CreateLobby = () => {
             onChange={(e) => setSelectedDescription(e.target.value)}
           />
         </div>
-        {message ? (
-          <div className="text-white font-bold text-sm flex items-end h-12 justify-center align-end">
-            {message}
-          </div>
-        ) : (
-          <div className="h-12" />
-        )}
+
         <button
           className="btn-default h-9 flex rounded-xl bg-accent-100 hover:bg-accent-200 w-full items-center justify-center"
-          onClick={handleFindClick}
+          onClick={handleCreateClick}
         >
           <div className="btn-text z-0 flex btn-text text-white h-8 font-bold items-center xl:text-xl lg:text-xl md:text-base sm:text-base">
             CREATE

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { ToastContainer } from "react-toastify";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
 import { Conversation } from "../../../types/Chat";
@@ -21,7 +20,7 @@ const ConversationList: React.FC<ConversationListProps> = ({
 }) => {
   const [filteredChatList, setFilteredChatList] = useState(conversationList);
   const [filter, setFilter] = useState("");
-  const [addFriendInput, setAddFriendInput] = useState("");
+  const [friendToAddNameInput, setFriendToAddNameInput] = useState("");
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 800);
 
   // TODO: Debouncing
@@ -40,13 +39,13 @@ const ConversationList: React.FC<ConversationListProps> = ({
     windowResize(setIsMobile);
   }, []);
 
-  const handleAddFriendClick = (addFriend: string) => {
+  const handleAddFriendClick = (friendToAddName: string) => {
     // TODO: Add friend functionality
-    // If addFriend is not found in database, display error
-    if (addFriend == "") {
+    // If friendToAddName is not found in database, display error
+    if (friendToAddName == "" || friendToAddName == " ") {
       showErrorToast("Username not found.");
     } else {
-      showSuccessToast("Friend request sent.");
+      showSuccessToast(`Friend request sent to ${friendToAddName}.`);
     }
   };
 
@@ -58,7 +57,6 @@ const ConversationList: React.FC<ConversationListProps> = ({
           : "rounded-2xl mr-10 border-l-4 border-b-4 border-accent-100"
       }`}
     >
-      <ToastContainer />
       <Title title="CHATS" />
       <div className="bg-primary-100 h-1 w-full"></div>
       <div className="search-bar-container p-4 w-full flex justify-center">
@@ -120,13 +118,13 @@ const ConversationList: React.FC<ConversationListProps> = ({
       <div className="add-friend-container p-4 text-white flex items-center">
         <input
           type="text"
-          value={addFriendInput}
-          onChange={(e) => setAddFriendInput(e.target.value)}
+          value={friendToAddNameInput}
+          onChange={(e) => setFriendToAddNameInput(e.target.value)}
           placeholder={isMobile ? "User" : "Add friend"}
           className="bg-primary-100 w-full h-8 rounded-xl pl-4 text-white mr-4 pr-4 text-base placeholder:text-xs md:placeholder:text-xs lg:placeholder:text-base leading-8"
         />
 
-        <button onClick={() => handleAddFriendClick(addFriendInput)}>
+        <button onClick={() => handleAddFriendClick(friendToAddNameInput)}>
           <FontAwesomeIcon
             icon={faUserPlus}
             className="object-contain h-2/4 w-5 text-white"

@@ -4,6 +4,7 @@ import CancelSaveButton from "../common/CancelSaveButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { showSuccessToast } from "../../utils/ShowToast";
 
 interface ProfileProps {
   gameTags: string[];
@@ -75,6 +76,7 @@ const Profile: React.FC<ProfileProps> = ({
     setEditGameTags(selectedOptions);
     setEditProfilePic(tempProfilePic);
     setIsEditing(!isEditing);
+    showSuccessToast("Profile saved.");
   }
 
   function handlePFPClick() {

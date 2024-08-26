@@ -11,6 +11,7 @@ import {
   faPlus,
   faPencilAlt,
 } from "@fortawesome/free-solid-svg-icons";
+import { showSuccessToast } from "../../utils/ShowToast";
 
 interface ProfileCarouselProps {
   images: CarouselBundle[];
@@ -98,6 +99,7 @@ const ProfileCarousel: React.FC<ProfileCarouselProps> = ({ images, auth }) => {
     setCurrentImage("");
     setCurrentCaption("");
     setNewCaption("");
+    showSuccessToast("Profile carousel saved.");
   };
 
   const handleDeleteClick = (index: number) => {
