@@ -13,9 +13,9 @@ export const receivedMessageBox = (message: Message, showProfile: boolean) => {
       )}
       <div className="text-box flex flex-col max-w-[60%]">
         {showProfile && (
-          <div className="profile flex flex-row">
+          <div className="profile flex flex-row items-center">
             <div className="sender-name mr-2">{message.sender.username}</div>
-            <div className="sender-name">
+            <div className="sender-time text-sm text-primary-400">
               {message.time.toLocaleTimeString([], {
                 hour: "2-digit",
                 minute: "2-digit",
@@ -37,9 +37,9 @@ export const sentMessageBox = (message: Message, showProfile: boolean) => {
     <div className="msg-box flex flex-row gap-2 text-white justify-end w-full h-fit p-2 mr-4">
       <div className="text-box flex flex-col items-end max-w-[60%]">
         {showProfile && (
-          <div className="profile flex flex-row justify-end">
+          <div className="profile flex flex-row items-center justify-end">
             <div className="sender-name mr-2">{message.sender.username}</div>
-            <div className="sender-time">
+            <div className="sender-time text-sm text-primary-400">
               {message.time.toLocaleTimeString([], {
                 hour: "2-digit",
                 minute: "2-digit",
