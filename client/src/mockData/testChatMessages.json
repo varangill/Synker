@@ -1,0 +1,152 @@
+[
+  {
+    "id": "1",
+    "content": "Hey, are you free for a game later?",
+    "sender": {
+      "id": "1",
+      "username": "Rensuo",
+      "profilePicture": "/assets/images/logo.png"
+    },
+    "time": "2024-09-01T14:30:00Z"
+  },
+  {
+    "id": "2",
+    "content": "Yeah, I should be done with work by 8 PM.",
+    "sender": {
+      "id": "2",
+      "username": "GamerGirl",
+      "profilePicture": "/assets/images/nav-bar-background.png"
+    },
+    "time": "2024-09-01T14:32:00Z"
+  },
+  {
+    "id": "3",
+    "content": "Awesome! Let’s aim for 8:15 then.",
+    "sender": {
+      "id": "1",
+      "username": "Rensuo",
+      "profilePicture": "/assets/images/logo.png"
+    },
+    "time": "2024-09-01T14:33:00Z"
+  },
+  {
+    "id": "4",
+    "content": "Sounds good. What game are we playing tonight?",
+    "sender": {
+      "id": "2",
+      "username": "GamerGirl",
+      "profilePicture": "/assets/images/nav-bar-background.png"
+    },
+    "time": "2024-09-01T14:35:00Z"
+  },
+  {
+    "id": "5",
+    "content": "I was thinking of trying out that new MOBA game everyone’s talking about.",
+    "sender": {
+      "id": "1",
+      "username": "Rensuo",
+      "profilePicture": "/assets/images/logo.png"
+    },
+    "time": "2024-09-01T14:36:00Z"
+  },
+  {
+    "id": "6",
+    "content": "Oh yeah, I’ve heard good things about it. I’m in!",
+    "sender": {
+      "id": "2",
+      "username": "GamerGirl",
+      "profilePicture": "/assets/images/nav-bar-background.png"
+    },
+    "time": "2024-09-01T14:37:00Z"
+  },
+  {
+    "id": "7",
+    "content": "Hey guys, are we discussing tonight’s game?",
+    "sender": {
+      "id": "3",
+      "username": "ProPlayer",
+      "profilePicture": "/assets/images/sync-background.png"
+    },
+    "time": "2024-09-01T14:38:00Z"
+  },
+  {
+    "id": "8",
+    "content": "Yeah! We’re planning to play the new MOBA at 8:15 PM.",
+    "sender": {
+      "id": "1",
+      "username": "Rensuo",
+      "profilePicture": "/assets/images/logo.png"
+    },
+    "time": "2024-09-01T14:39:00Z"
+  },
+  {
+    "id": "9",
+    "content": "Count me in! I’ll join you guys.",
+    "sender": {
+      "id": "3",
+      "username": "ProPlayer",
+      "profilePicture": "/assets/images/sync-background.png"
+    },
+    "time": "2024-09-01T14:40:00Z"
+  },
+  {
+    "id": "10",
+    "content": "Hey everyone, mind if I join too?",
+    "sender": {
+      "id": "4",
+      "username": "CasualGamer",
+      "profilePicture": "/assets/images/background.png"
+    },
+    "time": "2024-09-01T14:41:00Z"
+  },
+  {
+    "id": "11",
+    "content": "The more, the merrier! Let’s make it a full team.",
+    "sender": {
+      "id": "1",
+      "username": "Rensuo",
+      "profilePicture": "/assets/images/logo.png"
+    },
+    "time": "2024-09-01T14:42:00Z"
+  },
+  {
+    "id": "12",
+    "content": "Awesome, see you all online at 8:15!",
+    "sender": {
+      "id": "4",
+      "username": "CasualGamer",
+      "profilePicture": "/assets/images/background.png"
+    },
+    "time": "2024-09-01T14:43:00Z"
+  },
+  {
+    "id": "13",
+    "content": "Perfect, I’ll be there. Can’t wait to try the new game!",
+    "sender": {
+      "id": "3",
+      "username": "ProPlayer",
+      "profilePicture": "/assets/images/sync-background.png"
+    },
+    "time": "2024-09-01T14:44:00Z"
+  },
+  {
+    "id": "14",
+    "content": "Don’t forget to warm up before the match!",
+    "sender": {
+      "id": "3",
+      "username": "ProPlayer",
+      "profilePicture": "/assets/images/sync-background.png"
+    },
+    "time": "2024-09-01T14:45:00Z"
+  },
+  {
+    "id": "15",
+    "content": "Good call, I’ll practice some drills beforehand.",
+    "sender": {
+      "id": "4",
+      "username": "CasualGamer",
+      "profilePicture": "/assets/images/background.png"
+    },
+    "time": "2024-09-01T14:46:00Z"
+  }
+]

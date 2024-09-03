@@ -25,10 +25,11 @@ type GroupChat = {
 type Chat = {
   id: string;
   chatName: string;
+  chatProfilePicture: string;
   members: FriendUser[];
   messages: Message[];
 };
 
 type Conversation = Friend | GroupChat;
 
-export type { Chat, Friend, GroupChat, Conversation };
+export type { Message, Chat, Friend, GroupChat, Conversation };
