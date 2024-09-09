@@ -5,6 +5,7 @@ import Title from "../common/Title";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
 import { receivedMessageBox, sentMessageBox } from "./MessageBox";
+import ChatInputBox from "./ChatInputBox";
 
 interface ChatWindowProps {
   chat: Chat;
@@ -13,8 +14,14 @@ interface ChatWindowProps {
 
 const ChatWindow: React.FC<ChatWindowProps> = ({ chat, loggedInUserID }) => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 650);
+  const [textToSend, setTextToSend] = useState("");
   // const [isEditing, setIsEditing] = useState(false);
   // TODO: Get the last opened chat messages to display first
+
+  useEffect(() => {
+    // TODO: Send the text to the backend
+    // Note: Clear setTextToSend to "" after sending a text
+  }, [textToSend]);
 
   useEffect(() => {
     windowResize(setIsMobile);
@@ -35,10 +42,7 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ chat, loggedInUserID }) => {
             <Title title={chat.chatName} />
             <div className="flex flex-grow"></div>
             <button>
-              <FontAwesomeIcon
-                icon={faEdit}
-                className="m-2 mr-4 title"
-              ></FontAwesomeIcon>
+              <FontAwesomeIcon icon={faEdit} className="m-2 mr-4 title" />
             </button>
           </div>
           <div className="flex flex-row">
@@ -63,7 +67,10 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ chat, loggedInUserID }) => {
             : receivedMessageBox(message, showProfile);
         })}
       </div>
-      <div className="text-container"></div>
+      <div className="text-container w-full rounded-2xl flex flex-col justify-center items-center">
+        <div className="bg-primary-100 w-full h-1"></div>
+        <ChatInputBox setTextToSend={() => setTextToSend("")} />
+      </div>
     </div>
   );
 };
