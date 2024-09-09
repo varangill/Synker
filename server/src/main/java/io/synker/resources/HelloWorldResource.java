@@ -1,7 +1,7 @@
 package io.synker.resources;
 
 import com.codahale.metrics.annotation.Timed;
-import io.synker.models.Saying;
+import io.synker.api.Saying;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

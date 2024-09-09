@@ -1,4 +1,4 @@
-package io.synker.models;
+package io.synker.api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
