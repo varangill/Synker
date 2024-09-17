@@ -15,9 +15,9 @@ const ChatInputBox: React.FC<ChatInputBoxProps> = ({ setTextToSend }) => {
   };
 
   return (
-    <div className="input-box-container flex flex-row w-5/6 rounded-2xl m-4 justify-between">
+    <div className="input-box-container flex flex-row w-5/6 rounded-2xl m-4 justify-between gap-8">
       <textarea
-        className="desc w-4/5 text-white text-base p-2 bg-primary-200 overflow-hidden text-ellipsis break-words rounded-xl border-2 border-primary-100"
+        className="desc w-full text-white text-base p-2 bg-primary-200 overflow-hidden text-ellipsis break-words rounded-xl border-2 border-primary-100 outline-none"
         value={currentInputText}
         onChange={(e) => setCurrentInputText(e.target.value)}
         style={{ height: "auto", overflowY: "hidden" }}
@@ -29,7 +29,7 @@ const ChatInputBox: React.FC<ChatInputBoxProps> = ({ setTextToSend }) => {
       />
       <button
         onClick={() => handleSendClick()}
-        className="bg-accent-100 rounded-2xl text-white w-12"
+        className="bg-accent-100 rounded-2xl text-white min-w-12 w-12 hover:bg-accent-200"
       >
         <FontAwesomeIcon icon={faPaperPlane} className="" />
       </button>
