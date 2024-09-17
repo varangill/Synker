@@ -37,22 +37,20 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ chat, loggedInUserID }) => {
           src={chat.chatProfilePicture}
           className="object-contain max-h-20 max-w-20 m-4"
         ></img>
-        <div className="flex flex-col w-full">
-          <div className="flex flex-row w-full">
+        <div className="flex flex-col w-full max-h-20">
+          <div className="flex flex-row w-full items-center justify-center">
             <Title title={chat.chatName} />
-            <div className="flex flex-grow"></div>
-            <button>
-              <FontAwesomeIcon icon={faEdit} className="m-2 mr-4 title" />
-            </button>
-          </div>
-          <div className="flex flex-row">
             <div
-              className={`activity rounded-full h-4 w-4 text-white font-bold flex items-center justify-center ml-2 ${
+              className={`activity rounded-full h-4 w-4 text-white font-bold flex items-center justify-center ml-2 mt-2 ${
                 chat.members.some((member) => member.active)
                   ? "bg-green"
                   : "bg-red"
               }`}
             ></div>
+            <div className="flex flex-grow"></div>
+            <button>
+              <FontAwesomeIcon icon={faEdit} className="m-2 mr-4 title" />
+            </button>
           </div>
         </div>
       </div>
