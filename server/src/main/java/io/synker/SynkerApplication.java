@@ -3,8 +3,12 @@ package io.synker;
 import io.dropwizard.core.Application;
 import io.dropwizard.core.setup.Bootstrap;
 import io.dropwizard.core.setup.Environment;
+import io.dropwizard.db.DataSourceFactory;
+import io.dropwizard.jdbi3.JdbiFactory;
+import io.dropwizard.migrations.MigrationsBundle;
 import io.synker.health.TemplateHealthCheck;
 import io.synker.resources.HelloWorldResource;
+import org.jdbi.v3.core.Jdbi;
 
 public class SynkerApplication extends Application<SynkerConfiguration> {
 
@@ -21,6 +25,12 @@ public class SynkerApplication extends Application<SynkerConfiguration> {
     @Override
     public void initialize(final Bootstrap<SynkerConfiguration> bootstrap) {
         // TODO: application initialization
+        bootstrap.addBundle(new MigrationsBundle<SynkerConfiguration>() {
+            @Override
+            public DataSourceFactory getDataSourceFactory(SynkerConfiguration configuration) {
+                return configuration.getDataSourceFactory();
+            }
+        });
     }
 
     @Override
@@ -34,6 +44,9 @@ public class SynkerApplication extends Application<SynkerConfiguration> {
         environment.jersey().register(resource);
         TemplateHealthCheck healthCheck = new TemplateHealthCheck(configuration.getTemplate());
         environment.healthChecks().register("template", healthCheck);
+
+        final JdbiFactory factory = new JdbiFactory();
+        final Jdbi jdbi = factory.build(environment, configuration.getDataSourceFactory(), "mysql");
     }
 
 }

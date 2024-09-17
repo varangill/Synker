@@ -1,8 +1,6 @@
 package io.synker.api;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-public class UserInfo {
+public class User {
     private long id;
     private String username;
     private String email;
