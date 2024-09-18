@@ -24,7 +24,6 @@ public class SynkerApplication extends Application<SynkerConfiguration> {
 
     @Override
     public void initialize(final Bootstrap<SynkerConfiguration> bootstrap) {
-        // TODO: application initialization
         bootstrap.addBundle(new MigrationsBundle<SynkerConfiguration>() {
             @Override
             public DataSourceFactory getDataSourceFactory(SynkerConfiguration configuration) {
@@ -37,16 +36,10 @@ public class SynkerApplication extends Application<SynkerConfiguration> {
     public void run(final SynkerConfiguration configuration,
                     final Environment environment) {
         // TODO: implement application
-        HelloWorldResource resource = new HelloWorldResource(
-                configuration.getTemplate(),
-                configuration.getDefaultName()
-        );
-        environment.jersey().register(resource);
-        TemplateHealthCheck healthCheck = new TemplateHealthCheck(configuration.getTemplate());
-        environment.healthChecks().register("template", healthCheck);
 
         final JdbiFactory factory = new JdbiFactory();
         final Jdbi jdbi = factory.build(environment, configuration.getDataSourceFactory(), "mysql");
+
     }
 
 }

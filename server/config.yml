@@ -1,11 +1,9 @@
 ---
-template: Hello, %s!
-defaultName: Stranger
 database:
   driverClass: com.mysql.cj.jdbc.Driver
   user: root
   password: root
-  url: jdbc:mysql://localhost:3306/sys
+  url: jdbc:mysql://localhost:3306/synker
   properties:
     charSet: UTF-8
     ssl: false
@@ -15,5 +13,3 @@ database:
   checkConnectionWhileIdle: false
   evictionInterval: 10s
   minIdleTime: 1 minute
-liquibase:
-  migrationsFile: "src/main/db/database_changelog.xml"
