@@ -77,6 +77,7 @@ export default function FriendsPage() {
                     : selectedChat.members,
                 messages: convertedChatMessages,
               }}
+              isGroupChat={"friend" in selectedChat ? false : true}
               loggedInUserID={getId()}
             />
           </div>

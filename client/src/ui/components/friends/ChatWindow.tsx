@@ -9,10 +9,15 @@ import ChatInputBox from "./ChatInputBox";
 
 interface ChatWindowProps {
   chat: Chat;
+  isGroupChat: boolean;
   loggedInUserID: string;
 }
 
-const ChatWindow: React.FC<ChatWindowProps> = ({ chat, loggedInUserID }) => {
+const ChatWindow: React.FC<ChatWindowProps> = ({
+  chat,
+  isGroupChat,
+  loggedInUserID,
+}) => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 650);
   const [textToSend, setTextToSend] = useState("");
   // const [isEditing, setIsEditing] = useState(false);
@@ -48,9 +53,11 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ chat, loggedInUserID }) => {
               }`}
             ></div>
             <div className="flex flex-grow"></div>
-            <button>
-              <FontAwesomeIcon icon={faEdit} className="m-2 mr-4 title" />
-            </button>
+            {isGroupChat && (
+              <button>
+                <FontAwesomeIcon icon={faEdit} className="m-2 mr-4 title" />
+              </button>
+            )}
           </div>
         </div>
       </div>
