@@ -6,20 +6,14 @@ import io.dropwizard.core.setup.Environment;
 import io.dropwizard.db.DataSourceFactory;
 import io.dropwizard.jdbi3.JdbiFactory;
 import io.dropwizard.migrations.MigrationsBundle;
-import io.synker.health.TemplateHealthCheck;
-import io.synker.resources.HelloWorldResource;
+import io.synker.resources.UserResource;
 import org.jdbi.v3.core.Jdbi;
 
 public class SynkerApplication extends Application<SynkerConfiguration> {
 
     public static void main(final String[] args) throws Exception {
-        System.out.println("Hello world");
+        System.out.println("Running Synker Server");
         new SynkerApplication().run(args);
-    }
-
-    @Override
-    public String getName() {
-        return "Synker";
     }
 
     @Override
@@ -35,11 +29,10 @@ public class SynkerApplication extends Application<SynkerConfiguration> {
     @Override
     public void run(final SynkerConfiguration configuration,
                     final Environment environment) {
-        // TODO: implement application
-
         final JdbiFactory factory = new JdbiFactory();
         final Jdbi jdbi = factory.build(environment, configuration.getDataSourceFactory(), "mysql");
 
+        UserResource userResource = new UserResource(jdbi);
+        environment.jersey().register(userResource);
     }
-
 }

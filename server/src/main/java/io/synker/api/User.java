@@ -1,25 +1,17 @@
 package io.synker.api;
 
 public class User {
-    private long id;
-    private String username;
+    private String name;
     private String email;
-    private String birthdate;
+    private String password;
 
-    public long getId() {
-        return id;
+    // Getters and setters for 'name', 'email', and 'password'
+    public String getName() {
+        return name;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {
@@ -30,11 +22,11 @@ public class User {
         this.email = email;
     }
 
-    public String getBirthdate() {
-        return birthdate;
+    public String getPassword() {
+        return password;
     }
 
-    public void setBirthdate(String birthdate) {
-        this.birthdate = birthdate;
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

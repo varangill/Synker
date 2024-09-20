@@ -1,22 +1,25 @@
 package io.synker.data;
 
 import io.synker.api.User;
-import org.jdbi.v3.sqlobject.config.RegisterRowMapper;
+import org.jdbi.v3.core.Jdbi;
+import org.jdbi.v3.sqlobject.config.RegisterBeanMapper;
 import org.jdbi.v3.sqlobject.customizer.Bind;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
 import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 
 import java.util.List;
 
+// DAO for User
 public interface UserDao {
 
-    @SqlUpdate("INSERT INTO users (id, name, email, password, birthdate) VALUES (:id, :name, :email, :password, :birthdate)")
-    void createUser(@Bind("id") String id, @Bind("name") String name, @Bind("email") String email, @Bind("password") String password, @Bind("birthdate") String birthdate);
+    @SqlUpdate("CREATE TABLE IF NOT EXISTS users (id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(100))")
+    void createTable();
 
-    @SqlQuery("SELECT * FROM users WHERE id = :id")
-    User getUserById(@Bind("id") String id);
+    @SqlUpdate("INSERT INTO users (name, email, password) VALUES (:name, :email, :password)")
+    void insertUser(@Bind("name") String name, @Bind("email") String email, @Bind("password") String password);
 
     @SqlQuery("SELECT * FROM users")
+    @RegisterBeanMapper(User.class)
     List<User> getAllUsers();
 }
 
