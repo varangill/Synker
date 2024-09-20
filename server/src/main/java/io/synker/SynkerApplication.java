@@ -1,12 +1,13 @@
 package io.synker;
 
+import io.synker.resources.UserResource;
+
 import io.dropwizard.core.Application;
 import io.dropwizard.core.setup.Bootstrap;
 import io.dropwizard.core.setup.Environment;
 import io.dropwizard.db.DataSourceFactory;
 import io.dropwizard.jdbi3.JdbiFactory;
 import io.dropwizard.migrations.MigrationsBundle;
-import io.synker.resources.UserResource;
 import org.jdbi.v3.core.Jdbi;
 
 public class SynkerApplication extends Application<SynkerConfiguration> {

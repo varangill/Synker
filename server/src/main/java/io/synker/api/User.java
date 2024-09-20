@@ -5,7 +5,6 @@ public class User {
     private String email;
     private String password;
 
-    // Getters and setters for 'name', 'email', and 'password'
     public String getName() {
         return name;
     }
