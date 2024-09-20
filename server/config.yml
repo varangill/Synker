@@ -1,8 +1,8 @@
 ---
 database:
   driverClass: com.mysql.cj.jdbc.Driver
-  user: root
-  password: root
+  user: ${DB_USER}
+  password: ${DB_PASSWORD}
   url: jdbc:mysql://localhost:3306/synker
   properties:
     charSet: UTF-8

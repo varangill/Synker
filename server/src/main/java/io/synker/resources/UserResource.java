@@ -29,8 +29,9 @@ public class UserResource {
     // Create a new user
     @POST
     public Response createUser(User user) {
-        userDao.insertUser(user.getName(), user.getEmail(), user.getPassword());
+        int userId = userDao.insertUser(user.getName(), user.getEmail(), user.getPassword());
+        User newUser = userDao.findById(userId);
 
-        return Response.status(Response.Status.CREATED).build();
+        return Response.status(Response.Status.CREATED).entity(newUser).build();
     }
 }

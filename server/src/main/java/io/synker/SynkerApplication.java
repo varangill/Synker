@@ -2,6 +2,8 @@ package io.synker;
 
 import io.synker.resources.UserResource;
 
+import io.dropwizard.configuration.EnvironmentVariableSubstitutor;
+import io.dropwizard.configuration.SubstitutingSourceProvider;
 import io.dropwizard.core.Application;
 import io.dropwizard.core.setup.Bootstrap;
 import io.dropwizard.core.setup.Environment;
@@ -19,6 +21,14 @@ public class SynkerApplication extends Application<SynkerConfiguration> {
 
     @Override
     public void initialize(final Bootstrap<SynkerConfiguration> bootstrap) {
+        // Add env variables to runtime config
+        bootstrap.setConfigurationSourceProvider(
+                new SubstitutingSourceProvider(
+                        bootstrap.getConfigurationSourceProvider(),
+                        new EnvironmentVariableSubstitutor(false))
+        );
+
+        // Setup DB migrations
         bootstrap.addBundle(new MigrationsBundle<SynkerConfiguration>() {
             @Override
             public DataSourceFactory getDataSourceFactory(SynkerConfiguration configuration) {
