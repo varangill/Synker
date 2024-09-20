@@ -1,3 +1,15 @@
 ---
-template: Hello, %s!
-defaultName: Stranger
+database:
+  driverClass: com.mysql.cj.jdbc.Driver
+  user: root
+  password: root
+  url: jdbc:mysql://localhost:3306/synker
+  properties:
+    charSet: UTF-8
+    ssl: false
+  maxWaitForConnection: 1s
+  minSize: 8
+  maxSize: 32
+  checkConnectionWhileIdle: false
+  evictionInterval: 10s
+  minIdleTime: 1 minute
