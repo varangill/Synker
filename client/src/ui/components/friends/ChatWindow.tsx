@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEdit, faHatWizard } from "@fortawesome/free-solid-svg-icons";
+import { faUserGroup, faHatWizard } from "@fortawesome/free-solid-svg-icons";
 
 import { receivedMessageBox, sentMessageBox } from "./MessageBox";
 import { Chat } from "../../../types/Chat";
 import windowResize from "../../utils/WindowResize";
 import Title from "../common/Title";
 import ChatInputBox from "./ChatInputBox";
+import EditMembers from "./EditMembers";
 
 interface ChatWindowProps {
   chat: Chat;
@@ -21,6 +22,8 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
 }) => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 650);
   const [textToSend, setTextToSend] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
+
   // const [isEditing, setIsEditing] = useState(false);
   // TODO: Get the last opened chat messages to display first
 
@@ -32,9 +35,21 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
   useEffect(() => {
     windowResize(setIsMobile);
   }, []);
+
+  const handleAddMemberClick = () => {
+    // Add your logic to add a new member
+    console.log("Adding member...");
+  };
+
+  // Example function to kick a member
+  const handleKickMemberClick = (memberId: string) => {
+    // Add your logic to kick the member
+    console.log(`Kicking member with id: ${memberId}`);
+  };
+
   return (
     <div
-      className={` flex flex-col items-center bg-primary-200 w-full h-full ${
+      className={`flex flex-col items-center bg-primary-200 w-full h-full ${
         isMobile ? "" : "rounded-2xl border-l-4 border-b-4 border-accent-100"
       }`}
     >
@@ -55,8 +70,11 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
             ></div>
             <div className="flex flex-grow"></div>
             {isGroupChat && (
-              <button>
-                <FontAwesomeIcon icon={faEdit} className="m-2 mr-4 title" />
+              <button onClick={() => setIsOpen(true)}>
+                <FontAwesomeIcon
+                  icon={faUserGroup}
+                  className="m-2 mr-4 title"
+                />
               </button>
             )}
           </div>
@@ -67,7 +85,7 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
         {chat.messages.length === 0 ? (
           <div className="flex justify-center items-center h-full text-primary-400 flex flex-col">
             <FontAwesomeIcon icon={faHatWizard} className="m-2 mr-4 h-20" />
-            Don't be shy, send the first message!
+            Don't be shy, say hi!
           </div>
         ) : (
           chat.messages.map((message, index) => {
@@ -85,6 +103,15 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
         <div className="bg-primary-100 w-full h-1"></div>
         <ChatInputBox setTextToSend={() => setTextToSend("")} />
       </div>
+
+      {/* Add the EditMembers modal */}
+      <EditMembers
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        members={chat.members}
+        onAddMember={handleAddMemberClick}
+        onKickMember={handleKickMemberClick}
+      />
     </div>
   );
 };
