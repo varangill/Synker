@@ -1,5 +1,6 @@
 package io.synker;
 
+import io.synker.resources.FriendshipResource;
 import io.synker.resources.UserResource;
 
 import io.dropwizard.configuration.EnvironmentVariableSubstitutor;
@@ -44,6 +45,8 @@ public class SynkerApplication extends Application<SynkerConfiguration> {
         final Jdbi jdbi = factory.build(environment, configuration.getDataSourceFactory(), "mysql");
 
         UserResource userResource = new UserResource(jdbi);
+        FriendshipResource friendshipResource = new FriendshipResource((jdbi));
         environment.jersey().register(userResource);
+        environment.jersey().register(friendshipResource);
     }
 }
