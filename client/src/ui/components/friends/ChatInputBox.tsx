@@ -31,7 +31,7 @@ const ChatInputBox: React.FC<ChatInputBoxProps> = ({ setTextToSend }) => {
         onClick={() => handleSendClick()}
         className="bg-accent-100 rounded-2xl text-white min-w-12 w-12 hover:bg-accent-200"
       >
-        <FontAwesomeIcon icon={faPaperPlane} className="" />
+        <FontAwesomeIcon icon={faPaperPlane} />
       </button>
     </div>
   );

@@ -1,10 +1,11 @@
-import { Chat } from "../../../types/Chat";
 import React, { useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEdit, faHatWizard } from "@fortawesome/free-solid-svg-icons";
+
+import { receivedMessageBox, sentMessageBox } from "./MessageBox";
+import { Chat } from "../../../types/Chat";
 import windowResize from "../../utils/WindowResize";
 import Title from "../common/Title";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEdit } from "@fortawesome/free-solid-svg-icons";
-import { receivedMessageBox, sentMessageBox } from "./MessageBox";
 import ChatInputBox from "./ChatInputBox";
 
 interface ChatWindowProps {
@@ -62,15 +63,23 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
         </div>
       </div>
       <div className="bg-primary-100 h-1 w-full" />
-      <div className="message-container w-full overflow-auto no-scrollbar">
-        {chat.messages.map((message, index) => {
-          const previousMessage = chat.messages[index - 1];
-          const showProfile =
-            !previousMessage || previousMessage.sender.id != message.sender.id;
-          return message.sender.id === loggedInUserID
-            ? sentMessageBox(message, showProfile)
-            : receivedMessageBox(message, showProfile);
-        })}
+      <div className="message-container flex flex-grow flex-col w-full overflow-auto no-scrollbar">
+        {chat.messages.length === 0 ? (
+          <div className="flex justify-center items-center h-full text-primary-400 flex flex-col">
+            <FontAwesomeIcon icon={faHatWizard} className="m-2 mr-4 h-20" />
+            Don't be shy, send the first message!
+          </div>
+        ) : (
+          chat.messages.map((message, index) => {
+            const previousMessage = chat.messages[index - 1];
+            const showProfile =
+              !previousMessage ||
+              previousMessage.sender.id !== message.sender.id;
+            return message.sender.id === loggedInUserID
+              ? sentMessageBox(message, showProfile)
+              : receivedMessageBox(message, showProfile);
+          })
+        )}
       </div>
       <div className="text-container w-full rounded-2xl flex flex-col justify-center items-center">
         <div className="bg-primary-100 w-full h-1"></div>

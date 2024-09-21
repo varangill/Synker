@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
+
 import { Conversation } from "../../types/Chat";
 import Navigation from "../components/common/Navigation";
 import ConversationList from "../components/friends/ConversationList";
 import ChatWindow from "../components/friends/ChatWindow";
 import testFriendList from "../../mockData/testFriendList.json";
 import windowResize from "../utils/WindowResize";
+
 import testChatMessages from "../../mockData/testChatMessages.json";
 
 // TODO: Get data from the back-end
