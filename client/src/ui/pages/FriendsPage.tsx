@@ -1,17 +1,13 @@
-import { useEffect, useState } from "react";
-
+import { useContext, useEffect, useState } from "react";
+import { ModalContext } from "../../routers/AppRouter";
 import { Conversation } from "../../types/Chat";
 import Navigation from "../components/common/Navigation";
 import ConversationList from "../components/friends/ConversationList";
 import ChatWindow from "../components/friends/ChatWindow";
 import testFriendList from "../../mockData/testFriendList.json";
 import windowResize from "../utils/WindowResize";
-
 import testChatMessages from "../../mockData/testChatMessages.json";
 
-// TODO: Get data from the back-end
-
-// TODO: Replace with actual logged in user ID
 const getId = (): string => {
   return "1";
 };
@@ -30,8 +26,13 @@ export default function FriendsPage() {
   const [selectedChat, setSelectedChat] = useState<Conversation>(
     parsedChatList[0]
   );
+  const modalContext = useContext(ModalContext);
 
-  // TODO: Once a chat is selected, unreadCount should go to 0
+  if (!modalContext) {
+    throw new Error("ModalContext is not provided");
+  }
+
+  const [isModalOpen] = modalContext;
 
   useEffect(() => {
     windowResize(setIsMobile);
@@ -48,7 +49,11 @@ export default function FriendsPage() {
   }));
 
   return (
-    <div className="App flex flex-row bg-primary-100 h-screen">
+    <div
+      className={`App flex flex-row bg-primary-100 h-screen ${
+        isModalOpen ? "backdrop-blur-lg" : ""
+      }`}
+    >
       <Navigation />
       <div
         className={`friends-screen-container flex w-full flex-wrap overflow-x-hidden h-full justify-center gap-10 ${
@@ -64,7 +69,7 @@ export default function FriendsPage() {
             />
             <ChatWindow
               chat={{
-                id: "friend" in selectedChat ? "" : selectedChat.id, // Use the ID for group chats
+                id: "friend" in selectedChat ? "" : selectedChat.id,
                 chatProfilePicture:
                   "friend" in selectedChat
                     ? selectedChat.friend.profilePicture

@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserGroup, faHatWizard } from "@fortawesome/free-solid-svg-icons";
-
+import { ModalContext } from "../../../routers/AppRouter";
 import { receivedMessageBox, sentMessageBox } from "./MessageBox";
 import { Chat } from "../../../types/Chat";
 import windowResize from "../../utils/WindowResize";
@@ -22,10 +22,13 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
 }) => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 650);
   const [textToSend, setTextToSend] = useState("");
-  const [isOpen, setIsOpen] = useState(false);
+  const modalContext = useContext(ModalContext);
 
-  // const [isEditing, setIsEditing] = useState(false);
-  // TODO: Get the last opened chat messages to display first
+  if (!modalContext) {
+    throw new Error("ModalContext is not provided");
+  }
+
+  const [isModalOpen, setIsModalOpen] = modalContext;
 
   useEffect(() => {
     // TODO: Send the text to the backend
@@ -37,13 +40,10 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
   }, []);
 
   const handleAddMemberClick = () => {
-    // Add your logic to add a new member
     console.log("Adding member...");
   };
 
-  // Example function to kick a member
   const handleKickMemberClick = (memberId: string) => {
-    // Add your logic to kick the member
     console.log(`Kicking member with id: ${memberId}`);
   };
 
@@ -57,7 +57,7 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
         <img
           src={chat.chatProfilePicture}
           className="object-contain max-h-20 max-w-20 m-4"
-        ></img>
+        />
         <div className="flex flex-col w-full max-h-20">
           <div className="flex flex-row w-full items-center justify-center">
             <Title title={chat.chatName} />
@@ -70,7 +70,7 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
             ></div>
             <div className="flex flex-grow"></div>
             {isGroupChat && (
-              <button onClick={() => setIsOpen(true)}>
+              <button onClick={() => setIsModalOpen(true)}>
                 <FontAwesomeIcon
                   icon={faUserGroup}
                   className="m-2 mr-4 title"
@@ -103,11 +103,9 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
         <div className="bg-primary-100 w-full h-1"></div>
         <ChatInputBox setTextToSend={() => setTextToSend("")} />
       </div>
-
-      {/* Add the EditMembers modal */}
       <EditMembers
-        isOpen={isOpen}
-        onClose={() => setIsOpen(false)}
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
         members={chat.members}
         onAddMember={handleAddMemberClick}
         onKickMember={handleKickMemberClick}
