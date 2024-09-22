@@ -50,8 +50,8 @@ export default function FriendsPage() {
 
   return (
     <div
-      className={`App flex flex-row bg-primary-100 h-screen ${
-        isModalOpen ? "backdrop-blur-lg" : ""
+      className={`App flex flex-row h-screen bg-primary-100 ${
+        isModalOpen ? "brightness-95" : ""
       }`}
     >
       <Navigation />
