@@ -10,4 +10,7 @@
     <changeSet id="2" author="varan_gill">
         <sqlFile path="migrations/V2__create_friendships_table.sql"/>
     </changeSet>
+    <changeSet id="3" author="varan_gill">
+        <sqlFile path="migrations/V3__create_groups_tables.sql"/>
+    </changeSet>
 </databaseChangeLog>

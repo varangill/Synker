@@ -1,6 +1,7 @@
 package io.synker;
 
 import io.synker.resources.FriendshipResource;
+import io.synker.resources.GroupResource;
 import io.synker.resources.UserResource;
 
 import io.dropwizard.configuration.EnvironmentVariableSubstitutor;
@@ -46,7 +47,9 @@ public class SynkerApplication extends Application<SynkerConfiguration> {
 
         UserResource userResource = new UserResource(jdbi);
         FriendshipResource friendshipResource = new FriendshipResource((jdbi));
+        GroupResource groupResource = new GroupResource((jdbi));
         environment.jersey().register(userResource);
         environment.jersey().register(friendshipResource);
+        environment.jersey().register(groupResource);
     }
 }
