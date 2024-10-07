@@ -6,9 +6,7 @@ public class GroupMembership {
     private int groupId;
     private int userId;
     private boolean isOwner;
-    private LocalDate joinDate; // if you want to track when the user joined
-
-    // Constructors, getters, and setters
+    private LocalDate joinDate;
 
     public GroupMembership(int groupId, int userId, boolean isOwner, LocalDate joinDate) {
         this.groupId = groupId;
