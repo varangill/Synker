@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
+
 import { Conversation } from "../../../types/Chat";
-import "react-toastify/dist/ReactToastify.css";
-import Title from "../common/Title";
 import { showSuccessToast, showErrorToast } from "../../utils/ShowToast";
+import Title from "../common/Title";
 import windowResize from "../../utils/WindowResize";
+import "react-toastify/dist/ReactToastify.css";
 
 interface ConversationListProps {
   conversationList: Conversation[];

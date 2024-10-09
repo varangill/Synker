@@ -1,13 +1,14 @@
 import React, { useEffect, useState, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserGroup, faHatWizard } from "@fortawesome/free-solid-svg-icons";
+
 import { ModalContext } from "../../../routers/AppRouter";
 import { receivedMessageBox, sentMessageBox } from "./MessageBox";
 import { Chat } from "../../../types/Chat";
 import windowResize from "../../utils/WindowResize";
 import Title from "../common/Title";
 import ChatInputBox from "./ChatInputBox";
-import EditMembers from "./EditMembers";
+import EditMembersModal from "./EditMembersModal";
 
 interface ChatWindowProps {
   chat: Chat;
@@ -38,14 +39,6 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
   useEffect(() => {
     windowResize(setIsMobile);
   }, []);
-
-  const handleAddMemberClick = () => {
-    console.log("Adding member...");
-  };
-
-  const handleKickMemberClick = (memberId: string) => {
-    console.log(`Kicking member with id: ${memberId}`);
-  };
 
   return (
     <div
@@ -103,12 +96,14 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
         <div className="bg-primary-100 w-full h-1"></div>
         <ChatInputBox setTextToSend={() => setTextToSend("")} />
       </div>
-      <EditMembers
+      <EditMembersModal
+        chatID={chat.id}
+        chatProfilePicture={chat.chatProfilePicture}
+        chatName={chat.chatName}
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         members={chat.members}
-        onAddMember={handleAddMemberClick}
-        onKickMember={handleKickMemberClick}
+        friends={chat.members}
       />
     </div>
   );
