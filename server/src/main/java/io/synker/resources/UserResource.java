@@ -56,4 +56,17 @@ public class UserResource {
 
         return Response.status(Response.Status.UNAUTHORIZED).build();
     }
+
+    // Update an existing user
+    @PATCH
+    @Path("/{id}")
+    public Response updateUser(@PathParam("id") int id, User user) {
+        String hashedPassword = user.getPassword() != null
+                ? BCrypt.hashpw(user.getPassword(), BCrypt.gensalt())
+                : null;
+
+        userDao.updateUser(id, hashedPassword, user.getBirthday());
+
+        return Response.ok().build();
+    }
 }
