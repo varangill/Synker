@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Dialog, DialogPanel } from "@headlessui/react";
 
 import { FriendUser } from "../../../types/User";
+import { showSuccessToast, showErrorToast } from "../../utils/ShowToast";
 import CancelSaveButton from "../common/CancelSaveButton";
 
 interface EditMembersModalProps {
@@ -28,18 +29,24 @@ const EditMembers: React.FC<EditMembersModalProps> = ({
   const [editChatProfilePicture, setEditChatProfilePicture] = useState("");
   const [displayChatProfilePicture, setDisplayChatProfilePicture] =
     useState(chatProfilePicture);
+  const [editChatMembers, setEditChatMembers] = useState(members);
+  const [displayChatMembers, setDisplayChatMembers] = useState(members);
   const [selectedFriends, setSelectedFriends] = useState<FriendUser[]>([]);
   const [query, setQuery] = useState<string>("");
 
   const filteredFriends =
     query === ""
       ? []
-      : friends.filter((friend) =>
-          friend.username.toLowerCase().includes(query.toLowerCase())
+      : friends.filter(
+          (friend) =>
+            friend.username.toLowerCase().includes(query.toLowerCase()) &&
+            !editChatMembers.some(
+              (excluded) => excluded.username === friend.username
+            )
         );
 
   const handleRemoveMemberClick = (memberId: string) => {
-    setSelectedFriends((prevSelectedFriends) =>
+    setEditChatMembers((prevSelectedFriends) =>
       prevSelectedFriends.filter((friend) => friend.id !== memberId)
     );
   };
@@ -48,24 +55,32 @@ const EditMembers: React.FC<EditMembersModalProps> = ({
     if (!selectedFriends.includes(friend)) {
       setSelectedFriends([...selectedFriends, friend]);
     }
-    setQuery(""); // Clear search after selecting
+    setQuery("");
   };
 
   const handleSaveClick = () => {
-    setDisplayChatName(editChatName);
+    // TODO: If no changes detected, show error "No Changes Made"
+    if (editChatName != "") {
+      setDisplayChatName(editChatName);
+    }
     setDisplayChatProfilePicture(editChatProfilePicture);
+    setEditChatMembers([...new Set(editChatMembers.concat(selectedFriends))]);
+    setDisplayChatMembers(editChatMembers);
+    setSelectedFriends([]);
 
     console.log("Saving information to chat: ", chatID);
     console.log("Chat Name: ", displayChatName);
     console.log("Chat Profile Picture: ", displayChatProfilePicture);
+    console.log("Chat Members: ", displayChatMembers);
 
-    onClose();
+    showSuccessToast("Changes saved successfully!");
   };
 
   const handleCancelClick = () => {
-    setEditChatName(chatName);
-    setEditChatProfilePicture(chatProfilePicture);
-
+    setEditChatName(displayChatName);
+    setEditChatProfilePicture(displayChatProfilePicture);
+    setEditChatMembers(displayChatMembers);
+    setSelectedFriends([]);
     onClose();
   };
 
@@ -188,7 +203,7 @@ const EditMembers: React.FC<EditMembersModalProps> = ({
             <div className="text-white font-semibold text-md">Member List</div>
             <div className="line bg-primary-100 h-0.5 mt-1 mb-4"></div>
             <div className="mb-4">
-              {members.map((member) => (
+              {editChatMembers.map((member) => (
                 <li
                   key={member.id}
                   className="flex justify-between items-center mb-2 text-gray-300"
