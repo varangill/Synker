@@ -3,6 +3,7 @@ package io.synker.resources;
 import io.synker.api.User;
 import io.synker.data.UserDao;
 
+import org.mindrot.jbcrypt.BCrypt;
 import org.jdbi.v3.core.Jdbi;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -29,6 +30,9 @@ public class UserResource {
     // Create a new user
     @POST
     public Response createUser(User user) {
+        String hashedPassword = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
+        user.setPassword(hashedPassword);
+
         int userId = userDao.insertUser(user.getName(), user.getEmail(), user.getPassword());
         User newUser = userDao.findById(userId);
 
