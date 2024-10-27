@@ -7,6 +7,8 @@ import org.jdbi.v3.sqlobject.customizer.Bind;
 import org.jdbi.v3.sqlobject.statement.GetGeneratedKeys;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
 import org.jdbi.v3.sqlobject.statement.SqlUpdate;
+
+import java.time.LocalDate;
 import java.util.List;
 
 public interface UserDao {
@@ -19,8 +21,20 @@ public interface UserDao {
     @RegisterBeanMapper(User.class)
     User findById(@Bind("id") int id);
 
+    @SqlQuery("SELECT * FROM users WHERE email = :email")
+    @RegisterBeanMapper(User.class)
+    User findByEmail(@Bind("email") String email);
+
     @SqlQuery("SELECT * FROM users")
     @RegisterBeanMapper(User.class)
     List<User> getAllUsers();
+
+    @SqlUpdate("UPDATE users SET password = COALESCE(:password, password), "
+            + "birthday = COALESCE(:birthday, birthday) WHERE id = :id")
+    void updateUser(
+            @Bind("id") int id,
+            @Bind("password") String password,
+            @Bind("birthday") LocalDate birthday
+    );
 }
 

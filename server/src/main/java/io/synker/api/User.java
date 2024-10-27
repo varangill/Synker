@@ -8,7 +8,7 @@ public class User {
     private int id;
     private String name;
     private String email;
-    private LocalDate birthdate;
+    private LocalDate birthday;
     private LocalDate joinDate;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
@@ -46,12 +46,12 @@ public class User {
         this.password = password;
     }
 
-    public LocalDate getBirthdate() {
-        return birthdate;
+    public LocalDate getBirthday() {
+        return birthday;
     }
 
-    public void setBirthdate(LocalDate birthdate) {
-        this.birthdate = birthdate;
+    public void setBirthday(LocalDate birthday) {
+        this.birthday = birthday;
     }
 
     public LocalDate getJoinDate() {
