@@ -38,4 +38,22 @@ public class UserResource {
 
         return Response.status(Response.Status.CREATED).entity(newUser).build();
     }
+
+    // Attempt logging in a user given name and password
+    @POST
+    @Path("/login")
+    public Response loginUser(User user) {
+        String email = user.getEmail();
+        User storedUser = userDao.findByEmail(email);
+
+        String inputPassword = user.getPassword();
+        String storedPassword = storedUser.getPassword();
+
+
+        if (BCrypt.checkpw(inputPassword, storedPassword)) {
+            return Response.status(Response.Status.OK).build();
+        }
+
+        return Response.status(Response.Status.UNAUTHORIZED).build();
+    }
 }
