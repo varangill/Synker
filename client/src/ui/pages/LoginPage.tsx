@@ -1,6 +1,7 @@
 import("../../App.css");
 import { useState } from "react";
 import Navigation from "../components/common/Navigation";
+import { postData } from "../../api";
 
 export default function LoginPage() {
   const [username, setUsername] = useState("");
@@ -16,7 +17,15 @@ export default function LoginPage() {
   };
 
   const handleRegisterClick = () => {
-    console.log("Register Clicked");
+    postData("/users", {
+      name: registerUsername,
+      email,
+      password: registerPassword,
+    })
+      .then((res) => {
+        console.log("Signed up", res.id);
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
