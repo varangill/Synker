@@ -64,8 +64,9 @@ const EditMembers: React.FC<EditMembersModalProps> = ({
       setDisplayChatName(editChatName);
     }
     setDisplayChatProfilePicture(editChatProfilePicture);
-    setEditChatMembers([...new Set(editChatMembers.concat(selectedFriends))]);
-    setDisplayChatMembers(editChatMembers);
+    const newMembersArray = editChatMembers.concat(selectedFriends);
+    setEditChatMembers(newMembersArray);
+    setDisplayChatMembers(newMembersArray);
     setSelectedFriends([]);
 
     console.log("Saving information to chat: ", chatID);
