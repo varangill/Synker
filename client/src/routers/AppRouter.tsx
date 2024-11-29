@@ -17,8 +17,8 @@ function AppRouter() {
     <BrowserRouter>
       <ToastContainer />
       <Routes>
-        <Route path="/" element={<LoginPage />} />
-        <Route path="/home" element={<HomePage />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<LoginPage />} />
         <Route path="/sync" element={<SyncPage />} />
         <Route path="/friends" element={<FriendsPage />} />
         <Route path="/live" element={<LivePage />} />

@@ -25,7 +25,7 @@ const Navigation = () => {
   const currentPath = window.location.pathname;
 
   function handleHomeClick() {
-    navigate("/home");
+    navigate("/");
   }
   function handleSyncClick() {
     navigate("/sync");
@@ -48,7 +48,7 @@ const Navigation = () => {
   }
 
   function handleLogoutClick() {
-    navigate("/");
+    navigate("/login");
   }
 
   function toggleMenu() {
