@@ -45,6 +45,9 @@ public class SynkerApplication extends Application<SynkerConfiguration> {
         final JdbiFactory factory = new JdbiFactory();
         final Jdbi jdbi = factory.build(environment, configuration.getDataSourceFactory(), "mysql");
 
+        environment.jersey().setUrlPattern("/api/*");
+        environment.jersey().register(new CorsFilter());
+
         UserResource userResource = new UserResource(jdbi);
         FriendshipResource friendshipResource = new FriendshipResource((jdbi));
         GroupResource groupResource = new GroupResource((jdbi));

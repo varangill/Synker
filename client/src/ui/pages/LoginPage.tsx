@@ -1,7 +1,11 @@
 import { useState } from "react";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import loginImage from "../assets/images/login.png";
+        
+import Navigation from "../components/common/Navigation";
+import { postData } from "../../api";
 
 export default function LoginPage() {
   const [activeTab, setActiveTab] = useState("login");
@@ -22,7 +26,15 @@ export default function LoginPage() {
   };
 
   const handleRegisterClick = () => {
-    console.log("Register Clicked");
+    postData("/users", {
+      name: registerUsername,
+      email,
+      password: registerPassword,
+    })
+      .then((res) => {
+        console.log("Signed up", res.id);
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
