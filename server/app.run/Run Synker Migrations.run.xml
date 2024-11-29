@@ -1,0 +1,14 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Run Synker Migrations" type="Application" factoryName="Application">
+    <envs>
+      <env name="DB_USER" value="root" />
+      <env name="DB_PASSWORD" value="root" />
+    </envs>
+    <option name="MAIN_CLASS_NAME" value="io.synker.SynkerApplication" />
+    <module name="Synker" />
+    <option name="PROGRAM_PARAMETERS" value="db migrate server/config.yml" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
