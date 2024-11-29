@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import loginImage from "../assets/images/login.png";
 
 export default function LoginPage() {
@@ -6,11 +8,14 @@ export default function LoginPage() {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const [email, setEmail] = useState("");
   const [registerUsername, setRegisterUsername] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [showRegisterPassword, setShowRegisterPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const handleSubmitClick = () => {
     console.log("Submit Clicked");
@@ -73,13 +78,24 @@ export default function LoginPage() {
                       <label className="block text-sm font-medium mb-1 text-white">
                         Password
                       </label>
-                      <input
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        placeholder="Password"
-                        className="bg-primary-100 rounded-xl pl-4 text-white w-full h-10 outline-none focus:ring-0"
-                      />
+                      <div className="relative">
+                        <input
+                          type={showPassword ? "text" : "password"}
+                          value={password}
+                          onChange={(e) => setPassword(e.target.value)}
+                          placeholder="Password"
+                          className="bg-primary-100 rounded-xl pl-4 text-white w-full h-10 outline-none focus:ring-0"
+                        />
+                        <button
+                          type="button"
+                          onClick={() => setShowPassword(!showPassword)}
+                          className="absolute right-3 top-2 text-gray-400"
+                        >
+                          <FontAwesomeIcon
+                            icon={showPassword ? faEye : faEyeSlash}
+                          />
+                        </button>
+                      </div>
                     </div>
                   </>
                 )}
@@ -114,25 +130,51 @@ export default function LoginPage() {
                       <label className="block text-sm font-medium mb-1 text-white">
                         Password
                       </label>
-                      <input
-                        type="password"
-                        value={registerPassword}
-                        onChange={(e) => setRegisterPassword(e.target.value)}
-                        placeholder="Password"
-                        className="bg-primary-100 rounded-xl pl-4 text-white w-full h-10 outline-none focus:ring-0"
-                      />
+                      <div className="relative">
+                        <input
+                          type={showRegisterPassword ? "text" : "password"}
+                          value={registerPassword}
+                          onChange={(e) => setRegisterPassword(e.target.value)}
+                          placeholder="Password"
+                          className="bg-primary-100 rounded-xl pl-4 text-white w-full h-10 outline-none focus:ring-0"
+                        />
+                        <button
+                          type="button"
+                          onClick={() =>
+                            setShowRegisterPassword(!showRegisterPassword)
+                          }
+                          className="absolute right-3 top-2 text-gray-400"
+                        >
+                          <FontAwesomeIcon
+                            icon={showRegisterPassword ? faEye : faEyeSlash}
+                          />
+                        </button>
+                      </div>
                     </div>
                     <div className="mb-6">
                       <label className="block text-sm font-medium mb-1 text-white">
                         Confirm Password
                       </label>
-                      <input
-                        type="password"
-                        value={confirmPassword}
-                        onChange={(e) => setConfirmPassword(e.target.value)}
-                        placeholder="Confirm Password"
-                        className="bg-primary-100 rounded-xl pl-4 text-white w-full h-10 outline-none focus:ring-0"
-                      />
+                      <div className="relative">
+                        <input
+                          type={showConfirmPassword ? "text" : "password"}
+                          value={confirmPassword}
+                          onChange={(e) => setConfirmPassword(e.target.value)}
+                          placeholder="Confirm Password"
+                          className="bg-primary-100 rounded-xl pl-4 text-white w-full h-10 outline-none focus:ring-0"
+                        />
+                        <button
+                          type="button"
+                          onClick={() =>
+                            setShowConfirmPassword(!showConfirmPassword)
+                          }
+                          className="absolute right-3 top-2 text-gray-400"
+                        >
+                          <FontAwesomeIcon
+                            icon={showConfirmPassword ? faEye : faEyeSlash}
+                          />
+                        </button>
+                      </div>
                     </div>
                   </>
                 )}
