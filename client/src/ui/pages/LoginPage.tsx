@@ -3,8 +3,7 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import loginImage from "../assets/images/login.png";
-        
-import Navigation from "../components/common/Navigation";
+
 import { postData } from "../../api";
 
 export default function LoginPage() {
