@@ -8,7 +8,9 @@ import org.jdbi.v3.core.Jdbi;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Path("/users")
 @Produces(MediaType.APPLICATION_JSON)
@@ -49,12 +51,14 @@ public class UserResource {
         String inputPassword = user.getPassword();
         String storedPassword = storedUser.getPassword();
 
-
+        Map<String, Boolean> resBody = new HashMap<>();
         if (BCrypt.checkpw(inputPassword, storedPassword)) {
-            return Response.status(Response.Status.OK).build();
+            resBody.put("authenticated", true);
+            return Response.status(Response.Status.OK).entity(resBody).build();
         }
 
-        return Response.status(Response.Status.UNAUTHORIZED).build();
+        resBody.put("authenticated", false);
+        return Response.status(Response.Status.UNAUTHORIZED).entity(resBody).build();
     }
 
     // Update an existing user
