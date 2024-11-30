@@ -13,4 +13,7 @@
     <changeSet id="3" author="varan_gill">
         <sqlFile path="migrations/V3__create_groups_tables.sql"/>
     </changeSet>
+    <changeSet id="4" author="varan_gill">
+        <sqlFile path="migrations/V4__create_games_table.sql"/>
+    </changeSet>
 </databaseChangeLog>
