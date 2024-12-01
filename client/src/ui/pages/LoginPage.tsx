@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
@@ -6,7 +7,11 @@ import loginImage from "../assets/images/login.png";
 
 import { postData } from "../../api";
 
-export default function LoginPage() {
+interface LoginPageProps {
+  setAuth: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export default function LoginPage({ setAuth }: LoginPageProps) {
   const [activeTab, setActiveTab] = useState("login");
 
   const [email, setEmail] = useState("");
@@ -19,6 +24,8 @@ export default function LoginPage() {
   const [showRegisterPassword, setShowRegisterPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
+  const navigate = useNavigate();
+
   const handleSignInClick = () => {
     console.log(email, password);
     postData("/users/login", {
@@ -27,8 +34,13 @@ export default function LoginPage() {
     })
       .then((res) => {
         console.log("Signed In", res);
+        setAuth(true);
+        navigate("/");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        setAuth(false);
+      });
   };
 
   const handleRegisterClick = () => {
