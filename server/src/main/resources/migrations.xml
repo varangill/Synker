@@ -16,4 +16,7 @@
     <changeSet id="4" author="varan_gill">
         <sqlFile path="migrations/V4__create_games_table.sql"/>
     </changeSet>
+    <changeSet id="5" author="varan_gill">
+        <sqlFile path="migrations/V5__create_profiles_table.sql"/>
+    </changeSet>
 </databaseChangeLog>
