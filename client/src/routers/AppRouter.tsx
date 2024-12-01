@@ -13,7 +13,6 @@ import SyncPage from "../ui/pages/SyncPage";
 import SettingsPage from "../ui/pages/SettingsPage";
 import ProfilePage from "../ui/pages/ProfilePage";
 
-// Define the context
 export const AuthContext = createContext<boolean>(false);
 
 function AppRouter() {
