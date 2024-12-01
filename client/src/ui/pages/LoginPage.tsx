@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
@@ -6,22 +7,40 @@ import loginImage from "../assets/images/login.png";
 
 import { postData } from "../../api";
 
-export default function LoginPage() {
+interface LoginPageProps {
+  setAuth: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export default function LoginPage({ setAuth }: LoginPageProps) {
   const [activeTab, setActiveTab] = useState("login");
 
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-  const [email, setEmail] = useState("");
   const [registerUsername, setRegisterUsername] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showRegisterPassword, setShowRegisterPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  const handleSubmitClick = () => {
-    console.log("Submit Clicked");
+  const navigate = useNavigate();
+
+  const handleSignInClick = () => {
+    console.log(email, password);
+    postData("/users/login", {
+      email: email,
+      password: password,
+    })
+      .then((res) => {
+        console.log("Signed In", res);
+        setAuth(true);
+        navigate("/");
+      })
+      .catch((err) => {
+        console.log(err);
+        setAuth(false);
+      });
   };
 
   const handleRegisterClick = () => {
@@ -75,13 +94,13 @@ export default function LoginPage() {
                     {/* Login Fields */}
                     <div className="mb-6">
                       <label className="block text-sm font-medium mb-1 text-white">
-                        Username
+                        Email
                       </label>
                       <input
                         type="text"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                        placeholder="Username"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="Email"
                         className="bg-primary-100 rounded-xl pl-4 text-white w-full h-10 outline-none focus:ring-0"
                       />
                     </div>
@@ -193,7 +212,7 @@ export default function LoginPage() {
                   className="submit bg-accent-100 hover:bg-accent-200 w-full py-2 rounded-xl text-white font-bold mt-10"
                   onClick={
                     activeTab === "login"
-                      ? handleSubmitClick
+                      ? handleSignInClick
                       : handleRegisterClick
                   }
                 >
