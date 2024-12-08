@@ -17,16 +17,16 @@ public class Profile {
     private String status;
 
     @ColumnName("personality_one")
-    private int personalityOne;
+    private Integer personalityOne;
 
     @ColumnName("personality_two")
-    private int personalityTwo;
+    private Integer personalityTwo;
 
     @ColumnName("personality_three")
-    private int personalityThree;
+    private Integer personalityThree;
 
     @ColumnName("personality_four")
-    private int personalityFour;
+    private Integer personalityFour;
 
     public Profile() {
     }
@@ -75,7 +75,7 @@ public class Profile {
         this.status = status;
     }
 
-    public int getPersonalityOne() {
+    public Integer getPersonalityOne() {
         return personalityOne;
     }
 
@@ -83,7 +83,7 @@ public class Profile {
         this.personalityOne = personalityOne;
     }
 
-    public int getPersonalityTwo() {
+    public Integer getPersonalityTwo() {
         return personalityTwo;
     }
 
@@ -91,7 +91,7 @@ public class Profile {
         this.personalityTwo = personalityTwo;
     }
 
-    public int getPersonalityThree() {
+    public Integer getPersonalityThree() {
         return personalityThree;
     }
 
@@ -99,7 +99,7 @@ public class Profile {
         this.personalityThree = personalityThree;
     }
 
-    public int getPersonalityFour() {
+    public Integer getPersonalityFour() {
         return personalityFour;
     }
 
