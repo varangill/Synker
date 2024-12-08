@@ -16,4 +16,13 @@
     <changeSet id="4" author="varan_gill">
         <sqlFile path="migrations/V4__create_games_table.sql"/>
     </changeSet>
+    <changeSet id="5" author="varan_gill">
+        <sqlFile path="migrations/V5__create_profiles_table.sql"/>
+    </changeSet>
+    <changeSet id="6" author="varan_gill">
+        <sqlFile path="migrations/V6__profiles_allow_null_personality.sql"/>
+    </changeSet>
+    <changeSet id="7" author="varan_gill">
+        <sqlFile path="migrations/V7__profiles_remove_check.sql"/>
+    </changeSet>
 </databaseChangeLog>

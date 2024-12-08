@@ -1,6 +1,8 @@
 package io.synker.resources;
 
+import io.synker.api.Profile;
 import io.synker.api.User;
+import io.synker.data.ProfileDao;
 import io.synker.data.UserDao;
 
 import org.mindrot.jbcrypt.BCrypt;
@@ -18,9 +20,11 @@ import java.util.Map;
 public class UserResource {
 
     private final UserDao userDao;
+    private final ProfileDao profileDao;
 
     public UserResource(Jdbi jdbi) {
         this.userDao = jdbi.onDemand(UserDao.class);
+        this.profileDao = jdbi.onDemand(ProfileDao.class);
     }
 
     // GET all users
@@ -37,6 +41,8 @@ public class UserResource {
 
         int userId = userDao.insertUser(user.getName(), user.getEmail(), user.getPassword());
         User newUser = userDao.findById(userId);
+        profileDao.insertProfile(userId);
+
 
         return Response.status(Response.Status.CREATED).entity(newUser).build();
     }
@@ -71,6 +77,14 @@ public class UserResource {
 
         userDao.updateUser(id, hashedPassword, user.getBirthday());
 
+        return Response.ok().build();
+    }
+
+    @PATCH
+    @Path("/{id}/profile")
+    public Response updateProfile(@PathParam("id") int id, Profile profile) {
+        profile.setUserId(id);
+        profileDao.updateProfile(profile);
         return Response.ok().build();
     }
 }
