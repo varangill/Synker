@@ -20,12 +20,5 @@ public interface ProfileDao {
             + "personality_two = COALESCE(:personalityTwo, personality_two), "
             + "personality_three = COALESCE(:personalityThree, personality_three), "
             + "personality_four = COALESCE(:personalityFour, personality_four) WHERE user_id = :userId")
-    void updateProfile(@Bind("userId") int userId,
-                       @Bind("description") String description,
-                       @Bind("status") String status,
-                       @Bind("profilePictureUrl") String profilePictureUrl,
-                       @Bind("personalityOne") Integer personalityOne,
-                       @Bind("personalityTwo") Integer personalityTwo,
-                       @Bind("personalityThree") Integer personalityThree,
-                       @Bind("personalityFour") Integer personalityFour);
+    void updateProfile(@BindBean Profile profile);
 }

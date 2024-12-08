@@ -79,8 +79,8 @@ public class UserResource {
     @PATCH
     @Path("/{id}/profile")
     public Response updateProfile(@PathParam("id") int id, Profile profile) {
-        profileDao.updateProfile(id, profile.getDescription(), profile.getStatus(), profile.getProfilePictureUrl(),
-                profile.getPersonalityOne(), profile.getPersonalityTwo(), profile.getPersonalityThree(), profile.getPersonalityFour());
+        profile.setUserId(id);
+        profileDao.updateProfile(profile);
         return Response.ok().build();
     }
 }
