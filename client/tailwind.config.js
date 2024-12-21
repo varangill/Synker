@@ -45,8 +45,8 @@ export default {
         ".title": {
           color: "var(--btn-text-color)",
           fontWeight: "bold",
-          display: "flex",
-          alignItems: "center",
+          display: "block",
+          textAlign: "center",
           paddingTop: "0.5rem",
           paddingBottom: "0.5rem",
           fontSize: theme("fontSize.base"),
@@ -63,6 +63,7 @@ export default {
             fontSize: theme("fontSize.2xl"),
           },
         },
+
         ".btn-text": {
           color: "var(--btn-text-color)",
           height: "2rem",
@@ -80,7 +81,6 @@ export default {
         ".text": {
           color: "var(--btn-text-color)",
           height: "2rem",
-          fontWeight: "",
           display: "flex",
           alignItems: "center",
           fontSize: theme("fontSize.base"),
@@ -93,6 +93,16 @@ export default {
           "@screen lg": {
             fontSize: theme("fontSize.base"),
           },
+        },
+        ".line": {
+          display: "block",
+          height: "2px",
+          width: "100%",
+          backgroundColor: "var(--line-color)",
+          marginBottom: "16px",
+        },
+        ".icon-color": {
+          color: "var(--icon-color)",
         },
       };
 

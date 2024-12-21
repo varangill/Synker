@@ -17,7 +17,7 @@ const LiveLobby: React.FC<LiveLobbyProps> = ({ lobby }) => {
       <div className="stack-text text-white font-bold text-base">
         {lobby.title}
       </div>
-      <div className="flex flex-row">
+      <div className="flex flex-row text-white">
         <div className="pfp-images flex flex-wrap mt-2 object-contain gap-3 w-2/3">
           {lobby.players.map((player) => (
             <div key={player.id}>

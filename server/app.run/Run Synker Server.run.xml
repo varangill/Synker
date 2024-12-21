@@ -1,12 +1,14 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Run Synker Server" type="Application" factoryName="Application">
+    <option name="ALTERNATIVE_JRE_PATH" value="17 (2)" />
+    <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
     <envs>
       <env name="DB_USER" value="root" />
-      <env name="DB_PASSWORD" value="root" />
+      <env name="DB_PASSWORD" value="123abc" />
     </envs>
     <option name="MAIN_CLASS_NAME" value="io.synker.SynkerApplication" />
-    <module name="Synker" />
-    <option name="PROGRAM_PARAMETERS" value="server server/config.yml" />
+    <module name="server" />
+    <option name="PROGRAM_PARAMETERS" value="server C:\Users\EricL\Documents\GitHub\Synker\server\config.yml " />
     <method v="2">
       <option name="Make" enabled="true" />
     </method>

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Dropdown from "../common/Dropdown";
-import Title from "../common/Title";
+import SectionCard from "../common/SectionCard";
 import LobbyTag from "./LobbyTag";
 import { Lobby } from "../../../types/Lobby";
 import testUserList from "../../../mockData/testUserList.json";
@@ -94,9 +94,7 @@ const CreateLobby = () => {
   };
 
   return (
-    <div className="lobby-creation-container rounded-2xl flex flex-col items-center bg-primary-200 w-full h-full">
-      <Title title="CREATE LOBBY" />
-      <div className="title-line w-full bg-primary-100 h-1 mb-4"></div>
+    <SectionCard title="CREATE LOBBY">
       <div className="flex flex-col justify-around w-4/5 h-full overflow-y-auto no-scrollbar pb-8">
         <div className="dropdown-container mb-4">
           <div className="text-white font-bold mb-1 text-sm">GAME</div>
@@ -165,7 +163,7 @@ const CreateLobby = () => {
           </div>
         </button>
       </div>
-    </div>
+    </SectionCard>
   );
 };
 
