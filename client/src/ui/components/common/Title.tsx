@@ -9,7 +9,7 @@ const Title = ({ title, children }: TitleProps) => {
   return (
     <div className="flex flex-col w-full">
       <h2 className="title">{title}</h2>
-      <div>{children}</div>
+      <div className="flex items-center justify-center">{children}</div>
     </div>
   );
 };

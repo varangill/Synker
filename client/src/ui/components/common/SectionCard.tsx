@@ -9,7 +9,7 @@ interface SectionCardProps {
 
 const SectionCard = ({ title, titleContent, children }: SectionCardProps) => {
   return (
-    <section className="flex flex-col bg-primary-200 w-full h-full rounded-2xl items-center">
+    <section className="flex flex-col bg-primary-200 w-full h-full rounded-2xl items-center border-l-4 border-b-4 border-accent-300">
       {title ? (
         <>
           <Title title={title}>{titleContent}</Title>

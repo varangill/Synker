@@ -28,6 +28,7 @@ export default {
         accent: {
           100: "#6320EE",
           200: "#7236EF",
+          300: "#5041A3",
         },
       },
       spacing: {
@@ -96,7 +97,7 @@ export default {
         },
         ".line": {
           display: "block",
-          height: "2px",
+          height: "3px",
           width: "100%",
           backgroundColor: "var(--line-color)",
           marginBottom: "16px",

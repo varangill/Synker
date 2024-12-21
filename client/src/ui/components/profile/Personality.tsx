@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import CancelSaveButton from "../common/CancelSaveButton";
-import Title from "../common/Title";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import { showSuccessToast } from "../../utils/ShowToast";
+import SectionCard from "../common/SectionCard";
 
 interface PersonalityProps {
   introvert: number;
@@ -109,9 +109,7 @@ const Personality: React.FC<PersonalityProps> = ({
   };
 
   return (
-    <div className="game-selection-container rounded-2xl flex flex-col items-center bg-primary-200 w-full">
-      <Title title="PERSONALITY" />
-      <div className="title-line w-full bg-primary-100 h-1"></div>
+    <SectionCard title="PERSONALITY">
       <div className="w-full flex flex-col items-center justify-center p-5">
         <div className="w-full mb-10">
           <div className="flex justify-between text-white font-bold text-sm mb-4">
@@ -185,7 +183,7 @@ const Personality: React.FC<PersonalityProps> = ({
           )}
         </div>
       </div>
-    </div>
+    </SectionCard>
   );
 };
 

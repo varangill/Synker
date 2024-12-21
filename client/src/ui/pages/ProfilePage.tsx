@@ -48,7 +48,7 @@ export default function ProfilePage() {
             <div className="w-96">
               <ReviewCard reviewsList={reviewList} />
             </div>
-            <div className="w-96">
+            <div className="w-96 h-fit">
               <Personality
                 introvert={testUser.introvert}
                 observant={testUser.observant}
