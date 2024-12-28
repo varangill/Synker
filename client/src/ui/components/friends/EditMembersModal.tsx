@@ -15,7 +15,7 @@ interface EditMembersModalProps {
   friends: FriendUser[];
 }
 
-const EditMembers: React.FC<EditMembersModalProps> = ({
+const EditMembers = ({
   chatID,
   chatProfilePicture,
   chatName,
@@ -23,7 +23,7 @@ const EditMembers: React.FC<EditMembersModalProps> = ({
   onClose,
   members,
   friends,
-}) => {
+}: EditMembersModalProps) => {
   const [editChatName, setEditChatName] = useState("");
   const [displayChatName, setDisplayChatName] = useState(chatName);
   const [editChatProfilePicture, setEditChatProfilePicture] = useState("");
@@ -59,8 +59,18 @@ const EditMembers: React.FC<EditMembersModalProps> = ({
   };
 
   const handleSaveClick = () => {
-    // TODO: If no changes detected, show error "No Changes Made"
-    if (editChatName != "") {
+    const hasChanges =
+      editChatName !== displayChatName ||
+      editChatProfilePicture !== displayChatProfilePicture ||
+      JSON.stringify(editChatMembers) !== JSON.stringify(displayChatMembers) ||
+      selectedFriends.length > 0;
+
+    if (!hasChanges) {
+      showErrorToast("No changes detected!");
+      return;
+    }
+
+    if (editChatName !== "") {
       setDisplayChatName(editChatName);
     }
     setDisplayChatProfilePicture(editChatProfilePicture);

@@ -1,5 +1,4 @@
-import { useContext, useEffect, useState } from "react";
-import { ModalContext } from "../../routers/AppRouter";
+import { useEffect, useState } from "react";
 import { Conversation } from "../../types/Chat";
 import Navigation from "../components/common/Navigation";
 import ConversationList from "../components/friends/ConversationList";
@@ -26,13 +25,6 @@ export default function FriendsPage() {
   const [selectedChat, setSelectedChat] = useState<Conversation>(
     parsedChatList[0]
   );
-  const modalContext = useContext(ModalContext);
-
-  if (!modalContext) {
-    throw new Error("ModalContext is not provided");
-  }
-
-  const [isModalOpen] = modalContext;
 
   useEffect(() => {
     windowResize(setIsMobile);
@@ -49,11 +41,7 @@ export default function FriendsPage() {
   }));
 
   return (
-    <div
-      className={`App flex flex-row h-screen bg-primary-100 ${
-        isModalOpen ? "brightness-95" : ""
-      }`}
-    >
+    <div className="App flex flex-row h-screen bg-primary-100">
       <Navigation />
       <div
         className={`friends-screen-container flex w-full flex-wrap overflow-x-hidden h-full justify-center gap-10 ${

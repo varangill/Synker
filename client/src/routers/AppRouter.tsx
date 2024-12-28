@@ -21,18 +21,20 @@ function AppRouter() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     <ModalContext.Provider value={[isModalOpen, setIsModalOpen]}>
-      <BrowserRouter>
-        <ToastContainer />
-        <Routes>
-          <Route path="/" element={<LoginPage />} />
-          <Route path="/home" element={<HomePage />} />
-          <Route path="/sync" element={<SyncPage />} />
-          <Route path="/friends" element={<FriendsPage />} />
-          <Route path="/live" element={<LivePage />} />
-          <Route path="/settings" element={<SettingsPage />} />
-          <Route path="/profile" element={<ProfilePage />} />
-        </Routes>
-      </BrowserRouter>
+      <div className={isModalOpen ? "brightness-50" : ""}>
+        <BrowserRouter>
+          <ToastContainer />
+          <Routes>
+            <Route path="/" element={<LoginPage />} />
+            <Route path="/home" element={<HomePage />} />
+            <Route path="/sync" element={<SyncPage />} />
+            <Route path="/friends" element={<FriendsPage />} />
+            <Route path="/live" element={<LivePage />} />
+            <Route path="/settings" element={<SettingsPage />} />
+            <Route path="/profile" element={<ProfilePage />} />
+          </Routes>
+        </BrowserRouter>
+      </div>
     </ModalContext.Provider>
   );
 }
