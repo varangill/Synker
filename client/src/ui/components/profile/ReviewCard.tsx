@@ -1,8 +1,10 @@
 import React from "react";
+
 import ReviewBox from "./ReviewBox";
 import SectionCard from "../common/SectionCard";
 
 import { Review } from "../../../types/Review";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 

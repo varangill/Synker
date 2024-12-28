@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
-import { Conversation } from "../../../types/Chat";
+
 import "react-toastify/dist/ReactToastify.css";
+
+import { Conversation } from "../../../types/Chat";
 import Title from "../common/Title";
 import { showSuccessToast, showErrorToast } from "../../utils/ShowToast";
 import windowResize from "../../utils/WindowResize";

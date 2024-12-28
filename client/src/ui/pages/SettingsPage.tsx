@@ -1,4 +1,3 @@
-import("../../App.css");
 import Navigation from "../components/common/Navigation";
 
 export default function SettingsPage() {

@@ -1,9 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
+
 import Carousel from "react-multi-carousel";
-import SectionCard from "../common/SectionCard";
 import "react-multi-carousel/lib/styles.css";
-import { CarouselBundle } from "../../../types/Carousel";
+
+import SectionCard from "../common/SectionCard";
 import CancelSaveButton from "../common/CancelSaveButton";
+
+import { CarouselBundle } from "../../../types/Carousel";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEdit,
@@ -11,6 +15,7 @@ import {
   faPlus,
   faPencilAlt,
 } from "@fortawesome/free-solid-svg-icons";
+
 import { showSuccessToast } from "../../utils/ShowToast";
 
 interface ProfileCarouselProps {

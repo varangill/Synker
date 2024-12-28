@@ -1,9 +1,10 @@
 import { Lobby } from "../../../types/Lobby";
-import LiveLobby from "./LiveLobby";
+
 import SectionCard from "../common/SectionCard";
+import LiveLobby from "./LiveLobby";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFilter } from "@fortawesome/free-solid-svg-icons";
-import { faArrowsRotate } from "@fortawesome/free-solid-svg-icons";
+import { faFilter, faArrowsRotate } from "@fortawesome/free-solid-svg-icons";
 
 interface LiveGameProps {
   lobbyList: Lobby[];

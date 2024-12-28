@@ -1,11 +1,15 @@
 import { useState } from "react";
+
 import Dropdown from "../common/Dropdown";
 import SectionCard from "../common/SectionCard";
 import LobbyTag from "./LobbyTag";
+
 import { Lobby } from "../../../types/Lobby";
+import { GeneralUser } from "../../../types/User";
+
 import testUserList from "../../../mockData/testUserList.json";
 import testGame from "../../../mockData/testGame.json";
-import { GeneralUser } from "../../../types/User";
+
 import { showErrorToast, showSuccessToast } from "../../utils/ShowToast";
 
 const CreateLobby = () => {

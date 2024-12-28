@@ -1,14 +1,19 @@
+import { useEffect } from "react";
+
 import "../../App.css";
+
 import Navigation from "../components/common/Navigation.tsx";
 import Profile from "../components/profile/Profile.tsx";
 import ProfileCarousel from "../components/profile/ProfileCarousel.tsx";
-import { getData } from "../../api/index.ts";
-import { useEffect } from "react";
-import testUser from "../../mockData/testUser.json";
 import ReviewCard from "../components/profile/ReviewCard.tsx";
 import Personality from "../components/profile/Personality.tsx";
-import testReviewList from "../../mockData/testReviewList.json";
+
+import { getData } from "../../api/index.ts";
+
 import { Review } from "../../types/Review.tsx";
+
+import testUser from "../../mockData/testUser.json";
+import testReviewList from "../../mockData/testReviewList.json";
 
 const reviewList: Review[] = testReviewList.map((review) => ({
   ...review,

@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
-import CancelSaveButton from "../common/CancelSaveButton";
+
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
-import { showSuccessToast } from "../../utils/ShowToast";
+
+import CancelSaveButton from "../common/CancelSaveButton";
 import SectionCard from "../common/SectionCard";
+
+import { showSuccessToast } from "../../utils/ShowToast";
 
 interface PersonalityProps {
   introvert: number;
