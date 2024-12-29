@@ -1,12 +1,15 @@
-import "../../App.css";
+import { useEffect, useState } from "react";
+
+import { Lobby } from "../../types/Lobby.tsx";
+
 import Navigation from "../components/common/Navigation";
 import GameSelection from "../components/live/GameSelection.tsx";
 import LiveGame from "../components/live/LiveGame.tsx";
 import CreateLobby from "../components/live/CreateLobby.tsx";
+
 import testLobbies from "../../mockData/testLobbies.json";
-import { useEffect, useState } from "react";
+
 import windowResize from "../utils/WindowResize.tsx";
-import { Lobby } from "../../types/Lobby.tsx";
 
 // TODO: Get a list of lobbies from the database
 const lobbyList: Lobby[] = testLobbies.map((lobby) => ({

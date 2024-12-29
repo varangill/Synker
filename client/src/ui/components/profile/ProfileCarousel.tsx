@@ -1,9 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
+
 import Carousel from "react-multi-carousel";
-import Title from "../common/Title";
 import "react-multi-carousel/lib/styles.css";
-import { CarouselBundle } from "../../../types/Carousel";
+
+import SectionCard from "../common/SectionCard";
 import CancelSaveButton from "../common/CancelSaveButton";
+
+import { CarouselBundle } from "../../../types/Carousel";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEdit,
@@ -11,6 +15,7 @@ import {
   faPlus,
   faPencilAlt,
 } from "@fortawesome/free-solid-svg-icons";
+
 import { showSuccessToast } from "../../utils/ShowToast";
 
 interface ProfileCarouselProps {
@@ -160,10 +165,8 @@ const ProfileCarousel: React.FC<ProfileCarouselProps> = ({ images, auth }) => {
   }, [allCarouselItems, isEditing]);
 
   return (
-    <div className="rounded-2xl flex flex-col items-center bg-primary-200 text-white w-full">
-      <Title title="PROFILE" />
-      <div className="title-line w-full bg-primary-100 h-1"></div>
-      <div className={`w-full h-fit p-5 ${auth ? "h-fit" : ""}`}>
+    <SectionCard title="PROFILE">
+      <div className={`w-full h-fit p-5 text-white ${auth ? "h-fit" : ""}`}>
         <Carousel
           responsive={responsive}
           ssr={false}
@@ -259,7 +262,7 @@ const ProfileCarousel: React.FC<ProfileCarouselProps> = ({ images, auth }) => {
           )}
         </div>
       </div>
-    </div>
+    </SectionCard>
   );
 };
 

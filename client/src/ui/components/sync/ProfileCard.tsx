@@ -1,6 +1,8 @@
 import React from "react";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
+
 import { showSuccessToast } from "../../utils/ShowToast";
 
 interface ProfileProps {

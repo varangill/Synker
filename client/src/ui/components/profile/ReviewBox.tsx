@@ -1,6 +1,7 @@
-import { GeneralUser } from "../../../types/User";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
+
+import { GeneralUser } from "../../../types/User";
 
 interface ReviewProps {
   reviewer: GeneralUser;
