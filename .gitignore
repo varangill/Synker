@@ -26,6 +26,6 @@ dist-ssr
 *.sln
 *.sw?
 .env
-server/app.run/Run Synker Migrations.run.xml
-server/app.run/Run Synker Server.run.xml
-/server/app.run
+/server/app.run/
+
+

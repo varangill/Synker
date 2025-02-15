@@ -98,7 +98,7 @@ const Navigation = () => {
               : "bg-primary-800 h-full justify-between"
           } w-full`}
         >
-          <div className="w-full flex flex-col justify-center items-end mt-6">
+          <div className="w-full flex items-center flex-col justify-center mt-6">
             <button
               className={`btn-default h-9 flex rounded-xl w-4/5 items-center mb-5 ${
                 currentPath === "/sync"
