@@ -10,7 +10,7 @@ const CancelSaveButton: React.FC<ButtonContainerProps> = ({
   onSaveClick,
 }) => {
   return (
-    <div className="btn-container flex flex-row gap-1 pt-2 w-full justify-end flex pr-3">
+    <div className="btn-container flex flex-row gap-1 pt-2 w-full justify-end pr-3">
       <button
         className="btn-cancel btn-save h-9 flex rounded-xl hover:bg-primary-100 items-center justify-center text-white font-bold w-24"
         onClick={onCancelClick}
