@@ -1,30 +1,35 @@
 import React from "react";
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  type: string;
-  label: string;
+  variant?: string;
+  label?: string;
   id: string;
-  [key: string]: unknown;
 }
 
-const Input = ({ type, label, id, ...props }: InputProps) => {
-  let btnStyle = "";
-  switch (type) {
+const Input = ({
+  variant,
+  label,
+  id,
+  className = "",
+  ...props
+}: InputProps) => {
+  let btnStyle = className;
+  switch (variant) {
     case "search":
-      btnStyle += "test";
-      break;
-    case "outline":
-      btnStyle += "outline";
+      btnStyle += " test";
       break;
     default:
-      btnStyle += "default";
+      btnStyle +=
+        " bg-primary-100 rounded-xl pl-4 text-white w-full h-10 outline-none focus:ring-0";
       break;
   }
 
   return (
-    <div>
-      <label htmlFor={id}>{label}</label>
-      <input id={id} {...props} className={btnStyle}></input>
+    <div className="mb-6">
+      <label htmlFor={id} className="block text-sm font-medium mb-1 text-white">
+        {label}
+      </label>
+      <input id={id} {...props} className={btnStyle} placeholder={label} />
     </div>
   );
 };
