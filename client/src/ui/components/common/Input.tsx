@@ -13,14 +13,14 @@ const Input = ({
   className = "",
   ...props
 }: InputProps) => {
-  let btnStyle = className;
+  let btnStyle =
+    className + " bg-primary-100 rounded-xl w-full pl-4 text-white";
   switch (variant) {
     case "search":
-      btnStyle += " test";
+      btnStyle += " ";
       break;
     default:
-      btnStyle +=
-        " bg-primary-100 rounded-xl pl-4 text-white w-full h-10 outline-none focus:ring-0";
+      btnStyle += " h-10 outline-none focus:ring-0";
       break;
   }
 

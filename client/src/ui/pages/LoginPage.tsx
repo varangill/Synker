@@ -1,11 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-
 import loginImage from "../assets/images/login.png";
 import Input from "../components/common/Input";
+import PasswordToggleButton from "../components/common/PasswordToggleButton";
 import Tabs from "../components/common/Tabs";
 
 import { postData } from "../../api";
@@ -24,11 +22,10 @@ export default function LoginPage({ setAuth }: LoginPageProps) {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
+  const [registerEmail, setRegisterEmail] = useState("");
   const [registerUsername, setRegisterUsername] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [showRegisterPassword, setShowRegisterPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const navigate = useNavigate();
 
@@ -52,7 +49,7 @@ export default function LoginPage({ setAuth }: LoginPageProps) {
   const handleRegisterClick = () => {
     postData("/users", {
       name: registerUsername,
-      email,
+      email: registerEmail,
       password: registerPassword,
     })
       .then((res) => {
@@ -67,9 +64,9 @@ export default function LoginPage({ setAuth }: LoginPageProps) {
         {/* Left Side */}
         <div className="login-screen-left w-1/2 flex items-center justify-center">
           <div className="login-container w-full max-w-md absolute top-1/2 transform -translate-y-1/2">
-            <div className="text-center text-6xl font-bold mb-8 text-white">
+            <h1 className="text-center text-6xl font-bold mb-8 text-white">
               SYNKER
-            </div>
+            </h1>
             <Tabs
               setActiveTab={setActiveTab}
               activeTab={activeTab}
@@ -88,107 +85,65 @@ export default function LoginPage({ setAuth }: LoginPageProps) {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                     />
-                    <div className="mb-6">
-                      <label className="block text-sm font-medium mb-1 text-white">
-                        Password
-                      </label>
-                      <div className="relative">
-                        <input
-                          type={showPassword ? "text" : "password"}
-                          value={password}
-                          onChange={(e) => setPassword(e.target.value)}
-                          placeholder="Password"
-                          className="bg-primary-100 rounded-xl pl-4 text-white w-full h-10 outline-none focus:ring-0"
-                        />
-                        <button
-                          type="button"
-                          onClick={() => setShowPassword(!showPassword)}
-                          className="absolute right-3 top-2 text-gray-400"
-                        >
-                          <FontAwesomeIcon
-                            icon={showPassword ? faEye : faEyeSlash}
-                          />
-                        </button>
-                      </div>
+
+                    <div className="relative">
+                      <Input
+                        label="Password"
+                        id="password"
+                        variant="default"
+                        type={showPassword ? "text" : "password"}
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                      />
+                      <PasswordToggleButton
+                        showPassword={showPassword}
+                        togglePassword={() => setShowPassword((prev) => !prev)}
+                      />
                     </div>
                   </>
                 )}
                 {activeTab === REGISTER_TAB && (
                   <>
                     {/* Register Fields */}
-                    <div className="mb-6">
-                      <label className="block text-sm font-medium mb-1 text-white">
-                        Email
-                      </label>
-                      <input
-                        type="text"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        placeholder="Email"
-                        className="bg-primary-100 rounded-xl pl-4 text-white w-full h-10 outline-none focus:ring-0"
+                    <Input
+                      label="Email"
+                      id="registerEmail"
+                      value={registerEmail}
+                      onChange={(e) => setRegisterEmail(e.target.value)}
+                    />
+                    <Input
+                      label="Username"
+                      id="username"
+                      value={registerUsername}
+                      onChange={(e) => setRegisterUsername(e.target.value)}
+                    />
+                    <div className="relative">
+                      <Input
+                        label="Password"
+                        id="password"
+                        variant="default"
+                        type={showPassword ? "text" : "password"}
+                        value={registerPassword}
+                        onChange={(e) => setRegisterPassword(e.target.value)}
+                      />
+                      <PasswordToggleButton
+                        showPassword={showPassword}
+                        togglePassword={() => setShowPassword((prev) => !prev)}
                       />
                     </div>
-                    <div className="mb-6">
-                      <label className="block text-sm font-medium mb-1 text-white">
-                        Username
-                      </label>
-                      <input
-                        type="text"
-                        value={registerUsername}
-                        onChange={(e) => setRegisterUsername(e.target.value)}
-                        placeholder="Username"
-                        className="bg-primary-100 rounded-xl pl-4 text-white w-full h-10 outline-none focus:ring-0"
+                    <div className="relative">
+                      <Input
+                        label="Confirm Password"
+                        id="confirmPassword"
+                        variant="default"
+                        type={showPassword ? "text" : "password"}
+                        value={confirmPassword}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
                       />
-                    </div>
-                    <div className="mb-6">
-                      <label className="block text-sm font-medium mb-1 text-white">
-                        Password
-                      </label>
-                      <div className="relative">
-                        <input
-                          type={showRegisterPassword ? "text" : "password"}
-                          value={registerPassword}
-                          onChange={(e) => setRegisterPassword(e.target.value)}
-                          placeholder="Password"
-                          className="bg-primary-100 rounded-xl pl-4 text-white w-full h-10 outline-none focus:ring-0"
-                        />
-                        <button
-                          type="button"
-                          onClick={() =>
-                            setShowRegisterPassword(!showRegisterPassword)
-                          }
-                          className="absolute right-3 top-2 text-gray-400"
-                        >
-                          <FontAwesomeIcon
-                            icon={showRegisterPassword ? faEye : faEyeSlash}
-                          />
-                        </button>
-                      </div>
-                    </div>
-                    <div className="mb-6">
-                      <label className="block text-sm font-medium mb-1 text-white">
-                        Confirm Password
-                      </label>
-                      <div className="relative">
-                        <input
-                          type={showConfirmPassword ? "text" : "password"}
-                          value={confirmPassword}
-                          onChange={(e) => setConfirmPassword(e.target.value)}
-                          placeholder="Confirm Password"
-                          className="bg-primary-100 rounded-xl pl-4 text-white w-full h-10 outline-none focus:ring-0"
-                        />
-                        <button
-                          type="button"
-                          onClick={() =>
-                            setShowConfirmPassword(!showConfirmPassword)
-                          }
-                          className="absolute right-3 top-2 text-gray-400"
-                        >
-                          <FontAwesomeIcon
-                            icon={showConfirmPassword ? faEye : faEyeSlash}
-                          />
-                        </button>
-                      </div>
+                      <PasswordToggleButton
+                        showPassword={showPassword}
+                        togglePassword={() => setShowPassword((prev) => !prev)}
+                      />
                     </div>
                   </>
                 )}
