@@ -18,23 +18,24 @@ export default function LoginPage({ setAuth }: LoginPageProps) {
 
   const [activeTab, setActiveTab] = useState(LOGIN_TAB);
 
+  // Login state
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
+  const [showLoginPassword, setShowLoginPassword] = useState(false);
 
+  // Register state
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerUsername, setRegisterUsername] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
+  const [showRegisterPassword, setShowRegisterPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
   const navigate = useNavigate();
 
   const handleSignInClick = () => {
-    console.log(email, password);
-    postData("/users/login", {
-      email: email,
-      password: password,
-    })
+    postData("/users/login", { email, password })
       .then((res) => {
         console.log("Signed In", res);
         setAuth(true);
@@ -72,12 +73,12 @@ export default function LoginPage({ setAuth }: LoginPageProps) {
               activeTab={activeTab}
               tabList={[LOGIN_TAB, REGISTER_TAB]}
             />
-            {/* Fixed Height Form Container */}
+
+            {/* Form Container */}
             <div className="form-container h-[400px] flex flex-col justify-start">
               <div className="login-form">
-                {activeTab === LOGIN_TAB && (
+                {activeTab === LOGIN_TAB ? (
                   <>
-                    {/* Login Fields */}
                     <Input
                       label="Email"
                       id="email"
@@ -86,25 +87,24 @@ export default function LoginPage({ setAuth }: LoginPageProps) {
                       onChange={(e) => setEmail(e.target.value)}
                     />
 
-                    <div className="relative">
+                    <PasswordToggleButton
+                      showPassword={showLoginPassword}
+                      togglePassword={() =>
+                        setShowLoginPassword((prev) => !prev)
+                      }
+                    >
                       <Input
                         label="Password"
                         id="password"
                         variant="default"
-                        type={showPassword ? "text" : "password"}
+                        type={showLoginPassword ? "text" : "password"}
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                       />
-                      <PasswordToggleButton
-                        showPassword={showPassword}
-                        togglePassword={() => setShowPassword((prev) => !prev)}
-                      />
-                    </div>
+                    </PasswordToggleButton>
                   </>
-                )}
-                {activeTab === REGISTER_TAB && (
+                ) : (
                   <>
-                    {/* Register Fields */}
                     <Input
                       label="Email"
                       id="registerEmail"
@@ -117,34 +117,38 @@ export default function LoginPage({ setAuth }: LoginPageProps) {
                       value={registerUsername}
                       onChange={(e) => setRegisterUsername(e.target.value)}
                     />
-                    <div className="relative">
+
+                    <PasswordToggleButton
+                      showPassword={showRegisterPassword}
+                      togglePassword={() =>
+                        setShowRegisterPassword((prev) => !prev)
+                      }
+                    >
                       <Input
                         label="Password"
                         id="password"
                         variant="default"
-                        type={showPassword ? "text" : "password"}
+                        type={showRegisterPassword ? "text" : "password"}
                         value={registerPassword}
                         onChange={(e) => setRegisterPassword(e.target.value)}
                       />
-                      <PasswordToggleButton
-                        showPassword={showPassword}
-                        togglePassword={() => setShowPassword((prev) => !prev)}
-                      />
-                    </div>
-                    <div className="relative">
+                    </PasswordToggleButton>
+
+                    <PasswordToggleButton
+                      showPassword={showConfirmPassword}
+                      togglePassword={() =>
+                        setShowConfirmPassword((prev) => !prev)
+                      }
+                    >
                       <Input
                         label="Confirm Password"
                         id="confirmPassword"
                         variant="default"
-                        type={showPassword ? "text" : "password"}
+                        type={showConfirmPassword ? "text" : "password"}
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
                       />
-                      <PasswordToggleButton
-                        showPassword={showPassword}
-                        togglePassword={() => setShowPassword((prev) => !prev)}
-                      />
-                    </div>
+                    </PasswordToggleButton>
                   </>
                 )}
                 <button
