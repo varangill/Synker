@@ -75,7 +75,7 @@ const Dropdown: React.FC<DropdownProps> = ({
     <div ref={dropdownRef} className="relative z-9">
       <button
         onClick={toggleDropdown}
-        className="dropdownSearchButton justify-between btn-default h-9 flex rounded-xl bg-primary-100 hover:bg-primary-300 w-full items-center justify-center w-full"
+        className="dropdownSearchButton btn-default h-9 flex rounded-xl bg-primary-100 hover:bg-primary-300 items-center justify-center w-full"
       >
         <div className="btn-text flex whitespace-nowrap overflow-hidden text-ellipsis w-11/12 px-4 text-white h-8 font-bold items-center xl:text-md lg:text-md md:text-base sm:text-base">
           {selected.length > 0 ? selected.join(", ") : placeholder}
