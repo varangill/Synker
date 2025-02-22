@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 import loginImage from "../assets/images/login.png";
 import Input from "../components/common/Input";
-import PasswordToggleButton from "../components/common/PasswordToggleButton";
 import Tabs from "../components/common/Tabs";
 
 import { postData } from "../../api";
@@ -21,16 +20,12 @@ export default function LoginPage({ setAuth }: LoginPageProps) {
   // Login state
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [showLoginPassword, setShowLoginPassword] = useState(false);
 
   // Register state
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerUsername, setRegisterUsername] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-
-  const [showRegisterPassword, setShowRegisterPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const navigate = useNavigate();
 
@@ -87,21 +82,14 @@ export default function LoginPage({ setAuth }: LoginPageProps) {
                       onChange={(e) => setEmail(e.target.value)}
                     />
 
-                    <PasswordToggleButton
-                      showPassword={showLoginPassword}
-                      togglePassword={() =>
-                        setShowLoginPassword((prev) => !prev)
-                      }
-                    >
-                      <Input
-                        label="Password"
-                        id="password"
-                        variant="default"
-                        type={showLoginPassword ? "text" : "password"}
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                      />
-                    </PasswordToggleButton>
+                    <Input
+                      label="Password"
+                      id="password"
+                      variant="default"
+                      type="password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
                   </>
                 ) : (
                   <>
@@ -118,37 +106,23 @@ export default function LoginPage({ setAuth }: LoginPageProps) {
                       onChange={(e) => setRegisterUsername(e.target.value)}
                     />
 
-                    <PasswordToggleButton
-                      showPassword={showRegisterPassword}
-                      togglePassword={() =>
-                        setShowRegisterPassword((prev) => !prev)
-                      }
-                    >
-                      <Input
-                        label="Password"
-                        id="password"
-                        variant="default"
-                        type={showRegisterPassword ? "text" : "password"}
-                        value={registerPassword}
-                        onChange={(e) => setRegisterPassword(e.target.value)}
-                      />
-                    </PasswordToggleButton>
+                    <Input
+                      label="Password"
+                      id="password"
+                      variant="default"
+                      type="password"
+                      value={registerPassword}
+                      onChange={(e) => setRegisterPassword(e.target.value)}
+                    />
 
-                    <PasswordToggleButton
-                      showPassword={showConfirmPassword}
-                      togglePassword={() =>
-                        setShowConfirmPassword((prev) => !prev)
-                      }
-                    >
-                      <Input
-                        label="Confirm Password"
-                        id="confirmPassword"
-                        variant="default"
-                        type={showConfirmPassword ? "text" : "password"}
-                        value={confirmPassword}
-                        onChange={(e) => setConfirmPassword(e.target.value)}
-                      />
-                    </PasswordToggleButton>
+                    <Input
+                      label="Confirm Password"
+                      id="confirmPassword"
+                      variant="default"
+                      type="password"
+                      value={confirmPassword}
+                      onChange={(e) => setConfirmPassword(e.target.value)}
+                    />
                   </>
                 )}
                 <button

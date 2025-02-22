@@ -7,8 +7,9 @@ interface TabsProps {
 const Tabs = ({ tabList, activeTab, setActiveTab }: TabsProps) => {
   return (
     <div className="tabs flex justify-center mb-6">
-      {tabList.map((tab) => (
+      {tabList.map((tab, index) => (
         <button
+          key={index}
           className={`h-9 flex px-4 py-2 mx-2 items-center justify-center ${
             activeTab === tab
               ? "border-b-4 border-accent-200 text-white font-bold"
