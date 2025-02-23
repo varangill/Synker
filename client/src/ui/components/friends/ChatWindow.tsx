@@ -4,6 +4,8 @@ import { faEdit, faHatWizard } from "@fortawesome/free-solid-svg-icons";
 
 import { receivedMessageBox, sentMessageBox } from "./MessageBox";
 import { Chat } from "../../../types/Chat";
+
+import Button from "../common/Button";
 import windowResize from "../../utils/WindowResize";
 import Title from "../common/Title";
 import ChatInputBox from "./ChatInputBox";
@@ -38,7 +40,7 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
         isMobile ? "" : "rounded-2xl border-l-4 border-b-4 border-accent-100"
       }`}
     >
-      <div className="title-container flex flex-row justify-left w-full h-1/6 min-h-20 max-h-24 h-fit">
+      <div className="title-container flex flex-row justify-left w-full min-h-20 max-h-24 h-fit">
         <img
           src={chat.chatProfilePicture}
           className="object-contain max-h-20 max-w-20 m-4"
@@ -54,18 +56,14 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
               }`}
             ></div>
             <div className="flex flex-grow"></div>
-            {isGroupChat && (
-              <button>
-                <FontAwesomeIcon icon={faEdit} className="m-2 mr-4 title" />
-              </button>
-            )}
+            {isGroupChat && <Button variant="icon" icon={faEdit} />}
           </div>
         </div>
       </div>
       <div className="bg-primary-100 h-1 w-full" />
       <div className="message-container flex flex-grow flex-col w-full overflow-auto no-scrollbar">
         {chat.messages.length === 0 ? (
-          <div className="flex justify-center items-center h-full text-primary-400 flex flex-col">
+          <div className="flex flex-col justify-center items-center h-full text-primary-400 ">
             <FontAwesomeIcon icon={faHatWizard} className="m-2 mr-4 h-20" />
             Don't be shy, send the first message!
           </div>

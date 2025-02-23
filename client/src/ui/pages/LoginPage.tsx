@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import loginImage from "../assets/images/login.png";
+import Button from "../components/common/Button";
 import Input from "../components/common/Input";
 import Tabs from "../components/common/Tabs";
 
@@ -70,13 +71,14 @@ export default function LoginPage({ setAuth }: LoginPageProps) {
             />
 
             {/* Form Container */}
-            <div className="form-container h-[400px] flex flex-col justify-start">
-              <div className="login-form">
+            <div className="form-container h-[400px] flex flex-col">
+              <div className="login-form flex flex-col gap-y-6">
                 {activeTab === LOGIN_TAB ? (
                   <>
                     <Input
                       label="Email"
                       id="email"
+                      placeholder="Email"
                       variant="default"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
@@ -85,6 +87,7 @@ export default function LoginPage({ setAuth }: LoginPageProps) {
                     <Input
                       label="Password"
                       id="password"
+                      placeholder="Password"
                       variant="default"
                       type="password"
                       value={password}
@@ -96,12 +99,14 @@ export default function LoginPage({ setAuth }: LoginPageProps) {
                     <Input
                       label="Email"
                       id="registerEmail"
+                      placeholder="Email"
                       value={registerEmail}
                       onChange={(e) => setRegisterEmail(e.target.value)}
                     />
                     <Input
                       label="Username"
                       id="username"
+                      placeholder="Username"
                       value={registerUsername}
                       onChange={(e) => setRegisterUsername(e.target.value)}
                     />
@@ -109,6 +114,7 @@ export default function LoginPage({ setAuth }: LoginPageProps) {
                     <Input
                       label="Password"
                       id="password"
+                      placeholder="Password"
                       variant="default"
                       type="password"
                       value={registerPassword}
@@ -118,6 +124,7 @@ export default function LoginPage({ setAuth }: LoginPageProps) {
                     <Input
                       label="Confirm Password"
                       id="confirmPassword"
+                      placeholder="Confirm Password"
                       variant="default"
                       type="password"
                       value={confirmPassword}
@@ -125,16 +132,16 @@ export default function LoginPage({ setAuth }: LoginPageProps) {
                     />
                   </>
                 )}
-                <button
-                  className="submit bg-accent-100 hover:bg-accent-200 w-full py-2 rounded-xl text-white font-bold mt-10"
+                <Button
+                  label={activeTab === LOGIN_TAB ? "SIGN IN" : "REGISTER"}
                   onClick={
                     activeTab === LOGIN_TAB
                       ? handleSignInClick
                       : handleRegisterClick
                   }
-                >
-                  {activeTab === LOGIN_TAB ? "SIGN IN" : "REGISTER"}
-                </button>
+                  variant="fill"
+                  className="mt-10"
+                />
               </div>
             </div>
           </div>

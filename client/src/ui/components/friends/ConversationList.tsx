@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
 
 import "react-toastify/dist/ReactToastify.css";
 
+import Button from "../common/Button";
+import Input from "../common/Input";
 import { Conversation } from "../../../types/Chat";
 import Title from "../common/Title";
 import { showSuccessToast, showErrorToast } from "../../utils/ShowToast";
@@ -62,13 +63,14 @@ const ConversationList: React.FC<ConversationListProps> = ({
       <Title title="CHATS" />
       <div className="bg-primary-100 h-1 w-full"></div>
       <div className="search-bar-container p-4 w-full flex justify-center">
-        <input
-          type="text"
+        <Input
+          variant="search"
           value={filter}
           onChange={(e) => setFilter(e.target.value)}
           placeholder="Search ..."
           className="bg-primary-100 w-4/5 min-w-[120px] rounded-xl pl-4 text-white"
-        ></input>
+          id="filterFriends"
+        />
       </div>
       <div className="bg-primary-100 h-1 w-full mb-4"></div>
       <div className="friend-list-container text-white flex flex-col w-full overflow-y-auto no-scrollbar flex-grow">
@@ -116,22 +118,21 @@ const ConversationList: React.FC<ConversationListProps> = ({
           </button>
         ))}
       </div>
-      <div className="bg-primary-100 h-1 w-full mt-4"></div>
-      <div className="add-friend-container p-4 text-white flex items-center">
-        <input
-          type="text"
+      <div className="bg-primary-100 h-1 w-full mt-4" />
+      <div className="add-friend-container p-4 flex flex-row items-center w-full">
+        <Input
+          id="addFriend"
+          variant="search"
           value={friendToAddNameInput}
           onChange={(e) => setFriendToAddNameInput(e.target.value)}
           placeholder={isMobile ? "User" : "Add friend"}
-          className="bg-primary-100 w-full h-8 rounded-xl pl-4 text-white mr-4 pr-4 text-base placeholder:text-xs md:placeholder:text-xs lg:placeholder:text-base leading-8"
         />
 
-        <button onClick={() => handleAddFriendClick(friendToAddNameInput)}>
-          <FontAwesomeIcon
-            icon={faUserPlus}
-            className="object-contain h-2/4 w-5 text-white"
-          />
-        </button>
+        <Button
+          onClick={() => handleAddFriendClick(friendToAddNameInput)}
+          variant="icon"
+          icon={faUserPlus}
+        />
       </div>
     </div>
   );

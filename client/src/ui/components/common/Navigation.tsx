@@ -13,6 +13,7 @@ import {
 
 import "../../assets/styles/Navigation.css";
 import logo from "../../assets/images/logo.png";
+import Button from "./Button";
 
 import windowResize from "../../utils/WindowResize";
 
@@ -98,87 +99,77 @@ const Navigation = () => {
               : "bg-primary-800 h-full justify-between"
           } w-full`}
         >
-          <div className="w-full flex items-center flex-col justify-center mt-6">
-            <button
-              className={`btn-default h-9 flex rounded-xl w-4/5 items-center mb-5 ${
+          {/* Main Navigation Buttons */}
+          <div className="w-full flex items-center flex-col justify-center mb-6 gap-y-6">
+            <Button
+              className={`w-4/5 ${
                 currentPath === "/sync"
                   ? "bg-accent-100 hover:bg-accent-200"
                   : "bg-primary-100 hover:bg-primary-300"
               }`}
               onClick={handleSyncClick}
+              variant="navigation"
+              icon={faMagnifyingGlass}
             >
-              <FontAwesomeIcon
-                icon={faMagnifyingGlass}
-                className="object-contain h-2/4 w-5 text-white p-4"
-              />
               <div className="btn-text">SYNC</div>
-            </button>
-            <button
-              className={`btn-default h-9 flex rounded-xl w-4/5 items-center mb-5 ${
+            </Button>
+            <Button
+              className={`w-4/5 ${
                 currentPath === "/friends"
                   ? "bg-accent-100 hover:bg-accent-200"
                   : "bg-primary-100 hover:bg-primary-300"
               }`}
               onClick={handleFriendsClick}
+              variant="navigation"
+              icon={faUserGroup}
             >
-              <FontAwesomeIcon
-                icon={faUserGroup}
-                className="object-contain h-2/4 w-5 text-white p-4"
-              />
               <div className="btn-text">FRIENDS</div>
-            </button>
-            <button
-              className={`btn-default h-9 flex rounded-xl w-4/5 items-center mb-5 ${
+            </Button>
+            <Button
+              className={`w-4/5 ${
                 currentPath === "/live"
                   ? "bg-accent-100 hover:bg-accent-200"
                   : "bg-primary-100 hover:bg-primary-300"
               }`}
               onClick={handleLiveClick}
+              variant="navigation"
+              icon={faCirclePlay}
             >
-              <FontAwesomeIcon
-                icon={faCirclePlay}
-                className="object-contain h-2/4 w-5 text-white p-4"
-              />
               <div className="btn-text">LIVE</div>
-            </button>
+            </Button>
           </div>
 
-          <div className="w-full items-center flex flex-col">
-            <div className="line h-1 w-full bg-primary-100 mb-5"></div>
-            <button
-              className={`btn-default h-9 flex rounded-xl w-4/5 items-center mb-5 ${
+          <div className="w-full items-center flex flex-col mb-6">
+            <div className="line h-1 w-full bg-primary-100 mb-5" />
+
+            <Button
+              className={`w-4/5 ${
                 currentPath === "/profile"
                   ? "bg-accent-100 hover:bg-accent-200"
                   : "bg-primary-100 hover:bg-primary-300"
               }`}
               onClick={handleProfileClick}
+              variant="navigation"
+              icon={faUser}
             >
-              <FontAwesomeIcon
-                icon={faUser}
-                className="object-contain h-2/4 w-5 text-white p-4"
-              />
               <div className="btn-text">PROFILE</div>
-            </button>
-            <div className="flex flex-row w-4/5 justify-between">
-              <button
-                className="btn-default h-9 flex rounded-xl w-fit items-center mb-5 pr-4 hover:bg-primary-300"
+            </Button>
+
+            <div className="flex w-4/5 justify-between mt-6">
+              <Button
                 onClick={handleLogoutClick}
+                variant="blank"
+                icon={faRightFromBracket}
+                className="w-1/2 mr-2"
               >
-                <FontAwesomeIcon
-                  icon={faRightFromBracket}
-                  className="object-contain h-2/4 w-5 text-white p-4"
-                />
                 <div className="btn-text">LOGOUT</div>
-              </button>
-              <button
-                className="btn-default h-9 flex rounded-xl items-center mb-5 hover:bg-primary-300"
+              </Button>
+              <Button
                 onClick={handleSettingsClick}
-              >
-                <FontAwesomeIcon
-                  icon={faGear}
-                  className="object-contain h-2/4 w-5 text-white p-4"
-                />
-              </button>
+                variant="iconHighlight"
+                icon={faGear}
+                className="w-1/2 ml-2"
+              />
             </div>
           </div>
         </div>

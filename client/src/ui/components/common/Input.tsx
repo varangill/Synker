@@ -1,13 +1,11 @@
-import React from "react";
-import { useState } from "react";
-
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   variant?: "default" | "search";
   label?: string;
-  type?: string;
+
   id: string;
   showPasswordToggle?: boolean;
 }
@@ -15,46 +13,39 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 const Input = ({
   variant = "default",
   label,
+
   type,
   id,
   className = "",
   ...props
 }: InputProps) => {
   const isPassword = type === "password";
-
   const [showPassword, setShowPassword] = useState(() => !isPassword);
 
-  const togglePassword = () => {
-    setShowPassword((prev) => !prev);
+  const togglePassword = () => setShowPassword((prev) => !prev);
+
+  const variantStyles: Record<string, string> = {
+    default: "h-10",
+    search: "h-8",
   };
 
-  let btnStyle = ` bg-primary-100 rounded-xl w-full pl-4 text-white ${className}`;
-  switch (variant) {
-    case "search":
-      btnStyle += " ";
-      break;
-    default:
-      btnStyle += " h-10 outline-none focus:ring-0";
-      break;
-  }
-
   return (
-    <div className="relative">
-      <div className="mb-6">
+    <div className="relative w-full">
+      {label && (
         <label
           htmlFor={id}
           className="block text-sm font-medium mb-1 text-white"
         >
           {label}
         </label>
-        <input
-          id={id}
-          type={showPassword ? "text" : "password"}
-          {...props}
-          className={btnStyle}
-          placeholder={label}
-        />
-      </div>
+      )}
+      <input
+        id={id}
+        type={showPassword ? "text" : "password"}
+        {...props}
+        className={`bg-primary-100 rounded-xl w-full pl-4 text-white text-base outline-none focus:ring-0 ${variantStyles[variant]} ${className}`}
+      />
+
       {isPassword && (
         <button
           type="button"
