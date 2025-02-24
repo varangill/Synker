@@ -168,7 +168,6 @@ const Navigation = () => {
                 onClick={handleSettingsClick}
                 variant="iconHighlight"
                 icon={faGear}
-                className="w-1/2 ml-2"
               />
             </div>
           </div>

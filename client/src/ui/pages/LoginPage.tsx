@@ -133,7 +133,7 @@ export default function LoginPage({ setAuth }: LoginPageProps) {
                   </>
                 )}
                 <Button
-                  label={activeTab === LOGIN_TAB ? "SIGN IN" : "REGISTER"}
+                  text={activeTab === LOGIN_TAB ? "SIGN IN" : "REGISTER"}
                   onClick={
                     activeTab === LOGIN_TAB
                       ? handleSignInClick

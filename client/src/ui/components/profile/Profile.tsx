@@ -148,7 +148,7 @@ const Profile: React.FC<ProfileProps> = ({
       {isEditing ? (
         <div>
           <textarea
-            className="desc text-white text-base pl-3 pr-5 pt-2 w-full bg-primary-200 w-auto overflow-hidden text-ellipsis break-words"
+            className="desc text-white text-base pl-3 pr-5 pt-2 w-full bg-primary-200 overflow-hidden text-ellipsis break-words"
             value={tempDescription}
             onChange={(e) => setTempDescription(e.target.value)}
             style={{ height: "auto", overflowY: "hidden" }}

@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import Dropdown from "../common/Dropdown";
 import SectionCard from "../common/SectionCard";
+import Button from "../common/Button";
 
 import { showErrorToast, showSuccessToast } from "../../utils/ShowToast";
 
@@ -45,12 +46,12 @@ const GameSelection = () => {
             placeholder="SELECT GAME ..."
           />
         </div>
-        <button
+        <Button
+          text="FIND"
           className="btn-default h-9 flex rounded-xl bg-accent-100 hover:bg-accent-200 w-full items-center justify-center mb-5"
           onClick={handleFindClick}
-        >
-          <div className="btn-text z-0">FIND</div>
-        </button>
+          variant="fill"
+        />
       </div>
     </SectionCard>
   );

@@ -91,14 +91,13 @@ const ProfileCard: React.FC<ProfileProps> = ({
       <div className="btn-container w-full justify-end flex p-5">
         <Button
           className="btn-default h-9 flex rounded-xl bg-accent-100 hover:bg-accent-200 w-full items-center justify-center mt-3"
-          label="MATCH"
+          text="MATCH"
           onClick={(e) => {
             handleMatchClick(e, username);
           }}
           variant="fill"
         />
       </div>
-      <div className="space"></div>
     </div>
   );
 };

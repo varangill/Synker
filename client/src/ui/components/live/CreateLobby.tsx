@@ -3,6 +3,8 @@ import { useState } from "react";
 import Dropdown from "../common/Dropdown";
 import SectionCard from "../common/SectionCard";
 import LobbyTag from "./LobbyTag";
+import Button from "../common/Button";
+import Input from "../common/Input";
 
 import { Lobby } from "../../../types/Lobby";
 import { GeneralUser } from "../../../types/User";
@@ -99,7 +101,7 @@ const CreateLobby = () => {
 
   return (
     <SectionCard title="CREATE LOBBY">
-      <div className="flex flex-col justify-around w-4/5 h-full overflow-y-auto no-scrollbar pb-8">
+      <div className="flex flex-col justify-around w-4/5 h-full overflow-y-auto no-scrollbar pb-8 mt-4">
         <div className="dropdown-container mb-4">
           <div className="text-white font-bold mb-1 text-sm">GAME</div>
           <Dropdown
@@ -136,13 +138,14 @@ const CreateLobby = () => {
           </div>
         </div>
         <div className="title-container mb-4">
-          <div className="text-white font-bold mb-1 text-sm">TITLE</div>
-          <input
+          <Input
+            label="Title"
             type="text"
             className="title-input w-full p-2 rounded-md bg-primary-100 text-primary-900 text-white"
             placeholder="Enter lobby title..."
             value={selectedTitle}
             onChange={(e) => setSelectedTitle(e.target.value)}
+            id="lobbyTitle"
           />
         </div>
         <div className="description-container flex-grow mb-4">
@@ -158,14 +161,7 @@ const CreateLobby = () => {
           />
         </div>
 
-        <button
-          className="btn-default h-9 flex rounded-xl bg-accent-100 hover:bg-accent-200 w-full items-center justify-center"
-          onClick={handleCreateClick}
-        >
-          <div className="btn-text z-0 flex btn-text text-white h-8 font-bold items-center xl:text-xl lg:text-xl md:text-base sm:text-base">
-            CREATE
-          </div>
-        </button>
+        <Button text="CREATE" onClick={handleCreateClick} variant="fill" />
       </div>
     </SectionCard>
   );

@@ -100,7 +100,6 @@ export default {
           height: "3px",
           width: "100%",
           backgroundColor: "var(--line-color)",
-          marginBottom: "16px",
         },
         ".icon-color": {
           color: "var(--icon-color)",

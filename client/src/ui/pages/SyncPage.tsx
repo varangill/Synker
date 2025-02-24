@@ -60,7 +60,7 @@ export default function SyncPage() {
             ))}
           </div>
           <Button
-            label="NEXT"
+            text="NEXT"
             className="z-10 max-w-64"
             onClick={handleNextClick}
             variant="fill"

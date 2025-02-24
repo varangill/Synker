@@ -3,7 +3,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ReactNode } from "react";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  label?: string;
+  text?: string;
+  textStyle?: string;
+  textSize?: "small" | "medium" | "large";
   variant:
     | "fill"
     | "navigation"
@@ -18,7 +20,9 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const Button = ({
-  label,
+  text,
+  textStyle,
+  textSize = "medium",
   variant = "fill",
   icon,
   children,
@@ -27,11 +31,10 @@ const Button = ({
   ...props
 }: ButtonProps) => {
   const variantStyles: Record<string, string> = {
-    fill: "bg-accent-100 hover:bg-accent-200 w-full rounded-xl font-bold h-9 text-white",
+    fill: "bg-accent-100 hover:bg-accent-200 w-full rounded-xl font-bold h-9",
     navigation: "btn-default h-9 flex rounded-xl w-4/5 items-center",
     icon: "btn-default h-9 flex rounded-xl items-center justify-center",
-    iconFill:
-      "bg-accent-100 rounded-2xl text-white min-w-12 w-12 hover:bg-accent-200",
+    iconFill: "bg-accent-100 rounded-2xl text-white hover:bg-accent-200",
     iconHighlight:
       "btn-default h-9 flex rounded-xl items-center hover:bg-primary-300",
     outline:
@@ -40,25 +43,29 @@ const Button = ({
       "btn-default h-9 flex rounded-xl w-fit items-center pr-4 hover:bg-primary-300",
   };
 
+  const textSizes: Record<string, string> = {
+    small: "xl:text-md lg:text-base md:text-sm sm:text-sm",
+    medium: "xl:text-xl lg:text-xl md:text-base sm:text-base",
+    large: "xl:text-xl lg:text-xl md:text-lg sm:text-md",
+  };
   return (
     <button
       {...props}
-      className={` ${variantStyles[variant] || ""} ${className}`}
+      className={` icon-color ${variantStyles[variant] || ""} ${className}`}
       onClick={onClick}
     >
       {icon &&
         (variant !== "iconFill" ? (
-          <FontAwesomeIcon
-            icon={icon}
-            className="object-contain h-2/4 w-5 text-white p-4"
-          />
+          <FontAwesomeIcon icon={icon} className="object-contain h-1/2 p-4" />
         ) : (
-          <FontAwesomeIcon icon={icon} className="object-contain text-white" />
+          <FontAwesomeIcon icon={icon} className="object-contain w-12" />
         ))}
 
-      {label && (
-        <span className="z-0 text-center xl:text-xl lg:text-xl md:text-base sm:text-base w-full items-center justify-center">
-          {label}
+      {text && (
+        <span
+          className={`z-0 text-center  w-full items-center justify-center ${textStyle} ${textSizes[textSize]}}`}
+        >
+          {text}
         </span>
       )}
       {children}
