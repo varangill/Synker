@@ -1,5 +1,6 @@
 import React from "react";
 
+import Button from "../common/Button";
 import LobbyTag from "./LobbyTag";
 
 import { Lobby } from "../../../types/Lobby";
@@ -44,12 +45,7 @@ const LiveLobby: React.FC<LiveLobbyProps> = ({ lobby }) => {
             {lobby.players.length}/{lobby.maxPlayers} PLAYERS
           </div>
           <div className="btn-container text-center h-8 w-full items-center flex justify-center mb-2">
-            <button
-              onClick={handleJoinClick}
-              className="btn-default h-9 flex rounded-xl bg-accent-100 hover:bg-accent-200 w-full items-center justify-center"
-            >
-              <div className="btn-txt text-white font-bold text-base">JOIN</div>
-            </button>
+            <Button text="JOIN" onClick={handleJoinClick} variant="fill" />
           </div>
         </div>
       </div>

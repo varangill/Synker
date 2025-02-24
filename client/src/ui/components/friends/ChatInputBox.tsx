@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
+
+import Button from "../common/Button";
 
 interface ChatInputBoxProps {
   setTextToSend: React.Dispatch<React.SetStateAction<string>>;
@@ -27,12 +28,11 @@ const ChatInputBox: React.FC<ChatInputBoxProps> = ({ setTextToSend }) => {
         autoCorrect="on"
         placeholder="Message ..."
       />
-      <button
+      <Button
         onClick={() => handleSendClick()}
-        className="bg-accent-100 rounded-2xl text-white min-w-12 w-12 hover:bg-accent-200"
-      >
-        <FontAwesomeIcon icon={faPaperPlane} />
-      </button>
+        variant="iconFill"
+        icon={faPaperPlane}
+      />
     </div>
   );
 };

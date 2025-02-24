@@ -204,7 +204,7 @@ const ProfileCarousel: React.FC<ProfileCarouselProps> = ({ images, auth }) => {
                 />
                 {isEditing && currentIndex === index ? (
                   <textarea
-                    className="desc text-white text-base pl-3 pr-5 pt-2 w-[300px] bg-primary-200 w-1/2 overflow-hidden italic text-ellipsis break-words mt-5 border-2 border-primary-100 rounded-xl"
+                    className="desc text-white text-base pl-3 pr-5 pt-2 w-[300px] bg-primary-200 overflow-hidden italic text-ellipsis break-words mt-5 border-2 border-primary-100 rounded-xl"
                     value={currentCaption}
                     maxLength={150}
                     autoCorrect="on"

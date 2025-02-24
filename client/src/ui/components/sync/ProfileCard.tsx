@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 import { showSuccessToast } from "../../utils/ShowToast";
+import Button from "../common/Button";
 
 interface ProfileProps {
   gameTags: string[];
@@ -20,7 +21,11 @@ const ProfileCard: React.FC<ProfileProps> = ({
   gameTags,
   membership,
 }) => {
-  const handleMatchClick = (username: string) => {
+  const handleMatchClick = (
+    e: React.MouseEvent<HTMLButtonElement>,
+    username: string
+  ) => {
+    e.stopPropagation();
     showSuccessToast(`Syncing with ${username}.`);
     console.log("Match button clicked for: ", username);
   };
@@ -84,19 +89,15 @@ const ProfileCard: React.FC<ProfileProps> = ({
         ))}
       </div>
       <div className="btn-container w-full justify-end flex p-5">
-        <button
+        <Button
           className="btn-default h-9 flex rounded-xl bg-accent-100 hover:bg-accent-200 w-full items-center justify-center mt-3"
+          text="MATCH"
           onClick={(e) => {
-            e.stopPropagation();
-            handleMatchClick(username);
+            handleMatchClick(e, username);
           }}
-        >
-          <div className="find-button z-0 flex btn-text text-white h-8 font-bold items-center xl:text-xl lg:text-xl md:text-base sm:text-base">
-            MATCH
-          </div>
-        </button>
+          variant="fill"
+        />
       </div>
-      <div className="space"></div>
     </div>
   );
 };

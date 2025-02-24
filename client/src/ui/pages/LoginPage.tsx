@@ -2,8 +2,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import loginImage from "../assets/images/login.png";
+import Button from "../components/common/Button";
 import Input from "../components/common/Input";
-import PasswordToggleButton from "../components/common/PasswordToggleButton";
 import Tabs from "../components/common/Tabs";
 
 import { postData } from "../../api";
@@ -21,16 +21,12 @@ export default function LoginPage({ setAuth }: LoginPageProps) {
   // Login state
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [showLoginPassword, setShowLoginPassword] = useState(false);
 
   // Register state
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerUsername, setRegisterUsername] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-
-  const [showRegisterPassword, setShowRegisterPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const navigate = useNavigate();
 
@@ -75,92 +71,77 @@ export default function LoginPage({ setAuth }: LoginPageProps) {
             />
 
             {/* Form Container */}
-            <div className="form-container h-[400px] flex flex-col justify-start">
-              <div className="login-form">
+            <div className="form-container h-[400px] flex flex-col">
+              <div className="login-form flex flex-col gap-y-6">
                 {activeTab === LOGIN_TAB ? (
                   <>
                     <Input
                       label="Email"
                       id="email"
+                      placeholder="Email"
                       variant="default"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                     />
 
-                    <PasswordToggleButton
-                      showPassword={showLoginPassword}
-                      togglePassword={() =>
-                        setShowLoginPassword((prev) => !prev)
-                      }
-                    >
-                      <Input
-                        label="Password"
-                        id="password"
-                        variant="default"
-                        type={showLoginPassword ? "text" : "password"}
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                      />
-                    </PasswordToggleButton>
+                    <Input
+                      label="Password"
+                      id="password"
+                      placeholder="Password"
+                      variant="default"
+                      type="password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
                   </>
                 ) : (
                   <>
                     <Input
                       label="Email"
                       id="registerEmail"
+                      placeholder="Email"
                       value={registerEmail}
                       onChange={(e) => setRegisterEmail(e.target.value)}
                     />
                     <Input
                       label="Username"
                       id="username"
+                      placeholder="Username"
                       value={registerUsername}
                       onChange={(e) => setRegisterUsername(e.target.value)}
                     />
 
-                    <PasswordToggleButton
-                      showPassword={showRegisterPassword}
-                      togglePassword={() =>
-                        setShowRegisterPassword((prev) => !prev)
-                      }
-                    >
-                      <Input
-                        label="Password"
-                        id="password"
-                        variant="default"
-                        type={showRegisterPassword ? "text" : "password"}
-                        value={registerPassword}
-                        onChange={(e) => setRegisterPassword(e.target.value)}
-                      />
-                    </PasswordToggleButton>
+                    <Input
+                      label="Password"
+                      id="password"
+                      placeholder="Password"
+                      variant="default"
+                      type="password"
+                      value={registerPassword}
+                      onChange={(e) => setRegisterPassword(e.target.value)}
+                    />
 
-                    <PasswordToggleButton
-                      showPassword={showConfirmPassword}
-                      togglePassword={() =>
-                        setShowConfirmPassword((prev) => !prev)
-                      }
-                    >
-                      <Input
-                        label="Confirm Password"
-                        id="confirmPassword"
-                        variant="default"
-                        type={showConfirmPassword ? "text" : "password"}
-                        value={confirmPassword}
-                        onChange={(e) => setConfirmPassword(e.target.value)}
-                      />
-                    </PasswordToggleButton>
+                    <Input
+                      label="Confirm Password"
+                      id="confirmPassword"
+                      placeholder="Confirm Password"
+                      variant="default"
+                      type="password"
+                      value={confirmPassword}
+                      onChange={(e) => setConfirmPassword(e.target.value)}
+                    />
                   </>
                 )}
-                <button
-                  className="submit bg-accent-100 hover:bg-accent-200 w-full py-2 rounded-xl text-white font-bold mt-10"
+                <Button
+                  text={activeTab === LOGIN_TAB ? "SIGN IN" : "REGISTER"}
                   onClick={
                     activeTab === LOGIN_TAB
                       ? handleSignInClick
                       : handleRegisterClick
                   }
-                >
-                  {activeTab === LOGIN_TAB ? "SIGN IN" : "REGISTER"}
-                </button>
+                  variant="fill"
+                  className="mt-10"
+                />
               </div>
             </div>
           </div>

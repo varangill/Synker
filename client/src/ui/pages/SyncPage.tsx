@@ -4,6 +4,7 @@ import "../../App.css";
 
 import Navigation from "../components/common/Navigation";
 import ProfileCard from "../components/sync/ProfileCard.tsx";
+import Button from "../components/common/Button.tsx";
 
 import testUserList from "../../mockData/testUserList.json";
 import sync from "../assets/images/sync-background.png";
@@ -58,14 +59,12 @@ export default function SyncPage() {
               </div>
             ))}
           </div>
-          <button
-            className="relative z-10 btn-default h-9 flex rounded-xl bg-accent-100 hover:bg-accent-200 w-full items-center justify-center mt-2 max-w-64 mb-8 mr-2 ml-2"
+          <Button
+            text="NEXT"
+            className="z-10 max-w-64"
             onClick={handleNextClick}
-          >
-            <div className="find-button z-0 flex btn-text text-white h-8 font-bold items-center xl:text-xl lg:text-xl md:text-base sm:text-base">
-              NEXT
-            </div>
-          </button>
+            variant="fill"
+          />
         </div>
       </div>
     </div>
