@@ -76,7 +76,7 @@ const Navigation = () => {
           />
           <p
             className={`logo object-scale-down text-white font-bold ${
-              isMobile ? "text-xl" : "lg:text-3xl md:text-2xl"
+              isMobile ? "text-xl" : "lg:text-2xl md:text-2xl"
             }`}
             onClick={handleHomeClick}
           >
@@ -158,9 +158,9 @@ const Navigation = () => {
             <div className="flex w-4/5 justify-between mt-6">
               <Button
                 onClick={handleLogoutClick}
-                variant="blank"
+                variant="navigation"
                 icon={faRightFromBracket}
-                className="w-1/2 mr-2"
+                className="w-1/2 mr-2 hover:bg-primary-300"
               >
                 <div className="btn-text">LOGOUT</div>
               </Button>

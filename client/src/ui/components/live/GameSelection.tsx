@@ -36,7 +36,7 @@ const GameSelection = () => {
 
   return (
     <SectionCard title="GAME SELECTION">
-      <div className="flex flex-col flex-grow items-center justify-around w-4/5 mx-auto">
+      <div className="flex flex-col flex-grow items-center justify-evenly w-4/5 mx-auto">
         <div className="dropdown-container z-10 w-full">
           <Dropdown
             dropdownList={list}
@@ -48,7 +48,7 @@ const GameSelection = () => {
         </div>
         <Button
           text="FIND"
-          className="btn-default h-9 flex rounded-xl bg-accent-100 hover:bg-accent-200 w-full items-center justify-center mb-5"
+          className=""
           onClick={handleFindClick}
           variant="fill"
         />

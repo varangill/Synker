@@ -40,7 +40,7 @@ const Button = ({
     outline:
       "border border-accent-100 text-accent-100 hover:bg-accent-200 hover:text-white",
     blank:
-      "btn-default h-9 flex rounded-xl w-fit items-center pr-4 hover:bg-primary-300",
+      "btn-default h-9 flex rounded-xl w-fit items-center pr-4 pl-4 hover:bg-primary-300",
   };
 
   const textSizes: Record<string, string> = {

@@ -1,5 +1,7 @@
 import React from "react";
 
+import Button from "./Button";
+
 interface ButtonContainerProps {
   onCancelClick: () => void;
   onSaveClick: () => void;
@@ -10,19 +12,20 @@ const CancelSaveButton: React.FC<ButtonContainerProps> = ({
   onSaveClick,
 }) => {
   return (
-    <div className="btn-container flex flex-row gap-1 pt-2 w-full justify-end pr-3">
-      <button
-        className="btn-cancel btn-save h-9 flex rounded-xl hover:bg-primary-100 items-center justify-center text-white font-bold w-24"
+    <div className="btn-container flex flex-row gap-1 pt-2 w-48 justify-end gap-x-2">
+      <Button
+        text="CANCEL"
+        textStyle="font-bold"
+        textSize="small"
         onClick={onCancelClick}
-      >
-        CANCEL
-      </button>
-      <button
-        className="btn-save h-9 flex rounded-xl bg-accent-100 hover:bg-accent-200 items-center justify-center text-white font-bold w-24"
+        variant="blank"
+      />
+      <Button
+        text="SAVE"
+        textSize="small"
         onClick={onSaveClick}
-      >
-        SAVE
-      </button>
+        variant="fill"
+      />
     </div>
   );
 };
