@@ -12,6 +12,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     | "icon"
     | "iconFill"
     | "iconHighlight"
+    | "dropdown"
     | "outline"
     | "blank";
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -32,13 +33,15 @@ const Button = ({
 }: ButtonProps) => {
   const variantStyles: Record<string, string> = {
     fill: "bg-accent-100 hover:bg-accent-200 w-full rounded-xl font-bold h-9",
-    navigation: "btn-default h-9 flex rounded-xl w-4/5 items-center",
+    navigation: "btn-default h-9 flex rounded-xl w-4/5 items-center pl-4 pr-4",
     icon: "btn-default h-9 flex rounded-xl items-center justify-center",
     iconFill: "bg-accent-100 rounded-2xl text-white hover:bg-accent-200",
     iconHighlight:
       "btn-default h-9 flex rounded-xl items-center hover:bg-primary-300",
+    dropdown:
+      "btn-text h-9 rounded-xl flex flex-row bg-primary-100 hover:bg-primary-300 items-center justify-center w-full",
     outline:
-      "border border-accent-100 text-accent-100 hover:bg-accent-200 hover:text-white",
+      "border h-9 rounded-xl border-accent-100 text-accent-100 hover:bg-accent-200",
     blank:
       "btn-default h-9 flex rounded-xl w-fit items-center pr-4 pl-4 hover:bg-primary-300",
   };
@@ -51,19 +54,21 @@ const Button = ({
   return (
     <button
       {...props}
-      className={` icon-color ${variantStyles[variant] || ""} ${className}`}
+      className={` icon-color gap-3 ${
+        variantStyles[variant] || ""
+      } ${className}`}
       onClick={onClick}
     >
       {icon &&
         (variant !== "iconFill" ? (
-          <FontAwesomeIcon icon={icon} className="object-contain h-1/2 p-4" />
+          <FontAwesomeIcon icon={icon} className="object-contain h-1/2" />
         ) : (
           <FontAwesomeIcon icon={icon} className="object-contain w-12" />
         ))}
 
       {text && (
         <span
-          className={`z-0 text-center  w-full items-center justify-center ${textStyle} ${textSizes[textSize]}}`}
+          className={`z-0 text-center w-full items-center justify-center ${textStyle} ${textSizes[textSize]}}`}
         >
           {text}
         </span>

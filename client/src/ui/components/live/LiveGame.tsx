@@ -17,7 +17,7 @@ const LiveGame = ({ lobbyList }: LiveGameProps) => {
     <div className="w-full">
       <span className="line" />
       <div className="flex justify-between items-center m-2 w-full">
-        <div className="flex w-full gap-3 ml-4">
+        <div className="flex w-full gap-3">
           <Button
             text="FILTER"
             textStyle="font-light"

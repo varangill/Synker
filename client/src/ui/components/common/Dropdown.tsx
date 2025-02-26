@@ -1,24 +1,26 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
+
+import Button from "./Button";
 
 type DropdownOption = string | number;
 
 interface DropdownProps {
-  dropdownList: DropdownOption[]; // All possible options
-  selectedList: DropdownOption[]; // Previously selected options
-  type: "single" | "multiple"; // Mode of dropdown
-  onSelectionChange: (values: DropdownOption[]) => void; // Update to handle multiple selections
+  dropdownList: DropdownOption[];
+  selectedList: DropdownOption[];
+  type: "single" | "multiple";
+  onSelectionChange: (values: DropdownOption[]) => void;
   placeholder: string;
 }
 
-const Dropdown: React.FC<DropdownProps> = ({
+const Dropdown = ({
   dropdownList,
   selectedList,
   type,
   onSelectionChange,
   placeholder,
-}) => {
+}: DropdownProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selected, setSelected] = useState<DropdownOption[]>(selectedList);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -27,24 +29,23 @@ const Dropdown: React.FC<DropdownProps> = ({
     setSelected(selectedList);
   }, [selectedList]);
 
-  const toggleDropdown = () => setIsOpen(!isOpen);
+  const toggleDropdown = () => setIsOpen((prev) => !prev);
 
   const handleSelect = (value: DropdownOption) => {
     if (type === "multiple") {
       const currentIndex = selected.indexOf(value);
       const newSelected = [...selected];
 
-      // Toggle selection
       if (currentIndex === -1) {
-        newSelected.push(value); // Add selection
+        newSelected.push(value);
       } else {
-        newSelected.splice(currentIndex, 1); // Remove selection
+        newSelected.splice(currentIndex, 1);
       }
 
       setSelected(newSelected);
       onSelectionChange(newSelected);
     } else {
-      setSelected([value]); // For single select, always replace
+      setSelected([value]);
       onSelectionChange([value]);
       toggleDropdown();
     }
@@ -68,49 +69,37 @@ const Dropdown: React.FC<DropdownProps> = ({
     };
   }, []);
 
-  // Keep dropdown list sorted
   dropdownList.sort();
 
   return (
-    <div ref={dropdownRef} className="relative z-9">
-      <button
+    <div ref={dropdownRef} className="relative z-9 h-9">
+      <Button
         onClick={toggleDropdown}
-        className="dropdownSearchButton btn-default h-9 flex rounded-xl bg-primary-100 hover:bg-primary-300 items-center justify-center w-full"
+        variant="dropdown"
+        text={selected.length > 0 ? selected.join(", ") : placeholder}
+        textSize="small"
+        textStyle="whitespace-nowrap overflow-hidden text-ellipsis w-11/12 px-4 text-start"
       >
-        <div className="btn-text flex whitespace-nowrap overflow-hidden text-ellipsis w-11/12 px-4 text-white h-8 font-bold items-center xl:text-md lg:text-md md:text-base sm:text-base">
-          {selected.length > 0 ? selected.join(", ") : placeholder}
-          {/* Show all selected items */}
-        </div>
-        <FontAwesomeIcon
-          icon={faAngleDown}
-          className="object-contain h-2/4 w-1/12 p-4 text-white"
-        />
-      </button>
+        <FontAwesomeIcon icon={faAngleDown} className="object-contain pr-4" />
+      </Button>
 
       {isOpen && (
         <div className="dropdownContainer bg-primary-200 border-solid border-primary-100 border-2 rounded-xl absolute w-full z-30">
-          <div className="max-h-48 overflow-auto no-scrollbar">
+          <ul className="max-h-48 overflow-auto no-scrollbar">
             {dropdownList.map((option, index) => (
-              <div
+              <li
                 key={index}
-                className={`dropdownOption text-white hover:bg-accent-200 p-2 cursor-pointer ${
+                className={` text-white hover:bg-accent-200 p-2 cursor-pointer ${
                   selected.includes(option) ? "bg-accent-200" : ""
                 }`}
                 onClick={() => handleSelect(option)}
               >
                 {option.toString()}
-              </div>
+              </li>
             ))}
-          </div>
+          </ul>
           {type === "multiple" && (
-            <button
-              className="btn-default h-9 flex bg-accent-100 hover:bg-accent-200 w-full items-center justify-center"
-              onClick={toggleDropdown}
-            >
-              <div className="find-button z-0 flex btn-text text-white h-8 font-bold items-center text-xl sm:text-base">
-                DONE
-              </div>
-            </button>
+            <Button text="DONE" onClick={toggleDropdown} variant="fill" />
           )}
         </div>
       )}
