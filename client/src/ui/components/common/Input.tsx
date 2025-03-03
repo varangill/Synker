@@ -5,7 +5,6 @@ import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   variant?: "default" | "search";
   label?: string;
-
   id: string;
   showPasswordToggle?: boolean;
 }
@@ -13,7 +12,6 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 const Input = ({
   variant = "default",
   label,
-
   type,
   id,
   className = "",

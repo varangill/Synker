@@ -119,7 +119,7 @@ const ConversationList: React.FC<ConversationListProps> = ({
         ))}
       </div>
       <div className="bg-primary-100 h-1 w-full mt-4" />
-      <div className="add-friend-container p-4 flex flex-row items-center w-full">
+      <div className="add-friend-container p-4 flex flex-row items-center w-full gap-x-4">
         <Input
           id="addFriend"
           variant="search"
