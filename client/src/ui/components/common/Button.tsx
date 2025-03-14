@@ -35,7 +35,7 @@ const Button = ({
     fill: "bg-accent-100 hover:bg-accent-200 w-full rounded-xl font-bold h-9",
     navigation: "btn-default h-9 flex rounded-xl w-4/5 items-center pl-4 pr-4",
     icon: "btn-default h-9 flex rounded-xl items-center justify-center",
-    iconFill: "bg-accent-100 rounded-2xl text-white hover:bg-accent-200",
+    iconFill: "bg-accent-100 rounded-2xl text-white hover:bg-accent-200 h-12",
     iconHighlight:
       "btn-default h-9 flex rounded-xl items-center hover:bg-primary-300",
     dropdown:

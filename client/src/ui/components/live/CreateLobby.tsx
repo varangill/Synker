@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import Dropdown from "../common/Dropdown";
+import TextArea from "../common/TextArea";
 import SectionCard from "../common/SectionCard";
 import LobbyTag from "./LobbyTag";
 import Button from "../common/Button";
@@ -150,14 +151,12 @@ const CreateLobby = () => {
         </div>
         <div className="description-container flex-grow mb-4">
           <div className="text-white font-bold mb-1 text-sm">DESCRIPTION</div>
-          <textarea
-            className="description-input w-full p-2 rounded-md bg-primary-100 text-primary-900 text-white"
+          <TextArea
+            variant="fill"
             placeholder="Enter lobby description..."
-            value={selectedDescription}
-            style={{ height: "auto", overflowY: "hidden" }}
             rows={2}
             maxLength={150}
-            onChange={(e) => setSelectedDescription(e.target.value)}
+            setCurrentInputText={setSelectedDescription}
           />
         </div>
 
