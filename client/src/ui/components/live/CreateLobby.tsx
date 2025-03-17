@@ -58,7 +58,8 @@ const CreateLobby = () => {
 
   const tagsList = ["Tag1", "Tag2", "Tag3", "Tag4", "Tag5"];
 
-  const handleCreateClick = () => {
+  const handleCreateClick = (event: { preventDefault: () => void }) => {
+    event.preventDefault();
     if (!isFormComplete()) {
       showErrorToast("Form is incomplete.");
     } else {
@@ -102,7 +103,10 @@ const CreateLobby = () => {
 
   return (
     <SectionCard title="CREATE LOBBY">
-      <div className="flex flex-col justify-around w-4/5 h-full overflow-y-auto no-scrollbar pb-8 mt-4">
+      <form
+        onSubmit={handleCreateClick}
+        className="flex flex-col justify-around w-4/5 h-full overflow-y-auto no-scrollbar pb-8 mt-4"
+      >
         <div className="dropdown-container mb-4">
           <div className="text-white font-bold mb-1 text-sm">GAME</div>
           <Dropdown
@@ -154,14 +158,16 @@ const CreateLobby = () => {
           <TextArea
             variant="fill"
             placeholder="Enter lobby description..."
-            rows={2}
+            rows={3}
+            maxHeight={3}
             maxLength={150}
             setCurrentInputText={setSelectedDescription}
+            currentInputText={selectedDescription}
           />
         </div>
 
-        <Button text="CREATE" onClick={handleCreateClick} variant="fill" />
-      </div>
+        <Button text="CREATE" variant="fill" />
+      </form>
     </SectionCard>
   );
 };

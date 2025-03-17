@@ -74,6 +74,7 @@ const Dropdown = ({
   return (
     <div ref={dropdownRef} className="relative z-9 h-9">
       <Button
+        type="button"
         onClick={toggleDropdown}
         variant="dropdown"
         text={selected.length > 0 ? selected.join(", ") : placeholder}

@@ -5,6 +5,7 @@ import { faEdit, faStar } from "@fortawesome/free-solid-svg-icons";
 
 import Dropdown from "../common/Dropdown";
 import CancelSaveButton from "../common/CancelSaveButton";
+import TextArea from "../common/TextArea";
 
 import { showSuccessToast } from "../../utils/ShowToast";
 
@@ -25,24 +26,21 @@ const Profile: React.FC<ProfileProps> = ({
   membership,
   auth,
 }) => {
-  // const authenticated = useContext(Authenticated)
-  // Needs to pass a profile through
-  // let authenticated = true;
-
   const [editDescription, setEditDescription] = useState(description);
   const [tempDescription, setTempDescription] = useState(description);
   const [editProfilePic, setEditProfilePic] = useState(profilePicture);
   const [tempProfilePic, setTempProfilePic] = useState(profilePicture);
-  const [editGameTags, setEditGameTags] = useState(gameTags);
-  const [tempGameTags, setTempGameTags] = useState(gameTags);
+  const [editGameTags, setEditGameTags] = useState([...gameTags].sort());
+  const [tempGameTags, setTempGameTags] = useState([...gameTags].sort());
   const [isEditing, setIsEditing] = useState(false);
 
-  const [selectedOptions, setSelectedOptions] = useState<string[]>(gameTags);
+  const [selectedOptions, setSelectedOptions] = useState<string[]>([
+    ...gameTags,
+  ]);
 
   const imgInput = useRef<HTMLInputElement>(null);
 
-  // TODO: get actual values from the database
-  const list = [
+  const gameList = [
     "Valorant",
     "League of Legends",
     "Clash of Clans",
@@ -56,15 +54,6 @@ const Profile: React.FC<ProfileProps> = ({
     setSelectedOptions([...new Set(selectedValues as string[])]);
   };
 
-  const colorClasses = [
-    "text-red",
-    "text-blue",
-    "text-green",
-    "text-yellow",
-    "text-pink",
-    "text-orange",
-  ];
-
   function handleEditClick() {
     setIsEditing(!isEditing);
     setTempDescription(editDescription);
@@ -73,16 +62,14 @@ const Profile: React.FC<ProfileProps> = ({
   }
 
   function handleSaveClick() {
-    // Sends updates to backend
     setEditDescription(tempDescription);
-    setEditGameTags(selectedOptions);
     setEditProfilePic(tempProfilePic);
-    setIsEditing(!isEditing);
+    setEditGameTags([...selectedOptions].sort());
+    setIsEditing(false);
     showSuccessToast("Profile saved.");
   }
 
   function handlePFPClick() {
-    // Updates the profile picture only when editing mode is on
     if (isEditing) {
       imgInput.current?.click();
     }
@@ -91,86 +78,71 @@ const Profile: React.FC<ProfileProps> = ({
   const handleProfilePicChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    // Assert event.target as HTMLInputElement
-    const input = event.target as HTMLInputElement;
-
-    // Check if files exist and if the first file is defined
-    if (input.files && input.files[0]) {
-      const file = input.files[0];
-
+    const file = event.target.files?.[0];
+    if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        // Make sure to check if reader.result is a string before setting state
         if (typeof reader.result === "string") {
           setTempProfilePic(reader.result);
         }
       };
       reader.readAsDataURL(file);
-    } else {
-      console.log("No file chosen or file access error.");
     }
   };
-
-  // TODO: assign colors to specific games from the database
-  function getColor() {
-    const randomIndex = Math.floor(Math.random() * colorClasses.length);
-    return colorClasses[randomIndex];
-  }
-
-  editGameTags.sort();
 
   return (
     <div className="profile-container w-96 bg-primary-200 rounded-2xl flex flex-col h-fit">
       <input
-        className="PFP-input hidden"
+        className="hidden"
         type="file"
         accept="image/*"
         ref={imgInput}
         onChange={handleProfilePicChange}
       />
       <img
-        className={`profile-pic w-96 h-96 object-fit ${
-          isEditing == true ? "hover:opacity-30 cursor-pointer" : ""
+        className={`profile-pic w-96 h-96 object-cover ${
+          isEditing ? "hover:opacity-30 cursor-pointer" : ""
         }`}
         src={isEditing ? tempProfilePic : editProfilePic}
         onClick={handlePFPClick}
-      ></img>
+        alt="Profile"
+      />
       <div className="username w-full text-center text-white text-2xl pt-2">
         {username}
       </div>
-      {membership == "Platinum" && (
-        <div className="membership-level text-white justify-center flex items-center pb-2 gap-1">
+      {membership === "Platinum" && (
+        <div className="membership-level text-white flex justify-center items-center pb-2 gap-1">
           <FontAwesomeIcon icon={faStar} />
           Platinum Member
         </div>
       )}
       <div className="line bg-primary-100 w-full h-1"></div>
       {isEditing ? (
-        <div>
-          <textarea
-            className="desc text-white text-base pl-3 pr-5 pt-2 w-full bg-primary-200 overflow-hidden text-ellipsis break-words"
+        <div className="p-3">
+          <TextArea
+            className="mt-2"
             value={tempDescription}
             onChange={(e) => setTempDescription(e.target.value)}
-            style={{ height: "auto", overflowY: "hidden" }}
             rows={3}
+            maxHeight={3}
             maxLength={150}
-            autoFocus={true}
-            autoCorrect="on"
+            currentInputText={tempDescription}
+            setCurrentInputText={setTempDescription}
           />
           <div className="flex flex-col w-full justify-evenly h-full items-center pb-3 pt-2 gap-3">
-            <div className="dropdown-container h-8 z-10 w-4/5 w-max-60">
+            <div className="dropdown-container h-8 z-10 w-full">
               <Dropdown
-                dropdownList={list}
+                dropdownList={gameList}
                 type="multiple"
                 selectedList={selectedOptions}
                 onSelectionChange={handleSelectionChange}
-                placeholder="SELECT GAMES ..."
-              ></Dropdown>
+                placeholder="SELECT GAMES..."
+              />
             </div>
           </div>
         </div>
       ) : (
-        <div className="desc text-white text-base pl-5 pr-5 pt-2 w-full overflow-hidden text-ellipsis break-words">
+        <div className="desc text-white text-base px-5 pt-2 w-full break-words">
           {editDescription}
         </div>
       )}
@@ -179,19 +151,13 @@ const Profile: React.FC<ProfileProps> = ({
         {(isEditing ? tempGameTags : editGameTags).map((option, index) => (
           <div
             key={index}
-            className="w-fit rounded-xl p-1 pl-2 pr-2 h-8 bg-primary-100"
+            className="w-fit rounded-xl p-1 px-2 h-8 bg-primary-100 text-accent-100"
           >
-            <div
-              className={`${
-                getColor() || "text-primary-800"
-              } whitespace-nowrap`}
-            >
-              {option}
-            </div>
+            {option}
           </div>
         ))}
       </div>
-      <div className="btn-container w-full justify-end flex pr-5">
+      <div className="btn-container w-full flex justify-end pr-5">
         {auth && !isEditing && (
           <button className="btn-edit" onClick={handleEditClick}>
             <FontAwesomeIcon icon={faEdit} className="text-white" />
@@ -208,4 +174,5 @@ const Profile: React.FC<ProfileProps> = ({
     </div>
   );
 };
+
 export default Profile;

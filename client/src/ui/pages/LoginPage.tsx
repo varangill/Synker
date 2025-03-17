@@ -30,7 +30,8 @@ export default function LoginPage({ setAuth }: LoginPageProps) {
 
   const navigate = useNavigate();
 
-  const handleSignInClick = () => {
+  const handleSignInClick = (event: { preventDefault: () => void }) => {
+    event.preventDefault();
     postData("/users/login", { email, password })
       .then((res) => {
         console.log("Signed In", res);
@@ -43,7 +44,8 @@ export default function LoginPage({ setAuth }: LoginPageProps) {
       });
   };
 
-  const handleRegisterClick = () => {
+  const handleRegisterClick = (event: { preventDefault: () => void }) => {
+    event.preventDefault();
     postData("/users", {
       name: registerUsername,
       email: registerEmail,
@@ -72,7 +74,14 @@ export default function LoginPage({ setAuth }: LoginPageProps) {
 
             {/* Form Container */}
             <div className="form-container h-[400px] flex flex-col">
-              <div className="login-form flex flex-col gap-y-6">
+              <form
+                onSubmit={
+                  activeTab === LOGIN_TAB
+                    ? handleSignInClick
+                    : handleRegisterClick
+                }
+                className="login-form flex flex-col gap-y-6"
+              >
                 {activeTab === LOGIN_TAB ? (
                   <>
                     <Input
@@ -134,15 +143,10 @@ export default function LoginPage({ setAuth }: LoginPageProps) {
                 )}
                 <Button
                   text={activeTab === LOGIN_TAB ? "SIGN IN" : "REGISTER"}
-                  onClick={
-                    activeTab === LOGIN_TAB
-                      ? handleSignInClick
-                      : handleRegisterClick
-                  }
                   variant="fill"
                   className="mt-10"
                 />
-              </div>
+              </form>
             </div>
           </div>
         </div>

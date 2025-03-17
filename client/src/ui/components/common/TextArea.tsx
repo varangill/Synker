@@ -4,6 +4,7 @@ interface TextAreaProps
   extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   variant?: "default" | "fill" | "messageBox";
   maxHeight?: number;
+  className?: string;
   currentInputText: string;
   setCurrentInputText: (text: string) => void;
   onSubmit?: () => void;
@@ -11,6 +12,7 @@ interface TextAreaProps
 
 const TextArea = ({
   variant = "default",
+  className = "",
   rows = 1,
   maxHeight = 1,
   currentInputText,
@@ -53,7 +55,7 @@ const TextArea = ({
     <textarea
       ref={textAreaRef}
       value={currentInputText}
-      className={`resize-none overflow-y-auto ${variantStyles[variant]}`}
+      className={`resize-none overflow-y-auto ${variantStyles[variant]} ${className}`}
       rows={rows}
       onChange={handleInput}
       onKeyDown={handleKeyDown}
