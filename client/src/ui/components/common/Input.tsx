@@ -30,7 +30,7 @@ const Input = ({
   };
 
   return (
-    <div className="relative w-full">
+    <div>
       {label && (
         <label
           htmlFor={id}
@@ -39,23 +39,25 @@ const Input = ({
           {label}
         </label>
       )}
-      <input
-        id={id}
-        type={isPassword ? (showPassword ? "text" : "password") : "text"}
-        {...props}
-        className={`bg-primary-100 rounded-xl w-full pl-4 text-white text-base outline-none focus:ring-0 ${variantStyles[variant]} ${className}`}
-      />
+      <div className="relative">
+        <input
+          id={id}
+          type={isPassword ? (showPassword ? "text" : "password") : "text"}
+          {...props}
+          className={`bg-primary-100 rounded-xl w-full pl-4 text-white text-base outline-none focus:ring-0 ${variantStyles[variant]} ${className}`}
+        />
+        {isPassword && (
+          <button
+            type="button"
+            onClick={togglePassword}
+            className="absolute right-3 bottom-2 text-gray-400"
+          >
+            <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />
+          </button>
+        )}
+      </div>
       {errorMessage && (
-        <div className="text-[#A94442] text-sm">{errorMessage}</div>
-      )}
-      {isPassword && (
-        <button
-          type="button"
-          onClick={togglePassword}
-          className="absolute right-3 bottom-2 text-gray-400"
-        >
-          <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />
-        </button>
+        <div className="text-red-100 text-sm">{errorMessage}</div>
       )}
     </div>
   );

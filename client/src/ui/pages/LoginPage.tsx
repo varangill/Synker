@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import loginImage from "../assets/images/login.png";
@@ -22,6 +22,7 @@ export default function LoginPage({ setAuth }: LoginPageProps) {
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
   const [password, setPassword] = useState("");
+  const [loginError, setLoginError] = useState("");
 
   // Register fields
   const [registerEmail, setRegisterEmail] = useState("");
@@ -30,13 +31,29 @@ export default function LoginPage({ setAuth }: LoginPageProps) {
   const [registerUsernameError, setRegisterUsernameError] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [confirmPasswordError, setConfirmPasswordError] = useState("");
 
   const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
 
+  // Form Validity Flags
+  const isLoginFormValid =
+    email.trim() !== "" && password.trim() !== "" && emailError === "";
+  const isRegisterFormValid =
+    registerEmail.trim() !== "" &&
+    registerUsername.trim() !== "" &&
+    registerPassword.trim() !== "" &&
+    confirmPassword.trim() !== "" &&
+    registerEmailError === "" &&
+    registerUsernameError === "" &&
+    confirmPasswordError === "";
+  const isFormValid =
+    activeTab === LOGIN_TAB ? isLoginFormValid : isRegisterFormValid;
+
   const handleSignInClick = (event: { preventDefault: () => void }) => {
     event.preventDefault();
+
     setIsLoading(true);
     postData("/users/login", { email, password })
       .then((res) => {
@@ -46,7 +63,7 @@ export default function LoginPage({ setAuth }: LoginPageProps) {
       })
       .catch((err) => {
         console.log(err);
-        setEmailError("Wrong email or password.");
+        setLoginError("Incorrect email or password.");
         setAuth(false);
       })
       .finally(() => {
@@ -56,6 +73,12 @@ export default function LoginPage({ setAuth }: LoginPageProps) {
 
   const handleRegisterClick = (event: { preventDefault: () => void }) => {
     event.preventDefault();
+
+    if (!isRegisterFormValid) {
+      console.log("Registration form is invalid.");
+      return;
+    }
+
     setIsLoading(true);
     postData("/users", {
       name: registerUsername,
@@ -79,6 +102,14 @@ export default function LoginPage({ setAuth }: LoginPageProps) {
 
   const isEmailValid = (email: string) => email.includes("@");
 
+  useEffect(() => {
+    if (registerPassword !== confirmPassword) {
+      setConfirmPasswordError("Passwords do not match.");
+    } else {
+      setConfirmPasswordError("");
+    }
+  }, [registerPassword, confirmPassword]);
+
   return (
     <div className="App flex flex-row bg-primary-200 h-screen w-full">
       <div className="login-screen-container flex w-full h-full relative">
@@ -89,10 +120,19 @@ export default function LoginPage({ setAuth }: LoginPageProps) {
               SYNKER
             </h1>
             <Tabs
-              setActiveTab={setActiveTab}
+              setActiveTab={(tab) => {
+                setActiveTab(tab);
+                setLoginError("");
+              }}
               activeTab={activeTab}
               tabList={[LOGIN_TAB, REGISTER_TAB]}
             />
+
+            {activeTab === LOGIN_TAB && loginError && (
+              <div className="mb-4 text-center text-red-100 text-sm">
+                {loginError}
+              </div>
+            )}
 
             {/* Form Container */}
             <div className="form-container h-[400px] flex flex-col">
@@ -192,6 +232,7 @@ export default function LoginPage({ setAuth }: LoginPageProps) {
                       type="password"
                       value={confirmPassword}
                       onChange={(e) => setConfirmPassword(e.target.value)}
+                      errorMessage={confirmPasswordError}
                       required
                     />
                   </>
@@ -200,7 +241,7 @@ export default function LoginPage({ setAuth }: LoginPageProps) {
                   text={activeTab === LOGIN_TAB ? "SIGN IN" : "REGISTER"}
                   variant="fill"
                   className="mt-10"
-                  disabled={isLoading}
+                  disabled={isLoading || !isFormValid}
                 />
               </form>
             </div>
