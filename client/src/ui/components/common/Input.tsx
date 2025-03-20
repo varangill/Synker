@@ -5,6 +5,7 @@ import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   variant?: "default" | "search";
   label?: string;
+  errorMessage?: string;
   id: string;
   showPasswordToggle?: boolean;
 }
@@ -15,6 +16,7 @@ const Input = ({
   type,
   id,
   className = "",
+  errorMessage,
   ...props
 }: InputProps) => {
   const isPassword = type === "password";
@@ -39,11 +41,13 @@ const Input = ({
       )}
       <input
         id={id}
-        type={showPassword ? "text" : "password"}
+        type={isPassword ? (showPassword ? "text" : "password") : "text"}
         {...props}
         className={`bg-primary-100 rounded-xl w-full pl-4 text-white text-base outline-none focus:ring-0 ${variantStyles[variant]} ${className}`}
       />
-
+      {errorMessage && (
+        <div className="text-[#A94442] text-sm">{errorMessage}</div>
+      )}
       {isPassword && (
         <button
           type="button"

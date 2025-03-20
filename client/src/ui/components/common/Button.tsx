@@ -54,7 +54,7 @@ const Button = ({
   return (
     <button
       {...props}
-      className={` icon-color gap-3 ${
+      className={` icon-color gap-3 disabled:opacity-75 ${
         variantStyles[variant] || ""
       } ${className}`}
       onClick={onClick}
