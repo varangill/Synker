@@ -73,9 +73,13 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
             const showProfile =
               !previousMessage ||
               previousMessage.sender.id !== message.sender.id;
-            return message.sender.id === loggedInUserID
-              ? sentMessageBox(message, showProfile)
-              : receivedMessageBox(message, showProfile);
+            return (
+              <React.Fragment key={message.id}>
+                {message.sender.id === loggedInUserID
+                  ? sentMessageBox(message, showProfile)
+                  : receivedMessageBox(message, showProfile)}
+              </React.Fragment>
+            );
           })
         )}
       </div>

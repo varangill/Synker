@@ -109,7 +109,7 @@ const ConversationList: React.FC<ConversationListProps> = ({
               </div>
               <div className="flex flex-grow"></div>
               {item.unreadCount > 0 && (
-                <div className="bg-red rounded-full h-6 w-6 min-h-6 min-w-6 text-white font-bold flex items-center justify-center ml-2">
+                <div className="bg-red-500 rounded-full h-6 w-6 min-h-6 min-w-6 text-white font-bold flex items-center justify-center ml-2">
                   {item.unreadCount}
                 </div>
               )}
@@ -119,7 +119,7 @@ const ConversationList: React.FC<ConversationListProps> = ({
         ))}
       </div>
       <div className="bg-primary-100 h-1 w-full mt-4" />
-      <div className="add-friend-container p-4 flex flex-row items-center w-full">
+      <div className="add-friend-container p-4 flex flex-row items-center w-full gap-x-4">
         <Input
           id="addFriend"
           variant="search"

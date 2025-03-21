@@ -5,7 +5,7 @@
       <env name="DB_PASSWORD" value="root" />
     </envs>
     <option name="MAIN_CLASS_NAME" value="io.synker.SynkerApplication" />
-    <module name="Synker" />
+    <module name="server" />
     <option name="PROGRAM_PARAMETERS" value="db migrate server/config.yml" />
     <method v="2">
       <option name="Make" enabled="true" />
