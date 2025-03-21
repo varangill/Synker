@@ -109,7 +109,7 @@ const ConversationList: React.FC<ConversationListProps> = ({
               </div>
               <div className="flex flex-grow"></div>
               {item.unreadCount > 0 && (
-                <div className="bg-red rounded-full h-6 w-6 min-h-6 min-w-6 text-white font-bold flex items-center justify-center ml-2">
+                <div className="bg-red-500 rounded-full h-6 w-6 min-h-6 min-w-6 text-white font-bold flex items-center justify-center ml-2">
                   {item.unreadCount}
                 </div>
               )}
