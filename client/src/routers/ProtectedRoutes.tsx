@@ -5,7 +5,7 @@ interface ProtectedRoutesProps {
 }
 
 const ProtectedRoutes = ({ auth }: ProtectedRoutesProps) => {
-  return auth ? <Outlet /> : <Navigate to="/logineee" replace />;
+  return auth ? <Outlet /> : <Navigate to="/login" replace />;
 };
 
 export default ProtectedRoutes;
